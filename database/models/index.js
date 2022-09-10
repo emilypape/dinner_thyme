@@ -52,7 +52,8 @@ Recipe.hasMany(Comments, {
   foreignKey: 'recipe_id',
 });
 
-Recipe.belongsToMany(RecipeCollections, {
+Recipe.belongsToMany(CookBooks, {
+  through: RecipeCollections,
   foreignKey: 'recipe_id',
 });
 
@@ -103,18 +104,16 @@ CookBooks.belongsTo(User, {
   foreignKey: 'user_id',
 });
 
-CookBooks.hasOne(RecipeCollections, {
+// Connection between Cook Books and Recipes
+
+CookBooks.belongsToMany(Recipe, {
+  through: RecipeCollections,
   foreignKey: 'cookbook_id',
 });
 
-// recipecollections associations
-
-RecipeCollections.hasMany(Recipe, {
+Recipe.belongsToMany(CookBooks, {
+  through: RecipeCollections,
   foreignKey: 'recipe_id',
-});
-
-RecipeCollections.belongsTo(CookBooks, {
-  foreignKey: 'cookbook_id',
 });
 
 module.exports = { User, Comments, CookBooks, Followers, Ingredients, Likes, Recipe, RecipeCollections, Replies };

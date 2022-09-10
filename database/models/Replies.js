@@ -35,6 +35,10 @@ Replies.init(
         key: 'id',
       },
     },
+    reply_text: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
   },
   {
     sequelize,
