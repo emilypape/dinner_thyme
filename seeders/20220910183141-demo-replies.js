@@ -1,24 +1,105 @@
-'use strict';
-
 module.exports = {
-  async up (queryInterface, Sequelize) {
-    /**
-     * Add seed commands here.
-     *
-     * Example:
-     * await queryInterface.bulkInsert('People', [{
-     *   name: 'John Doe',
-     *   isBetaMember: false
-     * }], {});
-    */
+  async up(queryInterface, Sequelize) {
+    await queryInterface.bulkInsert('replies', [
+      {
+        id: 1,
+        user_id: 1,
+        comment_id: 1,
+        reply_text: 'I agree!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 2,
+        user_id: 2,
+        comment_id: 2,
+        reply_text: 'Me too!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 3,
+        user_id: 3,
+        comment_id: 3,
+        reply_text: 'You can say that again!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 4,
+        user_id: 4,
+        comment_id: 4,
+        reply_text: 'I could finish this myself!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 5,
+        user_id: 5,
+        comment_id: 5,
+        reply_text: 'Same!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 6,
+        user_id: 6,
+        comment_id: 6,
+        reply_text: '!!!!!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 7,
+        user_id: 7,
+        comment_id: 7,
+        reply_text: 'Carpool?',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 8,
+        user_id: 8,
+        comment_id: 8,
+        reply_text: 'Great idea!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 9,
+        user_id: 9,
+        comment_id: 9,
+        reply_text: 'Count me in!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 10,
+        user_id: 10,
+        comment_id: 10,
+        reply_text: 'Best of the best!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 11,
+        user_id: 11,
+        comment_id: 11,
+        reply_text: 'How did it turn out?',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 12,
+        user_id: 12,
+        comment_id: 12,
+        reply_text: 'I never get tired of it!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+    ]);
   },
-
-  async down (queryInterface, Sequelize) {
-    /**
-     * Add commands to revert seed here.
-     *
-     * Example:
-     * await queryInterface.bulkDelete('People', null, {});
-     */
-  }
+  async down(queryInterface, Sequelize) {
+    await queryInterface.bulkDelete('replies', null, {});
+  },
 };

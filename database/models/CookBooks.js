@@ -29,7 +29,7 @@ CookBooks.init(
     timestamps: true,
     freezeTableName: false,
     underscored: true,
-    modelName: 'cookBooks',
+    modelName: 'cookbooks',
   },
 );
 

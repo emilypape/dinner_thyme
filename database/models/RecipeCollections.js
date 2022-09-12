@@ -33,7 +33,7 @@ RecipeCollections.init(
     timestamps: true,
     freezeTableName: false,
     underscored: true,
-    modelName: 'recipeCollections',
+    modelName: 'recipecollections',
   },
 );
 
