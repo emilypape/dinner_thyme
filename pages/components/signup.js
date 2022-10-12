@@ -1,6 +1,18 @@
 import React from 'react';
 
 export default function SignupForm({ setLogin }) {
+  async function signup() {
+    const response = await fetch('/api/signup', {
+      method: 'post',
+      body: JSON.stringify({
+        username: 'eap6787',
+        first_name: 'Emily',
+        email: 'eap6787@gmail.com',
+        hashed_password: 'Atlas-2021',
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+  }
   return (
     <div className='flex flex-col items-center'>
       <div className='mb-3 text-lg opacity-70 md:text-2xl'>Create an account</div>
@@ -18,6 +30,7 @@ export default function SignupForm({ setLogin }) {
       </div>
       <div>
         <button
+          onClick={() => signup()}
           type='button'
           className='inline-block px-20 py-2 border-2 border-black text-black-600 font-medium text-xs leading-tight uppercase rounded-full hover:bg-black hover:bg-opacity-5 focus:outline-none focus:ring-0 transition duration-150 ease-in-out mt-4'
           data-mdb-ripple='true'
