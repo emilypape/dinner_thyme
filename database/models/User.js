@@ -24,7 +24,7 @@ User.init(
     },
     last_name: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
     },
     profile_picture: {
       type: DataTypes.STRING,

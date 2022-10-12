@@ -40,7 +40,8 @@ Recipe.init(
       allowNull: false,
     },
     cook_instructions: {
-      type: DataTypes.STRING,
+      type: DataTypes.STRING(10000),
+
       allowNull: false,
     },
   },

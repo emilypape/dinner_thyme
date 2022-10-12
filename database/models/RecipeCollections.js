@@ -23,7 +23,7 @@ RecipeCollections.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'recipe',
+        model: 'recipes',
         key: 'id',
       },
     },

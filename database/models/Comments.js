@@ -15,7 +15,7 @@ Comments.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'recipe',
+        model: 'recipes',
         key: 'id',
       },
     },
@@ -23,7 +23,7 @@ Comments.init(
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
-        model: 'user',
+        model: 'users',
         key: 'id',
       },
     },
