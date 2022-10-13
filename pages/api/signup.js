@@ -2,6 +2,10 @@ const { User } = require('../../database/models');
 import { withIronSession } from 'next-iron-session';
 
 async function handler(req, res) {
+  // check to see if a user with this info exists already
+  // if it does, you can't create a new one or we get a collision
+  // respond with a failure code that tells user the info is already in use
+
   const dbUserData = await User.create({
     first_name: req.body.first_name,
     username: req.body.username,
@@ -22,7 +26,7 @@ async function handler(req, res) {
     username: user_name,
     name: first_name,
     user_id: user_id,
-    loggedIn: true,
+    logged_in: true,
   });
 
   await req.session.save();

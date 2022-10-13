@@ -20,10 +20,13 @@ async function handler(req, res) {
   }
   const user_name = dbUserData.username;
   const first_name = dbUserData.first_name;
+  const user_id = dbUserData.id;
 
   req.session.set('user', {
     username: user_name,
     name: first_name,
+    user_id: user_id,
+    logged_in: true,
   });
 
   await req.session.save();
