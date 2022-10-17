@@ -5,9 +5,9 @@ export default function SignupForm({ setLogin }) {
     const response = await fetch('/api/signup', {
       method: 'post',
       body: JSON.stringify({
-        username: 'fine',
-        first_name: 'boring',
-        email: 'boring@gmail.com',
+        username: 'lalaland',
+        first_name: 'boingywoings',
+        email: 'wap@gmail.com',
         hashed_password: 'boring',
       }),
       headers: { 'Content-Type': 'application/json' },
