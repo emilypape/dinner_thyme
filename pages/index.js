@@ -4,14 +4,19 @@ import Login from './components/login';
 import { withIronSessionSsr } from 'iron-session/next';
 
 export default function Home({ user }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(user.isLoggedIn);
+  const [isLoggedIn, setIsLoggedIn] = useState(user?.isLoggedIn);
 
   useEffect(() => {
-    // FETCH A FUKIN API ROUTE THAT CHECKS IF USER LOGGED IN AND RETURNS USER
-    // fetch to api/isLoggedIn
-    // make it
-
-    setIsLoggedIn(isLoggedIn);
+    if (!user) {
+      async function fetchUser() {
+        const response = await fetch('/api/isLoggedIn');
+        if (response.ok) {
+          const userObject = await response.json();
+          setIsLoggedIn(userObject);
+        }
+      }
+      fetchUser();
+    }
   }, []);
 
   return <div>{isLoggedIn ? <UserFeed /> : <Login />}</div>;
