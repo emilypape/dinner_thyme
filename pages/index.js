@@ -4,7 +4,8 @@ import Login from './components/login';
 import { withIronSessionSsr } from 'iron-session/next';
 
 export default function Home({ user }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(user?.isLoggedIn);
+  let loginStatus = user.logged_in;
+  const [isLoggedIn, setIsLoggedIn] = useState(user);
 
   useEffect(() => {
     if (!user) {
