@@ -6,38 +6,39 @@ function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   return (
     <div classname=''>
-      <nav className='bg-white-800 lg:ml-44 lg:mr-44 border-b border-black lg:p-2'>
+      <nav className='bg-white-800 lg:ml-44 lg:mr-44 lg:p-2  lg:border-b lg:border-black'>
         <div className='max-w-7xl  px-4 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
-                <div className='flex'>
+                <div className='flex '>
                   <Icon icon='tabler:chef-hat' width='46' height='46' />
-                  <div className='font-bold text-3xl mt-3 ml-1 font-title'>Dinner Thyme</div>
+                  <div className='font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
                 </div>
               </div>
-              <input placeholder='Search' className='border border-gray-200 rounded-lg p-1 mt-2 ml-4' />
               <div className='hidden md:block mt-5'>
                 <div className='ml-10 flex items-baseline space-x-4'>
-                  <a href='#' className=' hover:bg-gray-900 text-gray-300 px-3 py-2 rounded-md text-sm font-medium'>
+                  <a
+                    href='#'
+                    className=' hover:bg-green-500 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Feed
                   </a>
 
                   <a
                     href='#'
-                    className='text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                    className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Profile
                   </a>
 
                   <a
                     href='#'
-                    className='text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                    className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Cookbooks
                   </a>
 
                   <a
                     href='#'
-                    className='text-gray-300 hover:bg-gray-900 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                    className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Logout
                   </a>
                 </div>
@@ -47,7 +48,7 @@ function Nav() {
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 type='button'
-                className='bg-white-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-black hover:bg-white-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white-400 focus:ring-white'
+                className='bg-white-900 inline-flex items-center justify-center p-2 rounded-md text-gray-400 hover:text-green-500 hover:bg-white-800 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-white-400 focus:ring-white'
                 aria-controls='mobile-menu'
                 aria-expanded='false'>
                 <span className='sr-only'>Open main menu</span>
@@ -90,25 +91,25 @@ function Nav() {
               <div ref={ref} className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
                 <a
                   href='#'
-                  className='text-gray-300 hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Feed
                 </a>
 
                 <a
                   href='#'
-                  className='text-gray-300 hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Profile
                 </a>
 
                 <a
                   href='#'
-                  className='text-gray-300 hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Cookbooks
                 </a>
 
                 <a
                   href='#'
-                  className='text-gray-300 hover:bg-gray-900 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Logout
                 </a>
               </div>
