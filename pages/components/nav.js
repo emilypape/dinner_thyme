@@ -13,7 +13,7 @@ function Nav() {
               <div className='flex-shrink-0'>
                 <div className='flex '>
                   <Icon icon='tabler:chef-hat' width='46' height='46' />
-                  <div className='font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
+                  <div className=' font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
                 </div>
               </div>
               <div className='hidden md:block mt-5'>
