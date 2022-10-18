@@ -5,17 +5,18 @@ import { Icon } from '@iconify/react';
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   return (
-    <div>
-      <nav className='bg-white-800'>
+    <div classname=''>
+      <nav className='bg-white-800 lg:ml-44 lg:mr-44 border-b border-black lg:p-2'>
         <div className='max-w-7xl  px-4 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
                 <div className='flex'>
-                  <Icon icon='tabler:chef-hat' width='50' height='50' />
-                  <div className='font-bold text-2xl mt-4 ml-2'>Dinner Thyme</div>
+                  <Icon icon='tabler:chef-hat' width='46' height='46' />
+                  <div className='font-bold text-3xl mt-3 ml-1 font-title'>Dinner Thyme</div>
                 </div>
               </div>
+              <input placeholder='Search' className='border border-gray-200 rounded-lg p-1 mt-2 ml-4' />
               <div className='hidden md:block mt-5'>
                 <div className='ml-10 flex items-baseline space-x-4'>
                   <a href='#' className=' hover:bg-gray-900 text-gray-300 px-3 py-2 rounded-md text-sm font-medium'>
@@ -52,7 +53,7 @@ function Nav() {
                 <span className='sr-only'>Open main menu</span>
                 {!isOpen ? (
                   <svg
-                    className='bg-white-900 block h-6 w-6'
+                    className='bg-white-900 block h-8 w-8 mt-2'
                     xmlns='http://www.w3.org/2000/svg'
                     fill='none'
                     viewBox='0 0 24 24'

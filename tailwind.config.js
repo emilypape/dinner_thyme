@@ -14,6 +14,9 @@ module.exports = {
 
         xl: '1960px',
       },
+      fontFamily: {
+        title: ['Satisfy', 'cursive'],
+      },
     },
   },
   plugins: [],
