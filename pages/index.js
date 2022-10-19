@@ -19,7 +19,7 @@ export default function Home({ user }) {
     }
   }, []);
 
-  return <div>{isLoggedIn ? <UserFeed /> : <Login />}</div>;
+  return <div>{isLoggedIn ? <UserFeed setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}</div>;
 }
 
 export const getServerSideProps = withIronSessionSsr(

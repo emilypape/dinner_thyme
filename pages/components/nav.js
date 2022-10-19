@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { Icon } from '@iconify/react';
 
-function Nav() {
+function Nav({ setIsLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
   async function logout() {
     const response = await fetch('/api/logout', {
@@ -11,11 +11,12 @@ function Nav() {
     });
 
     if (response.ok) {
-      document.location.replace('/');
+      setIsLoggedIn(false);
     } else {
       alert(response.statusText);
     }
   }
+
   return (
     <div classname=''>
       <nav className='bg-white-800 lg:ml-44 lg:mr-44 lg:p-2  lg:border-b lg:border-black'>
@@ -24,7 +25,7 @@ function Nav() {
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
                 <div className='flex '>
-                  <Icon icon='tabler:chef-hat' width='46' height='46' />
+                  <Icon icon='game-icons:cook' width='46' height='46' />
                   <div className=' font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
                 </div>
               </div>

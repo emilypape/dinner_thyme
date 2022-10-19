@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-export default function LoginForm({ setLogin }) {
+export default function LoginForm({ setLogin, setIsLoggedIn }) {
   let [username, setUsername] = useState('');
   let [password, setPassword] = useState('');
 
@@ -20,6 +20,11 @@ export default function LoginForm({ setLogin }) {
       }),
       headers: { 'Content-Type': 'application/json' },
     });
+    if (response.ok) {
+      setIsLoggedIn(true);
+    } else {
+      alert(response.statusText);
+    }
   }
   return (
     <div className='flex flex-col items-center'>

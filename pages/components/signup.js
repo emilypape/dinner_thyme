@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-export default function SignupForm({ setLogin }) {
+export default function SignupForm({ setLogin, setIsLoggedIn }) {
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
   let [username, setUsername] = useState('');
@@ -34,6 +34,12 @@ export default function SignupForm({ setLogin }) {
       }),
       headers: { 'Content-Type': 'application/json' },
     });
+
+    if (response.ok) {
+      setIsLoggedIn(true);
+    } else {
+      alert(response.statusText);
+    }
   }
   return (
     <div className='flex flex-col items-center'>
