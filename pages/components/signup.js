@@ -1,14 +1,36 @@
-import React from 'react';
+import { useState } from 'react';
 
 export default function SignupForm({ setLogin }) {
+  let [name, setName] = useState('');
+  let [email, setEmail] = useState('');
+  let [username, setUsername] = useState('');
+  let [password, setPassword] = useState('');
+
+  // grab input for signup and assign it to a state value
+  const handleName = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleEmail = (event) => {
+    setEmail(event.target.value);
+  };
+
+  const handleUsername = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+
   async function signup() {
     const response = await fetch('/api/signup', {
       method: 'post',
       body: JSON.stringify({
-        username: 'lalaland',
-        first_name: 'boingywoings',
-        email: 'wap@gmail.com',
-        hashed_password: 'boring',
+        username: username,
+        first_name: name,
+        email: email,
+        hashed_password: password,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
@@ -17,16 +39,30 @@ export default function SignupForm({ setLogin }) {
     <div className='flex flex-col items-center'>
       <div className='mb-3 text-lg opacity-70 md:text-2xl'>Create an account</div>
       <div>
-        <input placeholder='Name' className='rounded-full mr-2  px-2 py-2 mb-2 text-black max-w-lg opacity-80' />
         <input
+          onChange={handleName}
+          placeholder='Name'
+          className='rounded-full mr-2  px-2 py-2 mb-2 text-black max-w-lg opacity-80'
+        />
+        <input
+          onChange={handleEmail}
           placeholder='Email'
           type='text'
           className='rounded-full  px-2 py-2 mb-2 text-black max-w-lg opacity-80'
         />
       </div>
       <div>
-        <input placeholder='Username' className='rounded-full mr-2  px-2 py-2 mb-2 text-black max-w-lg opacity-80' />
-        <input placeholder='Password' className='rounded-full mr-2  px-2 py-2 mb-2 text-black max-w-lg opacity-80' />
+        <input
+          onChange={handleUsername}
+          placeholder='Username'
+          className='rounded-full mr-2  px-2 py-2 mb-2 text-black max-w-lg opacity-80'
+        />
+        <input
+          onChange={handlePassword}
+          placeholder='Password'
+          type='password'
+          className='rounded-full mr-2  px-2 py-2 mb-2 text-black max-w-lg opacity-80'
+        />
       </div>
       <div>
         <button
