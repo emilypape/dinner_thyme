@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 export default function LoginForm({ setLogin }) {
+  let [username, setUsername] = useState('');
+  let [password, setPassword] = useState('');
+
+  const handleUsername = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
   async function login() {
     const response = await fetch('/api/login', {
       method: 'post',
       body: JSON.stringify({
-        username: 'eap6787',
-        hashed_password: 'Atlas-2021',
+        username: username,
+        hashed_password: password,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
@@ -18,12 +28,14 @@ export default function LoginForm({ setLogin }) {
         id='username_input'
         placeholder='username'
         className='rounded-full  px-6 py-4 mb-2 text-black max-w-lg opacity-80'
+        onChange={handleUsername}
       />
       <input
         id='password_input'
         placeholder='password'
         type='password'
         className='rounded-full  px-6 py-4 text-black max-w-lg opacity-80'
+        onChange={handlePassword}
       />
       <div>
         <button
