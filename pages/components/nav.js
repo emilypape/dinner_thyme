@@ -4,6 +4,18 @@ import { Icon } from '@iconify/react';
 
 function Nav() {
   const [isOpen, setIsOpen] = useState(false);
+  async function logout() {
+    const response = await fetch('/api/logout', {
+      method: 'post',
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/');
+    } else {
+      alert(response.statusText);
+    }
+  }
   return (
     <div classname=''>
       <nav className='bg-white-800 lg:ml-44 lg:mr-44 lg:p-2  lg:border-b lg:border-black'>
@@ -18,29 +30,23 @@ function Nav() {
               </div>
               <div className='hidden md:block mt-5'>
                 <div className='ml-10 flex items-baseline space-x-4'>
-                  <a
-                    href='#'
-                    className=' hover:bg-green-500 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                  <div className=' hover:bg-green-500 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Feed
-                  </a>
+                  </div>
 
-                  <a
-                    href='#'
-                    className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                  <div className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Profile
-                  </a>
+                  </div>
 
-                  <a
-                    href='#'
-                    className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                  <div className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Cookbooks
-                  </a>
+                  </div>
 
-                  <a
-                    href='#'
+                  <div
+                    onClick={() => logout()}
                     className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Logout
-                  </a>
+                  </div>
                 </div>
               </div>
             </div>
@@ -89,29 +95,23 @@ function Nav() {
           {(ref) => (
             <div className='md:hidden' id='mobile-menu'>
               <div ref={ref} className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-                <a
-                  href='#'
-                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Feed
-                </a>
+                </div>
 
-                <a
-                  href='#'
-                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Profile
-                </a>
+                </div>
 
-                <a
-                  href='#'
-                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Cookbooks
-                </a>
+                </div>
 
-                <a
-                  href='#'
+                <div
+                  onClick={() => logout()}
                   className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Logout
-                </a>
+                </div>
               </div>
             </div>
           )}

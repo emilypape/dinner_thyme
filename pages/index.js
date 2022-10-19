@@ -4,8 +4,7 @@ import Login from './components/login';
 import { withIronSessionSsr } from 'iron-session/next';
 
 export default function Home({ user }) {
-  let loginStatus = user.logged_in;
-  const [isLoggedIn, setIsLoggedIn] = useState(user);
+  const [isLoggedIn, setIsLoggedIn] = useState(user?.logged_in);
 
   useEffect(() => {
     if (!user) {
@@ -25,7 +24,10 @@ export default function Home({ user }) {
 
 export const getServerSideProps = withIronSessionSsr(
   async function getServerSideProps({ req }) {
-    const user = req.session.user;
+    let user = { logged_in: false };
+    if (req.session.user) {
+      user = req.session.user;
+    }
 
     return {
       props: {
