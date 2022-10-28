@@ -40,13 +40,27 @@ export default function Profile() {
             <div className='ml-8 xl:text-3xl lg:text-3xl md:text-2xl font-bold lg:ml-10 lg:mt-6 md:ml-10 md:mt-8 font-title'>
               {user.first_name}'s Kitchen
             </div>
-            <button className='py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
-              Edit Profile
+            <button className=' py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
+              <div>Edit Profile</div>
             </button>
           </div>
           <button className='absolute mt-10 xl:mt-24 lg:mt-24 md:mt-24 mt-32 rounded-full bg-white lg:-ml-2'>
             <Icon icon='akar-icons:circle-plus-fill' color='lime' width={50} height={50} />
           </button>
+        </div>
+        <div className='ml-10 mr-10 lg:ml-60 lg:mr-60 md:ml-60 md:mr-60 border-t border-black flex items-center justify-center'>
+          <div className='hover:border-t-2 border-green-500 py-5 px-3 flex'>
+            <Icon icon='arcticons:nextcloudcookbook' color='gray' width={30} height={30} />
+            <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>COOKBOOKS</div>
+          </div>
+          <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
+            <Icon icon='bi:heart' color='gray' width={25} height={25} />
+            <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>LIKES</div>
+          </div>
+          <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
+            <Icon icon='ri:user-follow-line' color='gray' width={25} height={25} />
+            <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>FOLLOWING</div>
+          </div>
         </div>
       </div>
     </>
