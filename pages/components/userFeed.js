@@ -9,6 +9,7 @@ export default function UserFeed({ setIsLoggedIn }) {
   return (
     <div>
       <Nav setIsLoggedIn={setIsLoggedIn} />
+      <Profile />
     </div>
   );
 }
