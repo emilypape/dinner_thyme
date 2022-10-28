@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import profilePicPlaceholder from '../assets/images/profile_pic_placeholder.jpeg';
 import { Icon } from '@iconify/react';
+import ProfileRecipes from './profileRecipes';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -44,7 +45,7 @@ export default function Profile() {
               <div>Edit Profile</div>
             </button>
           </div>
-          <button className='absolute mt-10 xl:mt-24 lg:mt-24 md:mt-24 mt-32 rounded-full bg-white lg:-ml-2'>
+          <button className='absolute mt-10 xl:mt-24 lg:mt-24 md:mt-24 rounded-full bg-white lg:-ml-2'>
             <Icon icon='akar-icons:circle-plus-fill' color='lime' width={50} height={50} />
           </button>
         </div>
@@ -61,6 +62,10 @@ export default function Profile() {
             <Icon icon='ri:user-follow-line' color='gray' width={25} height={25} />
             <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>FOLLOWING</div>
           </div>
+        </div>
+        {/* personal recipes */}
+        <div>
+          <ProfileRecipes />
         </div>
       </div>
     </>
