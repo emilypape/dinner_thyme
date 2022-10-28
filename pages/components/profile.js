@@ -18,16 +18,33 @@ export default function Profile() {
   return user ? (
     <>
       <div>
-        <div className='p-10 flex justify-center xl:justify-start lg:justify-start md:justify-start lg:ml-40 md:ml-0'>
-          <div className='rounded-full border-4 pt-1 border-black py-0 px-1 '>
-            <Image
-              className='rounded-full border-2 border-black'
-              src={profilePicPlaceholder}
-              width={150}
-              height={150}
-            />
+        <div className='p-10 flex flex-col lg:flex-row md:flex-row items-center justify-center xl:justify-start lg:justify-start md:justify-start lg:ml-60 md:ml-0'>
+          <div>
+            {user.profile_picture ? (
+              <Image
+                className='rounded-full border-2 border-black'
+                src={user.profile_picture}
+                width={150}
+                height={150}
+              />
+            ) : (
+              <Image
+                className='rounded-full border-2 border-black'
+                src={profilePicPlaceholder}
+                width={150}
+                height={150}
+              />
+            )}
           </div>
-          <button className='absolute xl:mt-5 lg:mt-5 md:mt-5 mt-32 rounded-full'>
+          <div className='mt-8 lg:mt-0 xl:mt-0 md:mt-0'>
+            <div className='ml-8 xl:text-3xl lg:text-3xl md:text-2xl font-bold lg:ml-10 lg:mt-6 md:ml-10 md:mt-8 font-title'>
+              {user.first_name}'s Kitchen
+            </div>
+            <button className='py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
+              Edit Profile
+            </button>
+          </div>
+          <button className='absolute mt-10 xl:mt-24 lg:mt-24 md:mt-24 mt-32 rounded-full bg-white lg:-ml-2'>
             <Icon icon='akar-icons:circle-plus-fill' color='lime' width={50} height={50} />
           </button>
         </div>
