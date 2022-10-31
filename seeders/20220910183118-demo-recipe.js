@@ -5,7 +5,8 @@ module.exports = {
         id: 1,
         user_id: 1,
         title: 'Blueberry Muffins',
-        image_urls: 'https://www.culinaryhill.com/blueberry-muffins/',
+        image_urls:
+          'https://www.culinaryhill.com/wp-content/uploads/2022/08/Blueberry-Muffins-Culinary-Hill-1200x800-1.jpg',
         cook_temperature: '375°',
         cook_time: '15-20 minutes',
         prep_time: '45 minutes',

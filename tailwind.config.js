@@ -13,6 +13,8 @@ module.exports = {
         lg: '992px',
 
         xl: '1960px',
+
+        lm: '800px',
       },
       fontFamily: {
         title: ['Satisfy', 'cursive'],
