@@ -3,9 +3,12 @@ import Image from 'next/image';
 import profilePicPlaceholder from '../assets/images/profile_pic_placeholder.jpeg';
 import { Icon } from '@iconify/react';
 import ProfileRecipes from './profileRecipes';
+import EditProfile from './editProfile';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
+  const [editProfModal, setEditProfModal] = useState(false);
+
   async function loggedInUser() {
     const response = await fetch('/api/loggedInUser');
     let userData = await response.json();
@@ -41,7 +44,9 @@ export default function Profile() {
             <div className='ml-8 xl:text-3xl lg:text-3xl md:text-2xl font-bold lg:ml-10 lg:mt-6 md:ml-10 md:mt-8 font-title'>
               {user.first_name}'s Kitchen
             </div>
-            <button className=' py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
+            <button
+              onClick={() => setEditProfModal(true)}
+              className=' py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
               <div>Edit Profile</div>
             </button>
             <button className='flex ml-4 text-sm lg:ml-0 md-ml-0'>
@@ -55,20 +60,21 @@ export default function Profile() {
         </div>
         <div className='ml-10 mr-10 lg:ml-60 lg:mr-60 md:ml-60 md:mr-60 border-t border-black flex items-center justify-center'>
           <div className='hover:border-t-2 border-green-500 py-5 px-3 flex'>
-            <Icon icon='arcticons:nextcloudcookbook' color='gray' width={30} height={30} />
+            <Icon icon='arcticons:nextcloudcookbook' color='gray' width={25} height={25} />
             <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>COOKBOOKS</div>
           </div>
           <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
-            <Icon icon='bi:heart' color='gray' width={25} height={25} />
+            <Icon icon='bi:heart' color='gray' width={20} height={20} />
             <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>LIKES</div>
           </div>
           <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
-            <Icon icon='ri:user-follow-line' color='gray' width={25} height={25} />
+            <Icon icon='ri:user-follow-line' color='gray' width={20} height={20} />
             <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>FOLLOWING</div>
           </div>
         </div>
         {/* personal recipes */}
         <div>
+          {editProfModal ? <EditProfile setEditProfModal={setEditProfModal} /> : null}
           <ProfileRecipes />
         </div>
       </div>
