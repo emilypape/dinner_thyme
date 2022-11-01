@@ -17,9 +17,9 @@ module.exports = {
       },
       {
         id: 2,
-        user_id: 2,
+        user_id: 1,
         title: 'Chicken Alfredo',
-        image_urls: 'https://therecipecritic.com/chicken-alfredo-bake/',
+        image_urls: 'https://www.jessicagavin.com/wp-content/uploads/2019/08/chicken-alfredo-8-1200.jpg',
         cook_temperature: 'Medium',
         cook_time: '30 minutes',
         prep_time: '50 minutes',
@@ -30,7 +30,7 @@ module.exports = {
       },
       {
         id: 3,
-        user_id: 3,
+        user_id: 1,
         title: 'Homemade Guacamole',
         image_urls: 'https://www.eatingbirdfood.com/wp-content/uploads/2022/03/guacamole-hero.jpg',
         cook_temperature: 'Refrigerated',
@@ -43,9 +43,10 @@ module.exports = {
       },
       {
         id: 4,
-        user_id: 4,
+        user_id: 1,
         title: 'Homestyle Carrot Cake',
-        image_urls: 'https://www.mycakeschool.com/recipes/carrot-cakescratch-recipe/',
+        image_urls:
+          'https://www.thespruceeats.com/thmb/8gWQEAFqWGoLBka1q-j4YOHhI1o=/2667x2000/smart/filters:no_upscale()/baby-food-carrot-cake-cream-cheese-3052447-7a91bc5a0cdb445ebde316665f10a8d1.jpg',
         cook_temperature: '350°',
         cook_time: '35 minutes',
         prep_time: '1 hour',
@@ -56,7 +57,7 @@ module.exports = {
       },
       {
         id: 5,
-        user_id: 5,
+        user_id: 1,
         title: 'Spicy Tuna Roll',
         image_urls:
           'https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/spicy-tuna-roll-2-1652806800.jpg?crop=1.00xw:1.00xh;0,0&resize=640:*',
@@ -70,7 +71,7 @@ module.exports = {
       },
       {
         id: 6,
-        user_id: 6,
+        user_id: 1,
         title: 'Chicken Tinga Tacos',
         image_urls:
           'https://www.thespruceeats.com/thmb/C0Rx3q8cglHwayLa3d7lnS7SuMg=/3000x2000/filters:fill(auto,1)/chicken-tinga-tinga-de-pollo-4773239-Hero_01-1bd1d960c02a4fdb812323b8c60fd55b.jpg',
