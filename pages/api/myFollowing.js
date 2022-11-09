@@ -1,4 +1,4 @@
-const { User, Likes, Recipe } = require('../../database/models');
+const { User, Followers } = require('../../database/models');
 import { withIronSession } from 'next-iron-session';
 
 async function myLikes(req, res) {
@@ -6,24 +6,21 @@ async function myLikes(req, res) {
 
   const userId = user.user_id;
 
-  const likes = await Likes.findAll({
+  const myFollowing = await Followers.findAll({
     where: {
-      user_id: userId,
+      follower_id: userId,
     },
     include: {
-      model: Recipe,
-      include: {
-        model: User,
-        attributes: ['id', 'first_name', 'last_name', 'profile_picture', 'username'],
-      },
+      model: User,
+      attributes: ['id', 'first_name', 'last_name', 'profile_picture', 'username'],
     },
   });
 
-  if (!likes) {
-    res.status(400).json({ message: 'You dont have any likes at this time!' });
+  if (!myFollowing) {
+    res.status(400).json({ message: 'You are not currently following any users!' });
   }
 
-  res.status(200).json(likes);
+  res.status(200).json(myFollowing);
 }
 
 export default withIronSession(myLikes, {
