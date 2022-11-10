@@ -4,6 +4,7 @@ import profilePicPlaceholder from '../assets/images/profile_pic_placeholder.jpeg
 import { Icon } from '@iconify/react';
 import ProfileRecipes from './profileRecipes';
 import EditProfile from './editProfile';
+import Likes from './likes';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -76,6 +77,7 @@ export default function Profile() {
         <div>
           {editProfModal ? <EditProfile setEditProfModal={setEditProfModal} editProfModal={editProfModal} /> : null}
           <ProfileRecipes />
+          {/* <Likes /> */}
         </div>
       </div>
     </>
