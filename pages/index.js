@@ -1,10 +1,12 @@
 import { useState, useEffect } from 'react';
-import UserFeed from './components/userFeed';
-import Login from './components/login';
+import UserFeed from '../components/userFeed';
+import Login from '../components/login';
 import { withIronSessionSsr } from 'iron-session/next';
+import { useRouter } from 'next/router';
 
 export default function Home({ user }) {
   const [isLoggedIn, setIsLoggedIn] = useState(user?.logged_in);
+  const router = useRouter();
 
   useEffect(() => {
     if (!user) {
@@ -13,13 +15,21 @@ export default function Home({ user }) {
         if (response.ok) {
           const userObject = await response.json();
           setIsLoggedIn(userObject);
+          router.push('/profile');
+        } else {
+          router.push('/login');
         }
       }
       fetchUser();
+    } else if (user?.logged_in) {
+      router.push('/profile');
+    } else if (!user?.logged_in) {
+      router.push('/login');
     }
   }, []);
 
-  return <div>{isLoggedIn ? <UserFeed setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}</div>;
+  // return <div>{isLoggedIn ? <UserFeed setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}</div>;
+  return <div>...loading</div>;
 }
 
 export const getServerSideProps = withIronSessionSsr(

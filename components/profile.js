@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
-import profilePicPlaceholder from '../assets/images/profile_pic_placeholder.jpeg';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 import { Icon } from '@iconify/react';
 import ProfileRecipes from './profileRecipes';
 import EditProfile from './editProfile';

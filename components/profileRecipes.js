@@ -23,7 +23,7 @@ export default function ProfileRecipes({ user }) {
         <div className='flex flex-wrap px-12 md:px-0 lg:px-0 xl:px-0 lg:justify-start lg:ml-56 md:ml-16'>
           {recipeArray?.map((recipe) => {
             return (
-              <div class='lg:mr-4 max-w-xs rounded shadow-lg mb-5'>
+              <div key={recipe.id} className='lg:mr-4 max-w-xs rounded shadow-lg mb-5'>
                 <Image src={recipe.image_urls} width={400} height={300} alt={recipe.title} />
                 <div className='px-6 py-4'>
                   <div className='flex'>

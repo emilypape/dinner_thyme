@@ -1,9 +1,12 @@
 import { useState } from 'react';
 import { Transition } from '@headlessui/react';
 import { Icon } from '@iconify/react';
+import Link from './Link';
+import { useRouter } from 'next/router';
 
 function Nav({ setIsLoggedIn }) {
   const [isOpen, setIsOpen] = useState(false);
+  const router = useRouter();
   async function logout() {
     const response = await fetch('/api/logout', {
       method: 'post',
@@ -11,14 +14,14 @@ function Nav({ setIsLoggedIn }) {
     });
 
     if (response.ok) {
-      setIsLoggedIn(false);
+      router.push('/login');
     } else {
       alert(response.statusText);
     }
   }
 
   return (
-    <div classname=''>
+    <div className=''>
       <nav className='bg-white-800 lg:ml-44 lg:mr-44 lg:p-2  lg:border-b lg:border-black'>
         <div className='max-w-7xl  px-4 sm:px-6 lg:px-8'>
           <div className='flex items-center justify-between h-16'>
@@ -31,14 +34,16 @@ function Nav({ setIsLoggedIn }) {
               </div>
               <div className='hidden md:block mt-5'>
                 <div className='ml-10 flex items-baseline space-x-4'>
-                  <div className=' hover:bg-green-500 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
-                    Feed
-                  </div>
-
-                  <div className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
-                    Profile
-                  </div>
-
+                  <Link href={'/feed'}>
+                    <div className=' hover:bg-green-500 text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                      Feed
+                    </div>
+                  </Link>
+                  <Link href={'/profile'}>
+                    <div className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                      Profile
+                    </div>
+                  </Link>
                   <div className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Cookbooks
                   </div>
