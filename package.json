@@ -24,10 +24,8 @@
     "nodemon": "^2.0.19",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "react-router-dom": "^6.4.1",
     "sequelize": "^6.25.3",
     "sequelize-cli": "^6.5.2",
-    "socket.io": "^4.5.1",
     "tw-elements": "^1.0.0-alpha12"
   },
   "devDependencies": {

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import LoginForm from './loginForm';
 import SignupForm from './signup';
-import backgroundImage from '../assets/images/breakfast_setting.jpeg';
+import backgroundImage from '../public/assets/images/breakfast_setting.jpeg';
 import Image from 'next/image';
 
 export default function Login({ setIsLoggedIn }) {

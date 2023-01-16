@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function LoginForm({ setLogin, setIsLoggedIn }) {
   let [username, setUsername] = useState('');
   let [password, setPassword] = useState('');
+
+  const router = useRouter();
 
   const handleUsername = (event) => {
     setUsername(event.target.value);
@@ -21,7 +24,7 @@ export default function LoginForm({ setLogin, setIsLoggedIn }) {
       headers: { 'Content-Type': 'application/json' },
     });
     if (response.ok) {
-      setIsLoggedIn(true);
+      router.push('/profile');
     } else {
       alert(response.statusText);
     }
