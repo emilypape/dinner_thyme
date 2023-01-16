@@ -21,9 +21,10 @@ export default function Home({ user }) {
         }
       }
       fetchUser();
-    } else if (user?.logged_in) {
-      router.push('/profile');
-    } else if (!user?.logged_in) {
+    } else {
+      if (user?.logged_in) {
+        router.push('/profile');
+      }
       router.push('/login');
     }
   }, []);
