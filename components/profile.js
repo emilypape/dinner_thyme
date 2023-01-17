@@ -11,6 +11,7 @@ export default function Profile() {
   const [user, setUser] = useState(null);
   const [editProfModal, setEditProfModal] = useState(false);
   const [followerModal, setFollowerModal] = useState(false);
+  const [likeList, setLikeList] = useState(false);
 
   async function loggedInUser() {
     const response = await fetch('/api/loggedInUser');
@@ -68,7 +69,15 @@ export default function Profile() {
           </div>
           <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
             <Icon icon='bi:heart' color='gray' width={20} height={20} />
-            <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>LIKES</div>
+            {likeList ? (
+              <div onClick={() => setLikeList(false)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
+                RECIPES
+              </div>
+            ) : (
+              <div onClick={() => setLikeList(true)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
+                LIKES
+              </div>
+            )}
           </div>
           <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
             <Icon icon='ri:user-follow-line' color='gray' width={20} height={20} />
@@ -81,8 +90,7 @@ export default function Profile() {
         <div>
           {editProfModal ? <EditProfile setEditProfModal={setEditProfModal} editProfModal={editProfModal} /> : null}
           {followerModal ? <Following setFollowerModal={setFollowerModal} followerModal={followerModal} /> : null}
-          <ProfileRecipes />
-          {/* <Likes /> */}
+          {likeList ? <Likes /> : <ProfileRecipes />}
         </div>
       </div>
     </>
