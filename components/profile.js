@@ -68,14 +68,19 @@ export default function Profile() {
             <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>COOKBOOKS</div>
           </div>
           <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
-            <Icon icon='bi:heart' color='gray' width={20} height={20} />
             {likeList ? (
-              <div onClick={() => setLikeList(false)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
-                RECIPES
+              <div className='flex'>
+                <Icon icon='arcticons:recipe-keeper' color='gray' width={22} height={22} />
+                <div onClick={() => setLikeList(false)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
+                  RECIPES
+                </div>
               </div>
             ) : (
-              <div onClick={() => setLikeList(true)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
-                LIKES
+              <div className='flex'>
+                <Icon icon='bi:heart' color='gray' width={20} height={20} />
+                <div onClick={() => setLikeList(true)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
+                  LIKES
+                </div>
               </div>
             )}
           </div>
