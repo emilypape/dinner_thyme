@@ -17,7 +17,7 @@ export default function ProfileRecipes({ user }) {
   }, []);
 
   let recipeArray = recipes;
-  return (
+  return recipeArray ? (
     <div>
       <div className='flex flex-wrap justify-evenly lg:justify-start'>
         <div className='flex flex-wrap px-12 md:px-0 lg:px-0 xl:px-0 lg:justify-start lg:ml-56 md:ml-16'>
@@ -52,5 +52,7 @@ export default function ProfileRecipes({ user }) {
         </div>
       </div>
     </div>
+  ) : (
+    <div>Nothing Cooking in the Kitchen!</div>
   );
 }

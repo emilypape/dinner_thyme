@@ -36,8 +36,9 @@ export default function Following({ setFollowerModal }) {
             {/*body*/}
             {myFollowing?.map((follows) => {
               return (
-                <div className='flex flex-col'>
-                  <div>
+                <div className='flex items-center space-x-4'>
+                  <Image src={follows.user.profile_picture} className='w-10 h-10 rounded-full' alt='' />
+                  <div className='font-medium dark:text-black'>
                     <div>{follows.user.username}</div>
                   </div>
                 </div>

@@ -63,11 +63,11 @@ export default function Profile() {
           </button>
         </div>
         <div className='ml-10 mr-10 lg:ml-60 lg:mr-60 md:ml-60 md:mr-60 border-t border-black flex items-center justify-center'>
-          <div className='hover:border-t-2 border-green-500 py-5 px-3 flex'>
+          <div className='hover:border-t-2 border-green-500 py-5 px-3 flex cursor-pointer'>
             <Icon icon='arcticons:nextcloudcookbook' color='gray' width={25} height={25} />
             <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>COOKBOOKS</div>
           </div>
-          <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
+          <div className='hover:border-t-2 border-green-500 py-6 px-3 flex cursor-pointer'>
             {likeList ? (
               <div className='flex'>
                 <Icon icon='arcticons:recipe-keeper' color='gray' width={22} height={22} />
@@ -84,11 +84,11 @@ export default function Profile() {
               </div>
             )}
           </div>
-          <div className='hover:border-t-2 border-green-500 py-6 px-3 flex'>
+          <div
+            onClick={() => setFollowerModal(true)}
+            className='hover:border-t-2 border-green-500 py-6 px-3 flex cursor-pointer'>
             <Icon icon='ri:user-follow-line' color='gray' width={20} height={20} />
-            <div onClick={() => setFollowerModal(true)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
-              FOLLOWING
-            </div>
+            <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>FOLLOWING</div>
           </div>
         </div>
         {/* personal recipes */}

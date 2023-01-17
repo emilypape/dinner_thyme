@@ -1,5 +1,4 @@
-import Nav from '../components/nav';
-
+import Nav from '../../components/nav';
 function FeedRoute() {
   return (
     <>

@@ -17,7 +17,7 @@ export default function Likes({ user }) {
   }, []);
 
   let likeArray = likes;
-  return (
+  return likeArray ? (
     <div>
       <div className='flex flex-wrap justify-evenly lg:justify-start'>
         <div className='flex flex-wrap px-12 md:px-0 lg:px-0 xl:px-0 lg:justify-start lg:ml-56 md:ml-16'>
@@ -65,5 +65,7 @@ export default function Likes({ user }) {
         </div>
       </div>
     </div>
+  ) : (
+    <div>Head to your feed to start liking dishes!</div>
   );
 }
