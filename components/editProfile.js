@@ -1,7 +1,55 @@
 import { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
+import { useRouter } from 'next/router';
 
-export default function EditProfile({ setEditProfModal, editProfModal }) {
+export default function EditProfile({ setEditProfModal, setUser }) {
+  let [firstName, setFirstName] = useState('');
+  let [lastName, setLastName] = useState('');
+  let [username, setUsername] = useState('');
+  let [password, setPassword] = useState('');
+
+  const router = useRouter();
+
+  // grab input for signup and assign it to a state value
+  const handleFirstName = (event) => {
+    setFirstName(event.target.value);
+  };
+
+  const handlelastName = (event) => {
+    setLastName(event.target.value);
+  };
+
+  const handleUsername = (event) => {
+    setUsername(event.target.value);
+  };
+
+  const handlePassword = (event) => {
+    setPassword(event.target.value);
+  };
+  async function updateProfile() {
+    const response = await fetch('/api/editProfile', {
+      method: 'put',
+      body: JSON.stringify({
+        first_name: firstName,
+        last_name: lastName,
+        username: username,
+        hashed_password: password,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response.ok) {
+      alert(response.statusText);
+    } else {
+      const user = await response.json();
+      setUser(user);
+    }
+  }
+
+  function saveChanges() {
+    updateProfile();
+    setEditProfModal(false);
+  }
   return (
     <>
       <div className=' justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  outline-none focus:outline-none'>
@@ -26,21 +74,38 @@ export default function EditProfile({ setEditProfModal, editProfModal }) {
                   <div className='flex  mb-3'>
                     <div className='mr-1'>
                       <div className='text-black'>First Name</div>
-                      <input className='border-2 rounded-lg py-1 px-1 ' placeholder='first name' />
+                      <input
+                        onChange={handleFirstName}
+                        className='border-2 rounded-lg py-1 px-1 '
+                        placeholder='first name'
+                      />
                     </div>
                     <div>
                       <div className='text-black'>Last Name</div>
-                      <input className='border-2 rounded-lg py-1 px-1' placeholder='last name' />
+                      <input
+                        onChange={handlelastName}
+                        className='border-2 rounded-lg py-1 px-1'
+                        placeholder='last name'
+                      />
                     </div>
                   </div>
                   <div className='flex mb-2'>
                     <div className='mr-1'>
                       <div className='text-black'>Username</div>
-                      <input className='border-2 rounded-lg py-1 px-1' placeholder='username' />
+                      <input
+                        onChange={handleUsername}
+                        className='border-2 rounded-lg py-1 px-1'
+                        placeholder='username'
+                      />
                     </div>
                     <div>
                       <div className='text-black'>Password</div>
-                      <input className='border-2 rounded-lg py-1 px-1' placeholder='password' type='password' />
+                      <input
+                        onChange={handlePassword}
+                        className='border-2 rounded-lg py-1 px-1'
+                        placeholder='password'
+                        type='password'
+                      />
                     </div>
                   </div>
                 </form>
@@ -57,7 +122,8 @@ export default function EditProfile({ setEditProfModal, editProfModal }) {
               <button
                 className='bg-green-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                 type='button'
-                onClick={() => setEditProfModal(false)}>
+                // onClick={() => setEditProfModal(false)}
+                onClick={saveChanges}>
                 Save Changes
               </button>
             </div>

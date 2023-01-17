@@ -1,11 +1,12 @@
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export default function SignupForm({ setLogin, setIsLoggedIn }) {
   let [name, setName] = useState('');
   let [email, setEmail] = useState('');
   let [username, setUsername] = useState('');
   let [password, setPassword] = useState('');
-
+  const router = useRouter();
   // grab input for signup and assign it to a state value
   const handleName = (event) => {
     setName(event.target.value);
@@ -36,7 +37,7 @@ export default function SignupForm({ setLogin, setIsLoggedIn }) {
     });
 
     if (response.ok) {
-      setIsLoggedIn(true);
+      router.push('/profile');
     } else {
       alert(response.statusText);
     }

@@ -93,7 +93,9 @@ export default function Profile() {
         </div>
         {/* personal recipes */}
         <div>
-          {editProfModal ? <EditProfile setEditProfModal={setEditProfModal} editProfModal={editProfModal} /> : null}
+          {editProfModal ? (
+            <EditProfile setEditProfModal={setEditProfModal} setUser={setUser} editProfModal={editProfModal} />
+          ) : null}
           {followerModal ? <Following setFollowerModal={setFollowerModal} followerModal={followerModal} /> : null}
           {likeList ? <Likes /> : <ProfileRecipes />}
         </div>
