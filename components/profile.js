@@ -74,23 +74,26 @@ export default function Profile() {
             <Icon icon='arcticons:nextcloudcookbook' color='gray' width={25} height={25} />
             <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>COOKBOOKS</div>
           </div>
-          <div className='hover:border-t-2 border-green-500 py-6 px-3 flex cursor-pointer'>
-            {likeList ? (
+          {likeList ? (
+            <div
+              onClick={() => setLikeList(false)}
+              className='hover:border-t-2 border-green-500 py-6 px-3 flex cursor-pointer'>
               <div className='flex'>
                 <Icon icon='arcticons:recipe-keeper' color='gray' width={22} height={22} />
-                <div onClick={() => setLikeList(false)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
-                  RECIPES
-                </div>
+                <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>RECIPES</div>
               </div>
-            ) : (
+            </div>
+          ) : (
+            <div
+              onClick={() => setLikeList(true)}
+              className='hover:border-t-2 border-green-500 py-6 px-3 flex cursor-pointer'>
               <div className='flex'>
                 <Icon icon='bi:heart' color='gray' width={20} height={20} />
-                <div onClick={() => setLikeList(true)} className='text-xs text-gray-300 font-semibold px-1 pt-1'>
-                  LIKES
-                </div>
+                <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>LIKES</div>
               </div>
-            )}
-          </div>
+            </div>
+          )}
+
           <div
             onClick={() => setFollowerModal(true)}
             className='hover:border-t-2 border-green-500 py-6 px-3 flex cursor-pointer'>

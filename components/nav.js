@@ -44,7 +44,9 @@ function Nav({ setIsLoggedIn }) {
                       Profile
                     </div>
                   </Link>
-                  <div className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                  <div
+                    onClick={() => router.push('/cookbooks')}
+                    className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Cookbooks
                   </div>
 
@@ -101,15 +103,21 @@ function Nav({ setIsLoggedIn }) {
           {(ref) => (
             <div className='md:hidden' id='mobile-menu'>
               <div ref={ref} className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div
+                  onClick={() => router.push('/feed')}
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Feed
                 </div>
 
-                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div
+                  onClick={() => router.push('/profile')}
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Profile
                 </div>
 
-                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div
+                  onClick={() => router.push('/cookbooks')}
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Cookbooks
                 </div>
 

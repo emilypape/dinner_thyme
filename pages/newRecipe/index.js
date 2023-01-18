@@ -1,7 +1,7 @@
 import Nav from '../../components/nav';
 import newRecipe from '../../components/newRecipe';
 
-function newRecipes() {
+function newRecipeRoute() {
   return (
     <div>
       <Nav />
@@ -11,4 +11,4 @@ function newRecipes() {
   );
 }
 
-export default newRecipes;
+export default newRecipeRoute;
