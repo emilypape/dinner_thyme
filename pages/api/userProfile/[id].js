@@ -1,4 +1,4 @@
-import { User } from '../../../database/models';
+import { User, Recipe } from '../../../database/models';
 
 async function userProfile(req, res) {
   let idString = req.url.split('/').pop();
@@ -6,6 +6,12 @@ async function userProfile(req, res) {
   let user = await User.findOne({
     where: {
       id: user_id,
+    },
+    include: {
+      model: Recipe,
+      where: {
+        user_id: user_id,
+      },
     },
   });
 
