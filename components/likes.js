@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from './Link';
 
 export default function Likes({ user }) {
   const [likes, setLikes] = useState();
@@ -11,6 +13,8 @@ export default function Likes({ user }) {
     let likeData = await response.json();
     setLikes(likeData);
   }
+
+  const router = useRouter();
 
   useEffect(() => {
     fetchLikes();
@@ -34,9 +38,11 @@ export default function Likes({ user }) {
                       width='50'
                       alt=''
                     />
-                    <div class='font-medium dark:text-black bg-white px-2 py-1 rounded-lg'>
-                      <div>{like.recipe.user.first_name}'s Kitchen</div>
-                    </div>
+                    <Link href={`/profile/${like.recipe.user.id}`}>
+                      <div class='font-medium dark:text-black bg-white px-2 py-1 rounded-lg'>
+                        <div>{like.recipe.user.first_name}'s Kitchen</div>
+                      </div>
+                    </Link>
                   </div>
                   <div className='flex'>
                     <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{like.recipe.title}</div>
