@@ -44,7 +44,8 @@ export default function SingleUserProfile({ userId }) {
           <div className='ml-8 xl:text-3xl lg:text-3xl md:text-2xl font-bold lg:ml-10 lg:mt-6 md:ml-10 md:mt-8 font-title'>
             {userData.first_name}'s Kitchen
           </div>
-          <button className=' py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
+          <button className='flex py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
+            <Icon className='mt-1 mr-2' icon='bi:plus-square' color='white' width={20} height={20} />
             <div>Add Friend</div>
           </button>
         </div>
