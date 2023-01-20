@@ -2,10 +2,14 @@ import { useState, useEffect } from 'react';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from './Link';
 import SingleUserProfileRecipes from './singleUserProfileRecipes';
 
 export default function SingleUserProfile({ userId }) {
   const [userData, setUserData] = useState();
+
+  const router = useRouter();
 
   async function singleUser() {
     const response = await fetch(`/api/userProfile/${userId}`);
@@ -50,12 +54,14 @@ export default function SingleUserProfile({ userId }) {
           </button>
         </div>
       </div>
-      <div className='ml-10 mr-10 lg:ml-60 lg:mr-60 md:ml-60 md:mr-60 border-t border-black flex items-center justify-center'>
-        <div className='hover:border-t-2 border-green-500 py-5 px-3 flex cursor-pointer'>
-          <Icon icon='arcticons:nextcloudcookbook' color='gray' width={25} height={25} />
-          <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>COOKBOOKS</div>
+      <Link href={`/cookbooks/${userData.id}`}>
+        <div className='ml-10 mr-10 lg:ml-60 lg:mr-60 md:ml-60 md:mr-60 border-t border-black flex items-center justify-center'>
+          <div className='hover:border-t-2 border-green-500 py-5 px-3 flex cursor-pointer'>
+            <Icon icon='arcticons:nextcloudcookbook' color='gray' width={25} height={25} />
+            <div className='text-xs text-gray-300 font-semibold px-1 pt-1'>COOKBOOKS</div>
+          </div>
         </div>
-      </div>
+      </Link>
       <div>
         <SingleUserProfileRecipes user={userData} />
       </div>
