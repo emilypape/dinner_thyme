@@ -24,6 +24,7 @@ module.exports = {
       'www.autocar.co.uk',
       'media1.popsugar-assets.com',
       'imgur.com',
+      's23209.pcdn.co',
     ],
   },
 };

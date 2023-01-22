@@ -7,16 +7,23 @@ async function myFollwingPosts(req, res) {
 
   const userId = user.user_id;
 
-  const myFollowingPosts = await Followers.findAll({
+  const myFollowings = await Followers.findAll({
     where: {
       follower_id: userId,
     },
-    include: {
-      model: User,
-      attributes: ['id', 'first_name', 'last_name', 'profile_picture', 'username'],
-      include: {
-        model: Recipe,
-        include: {
+  });
+
+  if (myFollowings) {
+    const followingIds = myFollowings.map((el) => el.following_id);
+    const myFollowingPosts = await Recipe.findAll({
+      where: {
+        id: followingIds,
+      },
+      include: [
+        {
+          model: User,
+        },
+        {
           model: Comments,
           attributes: ['comment_text'],
           include: {
@@ -24,15 +31,14 @@ async function myFollwingPosts(req, res) {
             attributes: ['id', 'username'],
           },
         },
-      },
-    },
-  });
+      ],
+    });
+    res.status(200).json(myFollowingPosts);
+  }
 
   if (!myFollowingPosts) {
     res.status(400).json({ message: 'You are not currently following any users!' });
   }
-
-  res.status(200).json(myFollowingPosts);
 }
 
 export default withIronSession(myFollwingPosts, {
