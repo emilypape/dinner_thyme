@@ -23,6 +23,7 @@ module.exports = {
       'www.petlandflorida.com',
       'www.autocar.co.uk',
       'media1.popsugar-assets.com',
+      'imgur.com',
     ],
   },
 };

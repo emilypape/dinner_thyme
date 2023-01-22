@@ -32,7 +32,7 @@ export default function Likes({ user }) {
                 <div className='px-6 py-4'>
                   <div class='flex items-center space-x-4 absolute -mt-20 -ml-4 rounded-t-lg bg-white px-2 py-2'>
                     <Image
-                      class='w-10 h-10 rounded-full '
+                      className='w-10 h-10 rounded-full '
                       src={like.recipe.user.profile_picture}
                       height={50}
                       width='50'
