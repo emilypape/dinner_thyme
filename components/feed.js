@@ -3,6 +3,7 @@ import { useRouter } from 'next/router';
 import Link from './Link';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
+import UserSuggestion from './userSuggestions';
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
@@ -80,6 +81,7 @@ export default function Feed() {
           );
         })}
       </div>
+      <UserSuggestion />
     </div>
   );
 }
