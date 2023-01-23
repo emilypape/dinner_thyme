@@ -4,6 +4,7 @@ import Link from './Link';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import UserSuggestion from './userSuggestions';
+import FollowerScroller from './followerScroller';
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
@@ -27,6 +28,7 @@ export default function Feed() {
   return (
     <div className='flex'>
       <div className='p-10 lg:ml-48 flex flex-col items-center lg:items-start justify-center xl:justify-start lg:justify-start md:justify-start '>
+        <FollowerScroller following={feedPosts} />
         {feedPosts.map((posts) => {
           return (
             <div key={posts.id} className='lg:border-b lg:border-gray-200 lg:mb-5'>

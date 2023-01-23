@@ -22,12 +22,12 @@ export default function UserSuggestion() {
   return (
     <div>
       <div className='flex'>
-        <div class='p-10 hidden lg:flex md:flex xl:flex items-center lg:items-end justify-evenly xl:justify-start lg:justify-start md:justify-start '>
+        <div className='ml-10 mt-10 hidden lg:flex md:flex xl:flex items-center lg:items-end justify-evenly lg:justify-start md:justify-start '>
           <Image className='w-10 h-10 rounded-full ' src={user.profile_picture} height={50} width='50' alt='' />
           <Link href={`/profile/${user.id}`}>
             <div class='font-medium dark:text-black bg-white px-2 py-2 rounded-lg'>
               <div>{user.username}</div>
-              <div className='text-xs text-gray-400'>{user.first_name}'s kitchen</div>
+              <div className='lg:flex xl:flex md:hidden text-xs text-gray-400'>{user.first_name}'s kitchen</div>
             </div>
           </Link>
         </div>
@@ -36,6 +36,9 @@ export default function UserSuggestion() {
             <div className='text-blue-500 hover:text-blue-800'>visit</div>
           </div>
         </Link>
+      </div>
+      <div className='ml-10 mt-4 text-gray-400 font-medium hidden lg:flex md:flex xl:flex items-center lg:items-end '>
+        <div>Suggestions for you</div>
       </div>
     </div>
   );
