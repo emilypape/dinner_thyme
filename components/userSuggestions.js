@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from './Link';
+import SuggestionList from './suggestionList';
 
 export default function UserSuggestion() {
   const [user, setUser] = useState([]);
@@ -38,7 +39,10 @@ export default function UserSuggestion() {
         </Link>
       </div>
       <div className='ml-10 mt-4 text-gray-400 font-medium hidden lg:flex md:flex xl:flex items-center lg:items-end '>
-        <div>Suggestions for you</div>
+        <div>
+          <div>Suggestions for you</div>
+          <SuggestionList />
+        </div>
       </div>
     </div>
   );

@@ -8,20 +8,19 @@ async function FollowerSuggestions(req, res) {
   const userId = user.user_id;
 
   const followSuggestions = await Followers.findAll({
-    where: {
-      follower_id: !userId,
-    },
     include: {
       model: User,
       attributes: ['username', 'profile_picture', 'id'],
     },
   });
 
-  if (!followSuggestions) {
+  let suggestions = followSuggestions.filter((el) => el.follower_id !== userId).slice(0, 4);
+
+  if (!suggestions) {
     res.status(400).json({ message: 'There are no suggested users!' });
   }
 
-  res.status(200).json(followSuggestions);
+  res.status(200).json(suggestions);
 }
 
 export default withIronSession(FollowerSuggestions, {
