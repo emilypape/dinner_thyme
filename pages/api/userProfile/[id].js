@@ -9,6 +9,7 @@ async function userProfile(req, res) {
     },
     include: {
       model: Recipe,
+      required: false,
       where: {
         user_id: user_id,
       },

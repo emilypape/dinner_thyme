@@ -10,11 +10,11 @@ async function FollowerSuggestions(req, res) {
   const followSuggestions = await Followers.findAll({
     include: {
       model: User,
-      attributes: ['username', 'profile_picture', 'id'],
+      attributes: ['username', 'profile_picture', 'id', 'first_name'],
     },
   });
 
-  let suggestions = followSuggestions.filter((el) => el.follower_id !== userId).slice(0, 4);
+  let suggestions = followSuggestions.filter((el) => el.follower_id !== userId).slice(0, 5);
 
   if (!suggestions) {
     res.status(400).json({ message: 'There are no suggested users!' });
