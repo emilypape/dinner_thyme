@@ -23,6 +23,8 @@ export default function Feed() {
     getFeedPosts();
   }, []);
 
+  console.log(feedPosts);
+
   return (
     <div className='flex'>
       <div className='p-10 lg:ml-48 flex flex-col items-center lg:items-start justify-center xl:justify-start lg:justify-start md:justify-start '>
