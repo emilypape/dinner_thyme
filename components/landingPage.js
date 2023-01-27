@@ -20,6 +20,11 @@ export default function LandingPage() {
               community! Remember no matter where you are somewhere in the world its Dinner Thyme.{' '}
             </p>
           </div>
+          <div className='flex py-2'>
+            <div className='font-semibold text-sm py-1 text-blue-600'>Login </div>
+            <span className='px-2 font-bold'>&#183;</span>
+            <div className='font-semibold text-sm py-1 text-blue-600'>Signup</div>
+          </div>
           <div className='flex mb-4 border-t-2'>
             <div className='p-2'>
               <Icon icon='mdi:linkedin' height={30} />
