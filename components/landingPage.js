@@ -6,12 +6,12 @@ import Link from './Link';
 
 export default function LandingPage() {
   return (
-    <div>
-      <div className='image-container'>
+    <div className=''>
+      <div className='image-container '>
         <Image src={backgroundImage} alt='breakfast setting' layout='fill' className='object-cover' />
       </div>
-      <div className='flex flex-col z-50 relative  mt-32 lg:bg-inherit bg-white items-center lg:items-start  xl:items-start md:ml-18 md:mr-24 flex-wrap'>
-        <div className='flex flex-col items-center lg:items-start xl:items-start'>
+      <div className='flex flex-col z-50 relative  mt-32 lg:bg-inherit bg-white items-center lg:items-start  xl:items-start md:ml-18 md:mr-24 flex-wrap '>
+        <div className='flex flex-col items-center lg:items-start xl:items-start animate-fade-in-down'>
           <Icon className='mt-5 mb-1 lg:hidden xl:hidden md:hidden ' icon='game-icons:cook' width='46' height='46' />
           <div className='font-bold text-3xl  ml-1 font-title  text-black lg:text-5xl lg:ml-24 lg:mt-10 md:mt-12'>
             Dinner Thyme

@@ -30,7 +30,7 @@ export default function LoginForm({ setLogin, setIsLoggedIn }) {
     }
   }
   return (
-    <div className='flex flex-col items-center'>
+    <div className='flex flex-col items-center '>
       <div className='lg:-mt-10 md:-mt-10 mb-3 text-lg opacity-70 md:text-2xl'>Have an account?</div>
       <input
         id='username_input'
