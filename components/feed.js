@@ -55,7 +55,9 @@ export default function Feed() {
                 <div className='flex'>
                   <div className='flex'>
                     <Icon className='ml-6 mt-2' icon='mdi:cards-heart-outline' color='gray' width={25} height={25} />
-                    <Icon className='ml-4 mt-2' icon='mdi:comment-text-outline' color='gray' width={25} height={25} />
+                    <Link href={`/comments/${posts.id}`}>
+                      <Icon className='ml-4 mt-2' icon='mdi:comment-text-outline' color='gray' width={25} height={25} />
+                    </Link>
                   </div>
                   <div></div>
                 </div>

@@ -42,7 +42,7 @@ export default function SuggestionList() {
               </Link>
             </div>
             <Link href={`/profile/${suggestion.user.id}`}>
-              <div className='mt-10 ml-28 md:mr-10 hidden lg:flex md:flex xl:flex '>
+              <div className='mt-10 ml-28 md:hidden hidden lg:flex md:flex xl:flex '>
                 <div className='text-sm text-blue-500 hover:text-blue-800'>visit</div>
               </div>
             </Link>
