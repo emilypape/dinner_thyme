@@ -46,7 +46,9 @@ export default function Feed() {
                     </div>
                   </div>
                 </Link>
-                <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
+                <div>
+                  <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
+                </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
                 <Image src={posts.image_urls} width={600} height={450} alt={posts.title} />

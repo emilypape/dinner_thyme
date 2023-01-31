@@ -21,8 +21,8 @@ export default function SuggestionList() {
     <div>
       {suggestionList.map((suggestion) => {
         return (
-          <div className='flex'>
-            <div className=' mt-5 hidden lg:flex md:flex xl:flex items-center lg:items-end justify-evenly lg:justify-start md:justify-start '>
+          <div className='flex justify-between'>
+            <div className=' mt-5 hidden lg:flex md:flex xl:flex items-center lg:items-end lg:justify-start md:justify-start '>
               <Link href={`/profile/${suggestion.user.id}`}>
                 <div className='flex'>
                   <Image
@@ -32,7 +32,6 @@ export default function SuggestionList() {
                     width='50'
                     alt=''
                   />
-
                   <div class='text-sm dark:text-black bg-white px-2 py-2 rounded-lg'>
                     <div>{suggestion.user.username}</div>
                     <div className='lg:flex xl:flex md:hidden text-xs text-gray-400'>
@@ -43,7 +42,7 @@ export default function SuggestionList() {
               </Link>
             </div>
             <Link href={`/profile/${suggestion.user.id}`}>
-              <div className='mt-9  md:mr-10 hidden lg:flex md:flex xl:flex justify-end items-end'>
+              <div className='mt-10 ml-28 md:mr-10 hidden lg:flex md:flex xl:flex '>
                 <div className='text-sm text-blue-500 hover:text-blue-800'>visit</div>
               </div>
             </Link>
