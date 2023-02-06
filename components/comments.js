@@ -21,8 +21,8 @@ export default function Comments({ recipeId }) {
 
   return (
     <div>
-      <div className='justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50 outline-none focus:outline-none'>
-        <div className='relative w-auto my-6 mx-auto max-w-3xl'>
+      <div className='lg:justify-center md:justify-center lg:items-center md:items-center absolute inset-x-0 bottom-0  flex overflow-x-hidden overflow-y-auto fixed lg:inset-0 z-50 outline-none focus:outline-none'>
+        <div className='relative lg:w-auto lg:my-6 mx-auto lg:max-w-3xl '>
           {/*content*/}
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
             {/*header*/}
@@ -39,14 +39,26 @@ export default function Comments({ recipeId }) {
               <div className='max-h-[29rem] overflow-y-scroll '>
                 {comments?.comments?.map((comment) => {
                   return (
-                    <div>
-                      <Image
-                        src={comment.user.profile_picture}
-                        className='w-10 h-10 rounded-full '
-                        height={50}
-                        width='50'
-                      />
-                      <div>{comment.comment_text}</div>
+                    <div className='flex-col' id={comment.id}>
+                      <div className='flex'>
+                        <Link href={`/profile/${comment.user.id}`}>
+                          <div className='ml-2 mr-1'>
+                            <Image
+                              src={comment.user.profile_picture}
+                              className='rounded-full '
+                              height={30}
+                              width='30'
+                            />
+                          </div>
+                        </Link>
+                        <div className=''>
+                          <Link href={`/profile/${comment.user.id}`}>
+                            <span className='font-medium px-1'>{comment.user.username}</span>
+                          </Link>
+                          {comment.comment_text}
+                        </div>
+                      </div>
+                      <div className='ml-12 mb-2 text-xs text-gray-400'>Reply</div>
                     </div>
                   );
                 })}
@@ -54,7 +66,7 @@ export default function Comments({ recipeId }) {
             </div>{' '}
             {/*footer*/}
             <div className='flex items-center justify-end border-t border-solid border-slate-200 rounded-b'>
-              <input></input>
+              <input className='appearance-none' placeholder='Add a comment...'></input>
             </div>
           </div>
         </div>

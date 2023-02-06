@@ -10,4 +10,8 @@ body {
     Helvetica Neue, sans-serif;
 }
 
+input {
+  -webkit-appearance: none;
+}
+
 /* s */
