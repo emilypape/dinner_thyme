@@ -5,9 +5,11 @@ import Image from 'next/image';
 import { Icon } from '@iconify/react';
 import UserSuggestion from './userSuggestions';
 import FollowerScroller from './followerScroller';
+import FeedPostDropdown from './feedPostDropdown';
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
+  const [dropdown, setDropdown] = useState(false);
   const router = useRouter();
 
   async function getFeedPosts() {
@@ -46,8 +48,9 @@ export default function Feed() {
                     </div>
                   </div>
                 </Link>
-                <div>
+                <div onClick={() => setDropdown(!dropdown)}>
                   <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
+                  {dropdown ? <FeedPostDropdown /> : null}
                 </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>

@@ -27,10 +27,12 @@ function Nav({ setIsLoggedIn }) {
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
-                <div className='flex '>
-                  <Icon icon='game-icons:cook' width='46' height='46' />
-                  <div className=' font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
-                </div>
+                <Link href={`/home`}>
+                  <div className='flex '>
+                    <Icon icon='game-icons:cook' width='46' height='46' />
+                    <div className=' font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
+                  </div>
+                </Link>
               </div>
               <div className='hidden md:block mt-5'>
                 <div className='ml-10 flex items-baseline space-x-4'>
