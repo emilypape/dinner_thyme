@@ -6,10 +6,14 @@ import { Icon } from '@iconify/react';
 import UserSuggestion from './userSuggestions';
 import FollowerScroller from './followerScroller';
 import FeedPostDropdown from './feedPostDropdown';
+import Comments from './comments';
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
   const [dropdown, setDropdown] = useState(false);
+  const [commentOpen, setCommentOpen] = useState(false);
+  const [selectedRecipe, setSelectedRecipe] = useState();
+
   const router = useRouter();
 
   async function getFeedPosts() {
@@ -19,6 +23,11 @@ export default function Feed() {
 
     const feedData = await response.json();
     setFeedPosts(feedData);
+  }
+
+  function openComments(recipeId) {
+    setSelectedRecipe(recipeId);
+    setCommentOpen(true);
   }
 
   useEffect(() => {
@@ -31,6 +40,7 @@ export default function Feed() {
     <div className='flex'>
       <div className='p-10 lg:ml-48 flex flex-col items-center lg:items-start justify-center xl:justify-start lg:justify-start md:justify-start '>
         <FollowerScroller following={feedPosts} />
+        {commentOpen && <Comments recipeId={selectedRecipe} setCommentOpen={setCommentOpen} />}
         {feedPosts.map((posts) => {
           return (
             <div key={posts.id} className='lg:border-b lg:border-gray-200 lg:mb-5'>
@@ -50,7 +60,7 @@ export default function Feed() {
                 </Link>
                 <div onClick={() => setDropdown(!dropdown)}>
                   <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
-                  {dropdown ? <FeedPostDropdown /> : null}
+                  {dropdown ? <FeedPostDropdown feedPost={posts} /> : null}
                 </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
@@ -60,7 +70,7 @@ export default function Feed() {
                     <Icon className='ml-6 mt-2' icon='mdi:cards-heart-outline' color='gray' width={25} height={25} />
 
                     <Icon
-                      onClick={() => router.push(`/comments/${posts.id}`)}
+                      onClick={() => openComments(posts.id)}
                       className='ml-4 mt-2'
                       icon='mdi:comment-text-outline'
                       color='gray'
@@ -68,7 +78,6 @@ export default function Feed() {
                       height={25}
                     />
                   </div>
-                  <div></div>
                 </div>
                 <div className='px-6 py-4'>
                   <div className='flex'>

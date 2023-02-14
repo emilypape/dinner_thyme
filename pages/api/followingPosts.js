@@ -34,9 +34,9 @@ async function myFollwingPosts(req, res) {
       ],
     });
     res.status(200).json(myFollowingPosts);
-  }
-  if (!myFollowingPosts) {
-    res.status(400).json({ message: 'You are not currently following any users!' });
+    if (!myFollowingPosts) {
+      res.status(400).json({ message: 'You are not currently following any users!' });
+    }
   }
 }
 

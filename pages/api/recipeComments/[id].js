@@ -30,9 +30,9 @@ async function recipeComments(req, res) {
       },
     });
     res.status(200).json(recipeData);
-  }
-  if (!recipeData) {
-    res.status(400).json({ message: 'This recipe doesnt have any comments' });
+    if (!recipeData) {
+      res.status(400).json({ message: 'This recipe doesnt have any comments' });
+    }
   }
 }
 

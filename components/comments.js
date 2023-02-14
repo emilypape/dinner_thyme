@@ -3,7 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from './Link';
 
-export default function Comments({ recipeId }) {
+export default function Comments({ recipeId, setCommentOpen }) {
   const [comments, setComments] = useState([]);
   const router = useRouter();
 
@@ -20,14 +20,14 @@ export default function Comments({ recipeId }) {
   }, []);
 
   return (
-    <div>
+    <div className='fixed inset-0 z-40'>
       <div className='lg:justify-center md:justify-center lg:items-center md:items-center absolute inset-x-0 bottom-0  flex overflow-x-hidden overflow-y-auto fixed lg:inset-0 z-50 outline-none focus:outline-none'>
         <div className='relative lg:w-auto lg:my-6 mx-auto lg:max-w-3xl '>
           {/*content*/}
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
             {/*header*/}
             <div className='flex justify-end  rounded-t'>
-              <div onClick={() => router.push('/feed')} className='text-black h-6 w-6 text-2xl'>
+              <div onClick={() => setCommentOpen(false)} className='text-black h-6 w-6 text-2xl'>
                 ×
               </div>
             </div>
