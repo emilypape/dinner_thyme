@@ -20,7 +20,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
   }, []);
 
   return (
-    <div className='fixed inset-0 z-40'>
+    <div className='fixed inset-0 z-40 animate-fade-in-up'>
       <div className='lg:justify-center md:justify-center lg:items-center md:items-center absolute inset-x-0 bottom-0  flex overflow-x-hidden overflow-y-auto fixed lg:inset-0 z-50 outline-none focus:outline-none'>
         <div className='relative lg:w-auto lg:my-6 mx-auto lg:max-w-3xl '>
           {/*content*/}

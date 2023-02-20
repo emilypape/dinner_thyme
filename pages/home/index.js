@@ -1,4 +1,3 @@
-import LandingNav from '../../components/landingNav';
 import LandingPage from '../../components/landingPage';
 
 function LandingPageRoute() {
