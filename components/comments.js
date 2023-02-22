@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from './Link';
+import { Icon } from '@iconify/react';
 
 export default function Comments({ recipeId, setCommentOpen }) {
   const [comments, setComments] = useState([]);
@@ -15,6 +16,22 @@ export default function Comments({ recipeId, setCommentOpen }) {
     setComments(commentData);
   }
 
+  async function postComments() {
+    const response = await fetch(`/api/newComment/${recipeId}`, {
+      method: 'Post',
+      body: JSON.stringify({
+        comment_text: commentText,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response) {
+      alert(response.statusText);
+    } else {
+      getComments();
+    }
+  }
+
   const handleCommentText = (event) => {
     setCommentText(event.target.value);
     console.log(commentText);
@@ -22,7 +39,6 @@ export default function Comments({ recipeId, setCommentOpen }) {
 
   useEffect(() => {
     getComments();
-    console.log(comments);
   }, []);
 
   return (
@@ -80,9 +96,10 @@ export default function Comments({ recipeId, setCommentOpen }) {
             {/*footer*/}
             <div className=' appearance-none flex items-center justify-end border-t border-solid border-slate-200 rounded-b'>
               <input
-                className='appearance-none min-w-full lg:min-w-[42%] md:min-w-[42%]'
+                className='appearance-none min-w-full lg:min-w-[38%] md:min-w-[38%]'
                 onChange={handleCommentText}
                 placeholder='Add a comment...'></input>
+              <Icon onClick={postComments} className='mr-2 cursor-pointer' icon='ri:send-plane-fill' />
             </div>
           </div>
         </div>
