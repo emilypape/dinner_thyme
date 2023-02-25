@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { withIronSessionSsr } from 'iron-session/next';
 import { useRouter } from 'next/router';
+import Loader from '../components/loader';
 
 export default function Home({ user }) {
   const router = useRouter();
@@ -24,7 +25,7 @@ export default function Home({ user }) {
     }
   }, []);
 
-  return <div>...loading</div>;
+  return <Loader />;
 }
 
 export const getServerSideProps = withIronSessionSsr(

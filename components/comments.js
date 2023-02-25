@@ -29,6 +29,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
       alert(response.statusText);
     } else {
       getComments();
+      setCommentText('');
     }
   }
 
@@ -97,6 +98,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
             <div className=' appearance-none flex items-center justify-end border-t border-solid border-slate-200 rounded-b'>
               <input
                 className='appearance-none min-w-full lg:min-w-[38%] md:min-w-[38%]'
+                value={commentText}
                 onChange={handleCommentText}
                 placeholder='Add a comment...'></input>
               <Icon onClick={postComments} className='mr-2 cursor-pointer' icon='ri:send-plane-fill' />

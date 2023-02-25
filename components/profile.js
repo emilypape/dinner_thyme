@@ -7,6 +7,7 @@ import EditProfile from './editProfile';
 import Likes from './likes';
 import Following from './following';
 import { useRouter } from 'next/router';
+import Loader from './loader';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
@@ -113,7 +114,7 @@ export default function Profile() {
     </>
   ) : (
     <>
-      <div>NOT LOGGED IN</div>
+      <Loader />
     </>
   );
 }
