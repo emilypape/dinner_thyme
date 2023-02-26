@@ -164,6 +164,47 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        id: 13,
+        user_id: 3,
+        title: 'Chicken and Dumplings',
+        image_urls:
+          'https://thenovicechefblog.com/wp-content/uploads/2018/10/Homemade-Chicken-and-Dumplings-Recipe-1-sm-e1539893839955-735x774.jpg',
+        cook_temperature: 'med-high',
+        cook_time: '35 minutes',
+        prep_time: '20 minutes',
+        cook_instructions:
+          'Mix dry ingredients: Add the dry ingredients (flour, baking powder, pepper, salt and thyme) into a medium sized bowl and whisk together. Add wet ingredients: Add in the butter and milk, mix it together using a wooden spoon, until dough ball forms. Cook dumplings: Drop the dumplings into the simmering soup with a cookie scoop and let cook! That’s it! Sauté your veggies: In a large pot melt the butter over medium-high heat. Add the onion, carrots and celery. Cook for 5 minutes until the veggies begin to wilt. Add the garlic and cook for 1 minute longer. Add flour: Sprinkle the flour over the veggies and cook for a minute, stirring constantly. Pour in the milk and broth: Add the evaporated milk and broth. Stir quickly to combine. Simmer & make the dumplings: Bring the soup to a boil, then reduce to a simmer and make your drop dumplings as described above. Drop the dumplings into the soup: Using a large cookie scoop, scoop the dumpling dough into balls and drop them directly into the simmering soup. Place them around the edges of the pot, not all in the center. Gently press the dumplings down so the soup runs over them. Cover and simmer: Place a lid on your pot, reduce heat to a low simmer and cook for 15 minutes. Test the dumplings: Gently stir the soup. Remove one dumpling and cut it in half to make sure it is cooked through. Serve: Once the dumplings are cooked, your soup is ready to eat. Time to dig in!',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 14,
+        user_id: 4,
+        title: 'Spaghetti',
+        image_urls:
+          'https://www.olivetomato.com/wp-content/uploads/2022/06/Greek-Spaghetti-with-Ground-Beef-Sauce-recipe-%E2%80%93-Makaronia-me-Kima-2.jpeg',
+        cook_temperature: 'med',
+        cook_time: '30 minutes',
+        prep_time: '10 minutes',
+        cook_instructions:
+          'Start by making the sauce. In a medium size pot, add about ⅓-½ cup extra virgin olive oil, at medium heat and once the oil starts to shimmer, add the onion, cloves, allspice, cinnamon stick, bay leaves and a pinch of salt. Sauté until translucent. Add the garlic halves and sauté 1 more minute. Add the tomato paste and swirl with a wooden spoon, heating well. Add the ground beef, pressing it with a fork and heat until, it is crumbly and no longer red. Add the wine and cook until evaporated. Add the crushed tomatoes, 1 tsp fine sea salt. ½ tsp black pepper, 1 tsp sugar and 1 cup hot water, stir well. Lower heat and simmer for about an hour, checking water levels and adding a bit of hot water as needed. Once ready, remove from heat, remove cinnamon stick, bay leaves and set aside. Boil pasta according to directions. Once pasta is ready, strain and add 1 tbsp olive oil and stir. In a large casserole dish spread half the pasta, sprinkle over the pasta 2 tbsp grated cheese, place a second layer of pasta and sprinkle 2 more tbsp of grated cheese. Sprinkle over some ground cinnamon. Set aside. In a little pan, heat 2 tbsp of olive oil until it starts to shimmer. Remove from heat and drizzle over pasta.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 15,
+        user_id: 5,
+        title: 'Homemade Pepperoni Pizza',
+        image_urls: 'https://bakeitwithlove.com/wp-content/uploads/2022/02/tortilla-pizza-sq.jpg',
+        cook_temperature: 'High',
+        cook_time: '50 minutes',
+        prep_time: '15 minutes',
+        cook_instructions:
+          'Preheat oven to 500°F. If you are using a pizza stone, preheat it in the oven for at least 20 minutes so it is nice and hot as well. If you are using my sauce recipe, stir together the ingredients. The sauce recipe makes just enough for one large pizza. You can easily double it if you are making more than one pizza. Roll out dough on a lightly floured surface. If its hard to roll, let it rest for 5 minutes so it can come to room temperature. For a large pizza, I like to roll my dough into about a 14-inch diameter circle.Transfer the dough to a lightly dusted pizza peel. Alternatively, fit it into a large cast-iron. Add sauce in a light layer all over the pizza. Top the pizza with grated cheese and the rest of the pepperoni. Season with black pepper.  Place the skillet over a high heat burner for 2 minutes to get it preheated and get the crust cooking right away. Then transfer to a 500 ̊F oven and bake for 10 to 12 minutes, or until the crust is golden brown. Season with fresh oregano (optional). Serve while warm with a side salad.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ]);
   },
   async down(queryInterface, Sequelize) {

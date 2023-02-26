@@ -1,11 +1,9 @@
-import { useState, useEffect } from 'react';
-import UserFeed from '../components/userFeed';
-import Login from '../components/login';
+import { useEffect } from 'react';
 import { withIronSessionSsr } from 'iron-session/next';
 import { useRouter } from 'next/router';
+import Loader from '../components/loader';
 
 export default function Home({ user }) {
-  const [isLoggedIn, setIsLoggedIn] = useState(user?.logged_in);
   const router = useRouter();
 
   useEffect(() => {
@@ -13,8 +11,6 @@ export default function Home({ user }) {
       async function fetchUser() {
         const response = await fetch('/api/isLoggedIn');
         if (response.ok) {
-          const userObject = await response.json();
-          setIsLoggedIn(userObject);
           router.push('/profile');
         } else {
           router.push('/login');
@@ -29,8 +25,7 @@ export default function Home({ user }) {
     }
   }, []);
 
-  // return <div>{isLoggedIn ? <UserFeed setIsLoggedIn={setIsLoggedIn} /> : <Login setIsLoggedIn={setIsLoggedIn} />}</div>;
-  return <div>...loading</div>;
+  return <Loader />;
 }
 
 export const getServerSideProps = withIronSessionSsr(

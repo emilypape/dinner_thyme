@@ -1,27 +1,19 @@
-import { useState, useEffect } from 'react';
+import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
 
-export default function ProfileRecipes({ user }) {
+export default function SingleUserProfileRecipes({ user }) {
   const [recipes, setRecipes] = useState();
-  async function fetchRecipes() {
-    const response = await fetch('/api/loggedInUserRecipes', {
-      method: 'GET',
-    });
-
-    let recipeData = await response.json();
-    setRecipes(recipeData);
-  }
 
   useEffect(() => {
-    fetchRecipes();
-  }, []);
+    setRecipes(user.recipes);
+  });
 
-  let recipeArray = recipes;
-  return recipeArray ? (
+  console.log(recipes);
+  return recipes ? (
     <div>
       <div className='flex flex-wrap justify-evenly lg:justify-start'>
         <div className='flex flex-wrap px-12 md:px-0 lg:px-0 xl:px-0 lg:justify-start lg:ml-56 md:ml-16'>
-          {recipeArray?.map((recipe) => {
+          {recipes.map((recipe) => {
             return (
               <div key={recipe.id} className='lg:mr-4 max-w-xs rounded shadow-lg mb-5'>
                 <Image src={recipe.image_urls} width={400} height={300} alt={recipe.title} />

@@ -27,10 +27,12 @@ function Nav({ setIsLoggedIn }) {
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
-                <div className='flex '>
-                  <Icon icon='game-icons:cook' width='46' height='46' />
-                  <div className=' font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
-                </div>
+                <Link href={`/home`}>
+                  <div className='flex '>
+                    <Icon icon='game-icons:cook' width='46' height='46' />
+                    <div className=' font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
+                  </div>
+                </Link>
               </div>
               <div className='hidden md:block mt-5'>
                 <div className='ml-10 flex items-baseline space-x-4'>
@@ -44,7 +46,9 @@ function Nav({ setIsLoggedIn }) {
                       Profile
                     </div>
                   </Link>
-                  <div className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
+                  <div
+                    onClick={() => router.push('/cookbooks')}
+                    className='text-gray-300 hover:bg-green-500 hover:text-white px-3 py-2 rounded-md text-sm font-medium'>
                     Cookbooks
                   </div>
 
@@ -99,17 +103,23 @@ function Nav({ setIsLoggedIn }) {
           leaveFrom='opacity-100 scale-100'
           leaveTo='opacity-0 scale-95'>
           {(ref) => (
-            <div className='md:hidden' id='mobile-menu'>
+            <div className='md:hidden' id='mobile-menu '>
               <div ref={ref} className='px-2 pt-2 pb-3 space-y-1 sm:px-3'>
-                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div
+                  onClick={() => router.push('/feed')}
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Feed
                 </div>
 
-                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div
+                  onClick={() => router.push('/profile')}
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Profile
                 </div>
 
-                <div className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
+                <div
+                  onClick={() => router.push('/cookbooks')}
+                  className='text-gray-300 hover:bg-green-500 hover:text-white block px-3 py-2 rounded-md text-base font-medium'>
                   Cookbooks
                 </div>
 

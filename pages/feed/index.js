@@ -1,10 +1,10 @@
-import Nav from '../components/nav';
-
+import Nav from '../../components/nav';
+import Feed from '../../components/feed';
 function FeedRoute() {
   return (
     <>
       <Nav />
-      <div>TODO: Feed Component</div>
+      <Feed />
     </>
   );
 }

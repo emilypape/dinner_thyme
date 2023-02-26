@@ -1,5 +1,6 @@
-import Nav from '../components/nav';
+import Nav from '../../components/nav';
 import { useRouter } from 'next/router';
+import SingleUserProfile from '../../components/singleUserProfile';
 
 function SpecificProfileRoute() {
   const router = useRouter();
@@ -8,8 +9,7 @@ function SpecificProfileRoute() {
   return (
     <>
       <Nav />
-      <div>Profile For Specific User</div>
-      <div>TODO: Other People Profile Component for user {userId}</div>
+      <SingleUserProfile userId={userId} />
     </>
   );
 }

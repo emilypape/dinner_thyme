@@ -33,3 +33,5 @@ config.json
 
 # vercel
 .vercel
+
+config.json

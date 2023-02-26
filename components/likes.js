@@ -1,5 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
+import Link from './Link';
 
 export default function Likes({ user }) {
   const [likes, setLikes] = useState();
@@ -12,12 +14,14 @@ export default function Likes({ user }) {
     setLikes(likeData);
   }
 
+  const router = useRouter();
+
   useEffect(() => {
     fetchLikes();
   }, []);
 
   let likeArray = likes;
-  return (
+  return likeArray ? (
     <div>
       <div className='flex flex-wrap justify-evenly lg:justify-start'>
         <div className='flex flex-wrap px-12 md:px-0 lg:px-0 xl:px-0 lg:justify-start lg:ml-56 md:ml-16'>
@@ -28,15 +32,17 @@ export default function Likes({ user }) {
                 <div className='px-6 py-4'>
                   <div class='flex items-center space-x-4 absolute -mt-20 -ml-4 rounded-t-lg bg-white px-2 py-2'>
                     <Image
-                      class='w-10 h-10 rounded-full '
+                      className='w-10 h-10 rounded-full '
                       src={like.recipe.user.profile_picture}
                       height={50}
                       width='50'
                       alt=''
                     />
-                    <div class='font-medium dark:text-black bg-white px-2 py-1 rounded-lg'>
-                      <div>{like.recipe.user.first_name}'s Kitchen</div>
-                    </div>
+                    <Link href={`/profile/${like.recipe.user.id}`}>
+                      <div class='font-medium dark:text-black bg-white px-2 py-1 rounded-lg'>
+                        <div>{like.recipe.user.first_name}'s Kitchen</div>
+                      </div>
+                    </Link>
                   </div>
                   <div className='flex'>
                     <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{like.recipe.title}</div>
@@ -65,5 +71,7 @@ export default function Likes({ user }) {
         </div>
       </div>
     </div>
+  ) : (
+    <div>Head to your feed to start liking dishes!</div>
   );
 }
