@@ -5,7 +5,7 @@ async function commentReplies(req, res) {
   let commentId = parseInt(idString);
 
   if (commentId) {
-    const replyData = await Replies.findOne({
+    const replyData = await Replies.findAll({
       where: {
         comment_id: commentId,
       },
