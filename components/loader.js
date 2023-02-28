@@ -2,7 +2,7 @@ import React from 'react';
 
 function Loader() {
   return (
-    <div className='flex items-center justify-center space-x-2 mt-72'>
+    <div className='flex items-center justify-center space-x-2'>
       <div
         className='inline-block h-8 w-8 animate-spin rounded-full border-4 border-solid border-current border-r-transparent align-[-0.125em] text-success motion-reduce:animate-[spin_1.5s_linear_infinite]'
         role='status'>

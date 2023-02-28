@@ -3,10 +3,14 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from './Link';
 import { Icon } from '@iconify/react';
+import Replies from './replies';
 
 export default function Comments({ recipeId, setCommentOpen }) {
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
+  const [repliesOpen, setRepliesOpen] = useState(false);
+  const [openedReplies, setOpenedReplies] = useState({});
+  const [selectedComment, setSelectedComment] = useState('');
   const router = useRouter();
 
   async function getComments() {
@@ -36,6 +40,17 @@ export default function Comments({ recipeId, setCommentOpen }) {
   const handleCommentText = (event) => {
     setCommentText(event.target.value);
     console.log(commentText);
+  };
+
+  const openReplies = (commentId) => {
+    const newState = { ...openedReplies };
+
+    if (newState[commentId]) {
+      newState[commentId] = false;
+    } else {
+      newState[commentId] = true;
+    }
+    setOpenedReplies(newState);
   };
 
   useEffect(() => {
@@ -83,10 +98,25 @@ export default function Comments({ recipeId, setCommentOpen }) {
                       </div>
                       <div>
                         <div className='ml-12 mb-1 text-xs text-gray-400'>Reply</div>
-                        <div className='flex ml-12 '>
-                          <div className='ml-2 text-xs text-gray-400'>___</div>
-                          <div className='ml-2 mb-2 mt-1 text-xs text-gray-400'> View replies</div>
-                          <div className='ml-2 text-xs text-gray-400'>___</div>
+                        <div className='flex-col ml-12 '>
+                          <div className='flex'>
+                            <div className='ml-2 text-xs text-gray-400'>___</div>
+                            {openedReplies[comment.id] ? (
+                              <div
+                                onClick={() => openReplies(comment.id)}
+                                className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
+                                Hide replies
+                              </div>
+                            ) : (
+                              <div
+                                onClick={() => openReplies(comment.id)}
+                                className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
+                                View replies
+                              </div>
+                            )}
+                            <div className='ml-2 text-xs text-gray-400'>___</div>
+                          </div>
+                          {openedReplies[comment.id] && <Replies commentId={comment.id} />}
                         </div>
                       </div>
                     </div>

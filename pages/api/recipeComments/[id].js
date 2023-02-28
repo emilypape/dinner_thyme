@@ -12,7 +12,7 @@ async function recipeComments(req, res) {
       include: {
         model: Comments,
         required: false,
-        attributes: ['comment_text'],
+        attributes: ['id', 'comment_text'],
         include: [
           {
             model: User,
