@@ -3,10 +3,13 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from './Link';
 import { Icon } from '@iconify/react';
+import Replies from './replies';
 
 export default function Comments({ recipeId, setCommentOpen }) {
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
+  const [repliesOpen, setRepliesOpen] = useState(false);
+  const [selectedComment, setSelectedComment] = useState('');
   const router = useRouter();
 
   async function getComments() {
@@ -38,6 +41,10 @@ export default function Comments({ recipeId, setCommentOpen }) {
     console.log(commentText);
   };
 
+  const openReplies = (commentId) => {
+    setSelectedComment(commentId);
+    setRepliesOpen(true);
+  };
   useEffect(() => {
     getComments();
   }, []);
@@ -60,6 +67,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
                 <Image src={comments.image_urls} width={550} height={500} />
               </div>
               <div className='max-h-[25rem] overflow-y-scroll '>
+                {repliesOpen && <Replies commentId={selectedComment} setRepliesOpen={setRepliesOpen} />}
                 {comments?.comments?.map((comment) => {
                   return (
                     <div className='flex-col' id={comment.id}>
@@ -85,7 +93,26 @@ export default function Comments({ recipeId, setCommentOpen }) {
                         <div className='ml-12 mb-1 text-xs text-gray-400'>Reply</div>
                         <div className='flex ml-12 '>
                           <div className='ml-2 text-xs text-gray-400'>___</div>
-                          <div className='ml-2 mb-2 mt-1 text-xs text-gray-400'> View replies</div>
+                          <div
+                            onClick={() => openReplies(comment.id)}
+                            className={
+                              repliesOpen
+                                ? 'hidden ml-2 mb-2 mt-1 text-xs text-gray-400'
+                                : 'ml-2 mb-2 mt-1 text-xs text-gray-400'
+                            }>
+                            {' '}
+                            View replies
+                          </div>
+                          <div
+                            onClick={() => setRepliesOpen(false)}
+                            className={
+                              !repliesOpen
+                                ? 'hidden ml-2 mb-2 mt-1 text-xs text-gray-400'
+                                : 'ml-2 mb-2 mt-1 text-xs text-gray-400'
+                            }>
+                            Hide replies
+                          </div>
+
                           <div className='ml-2 text-xs text-gray-400'>___</div>
                         </div>
                       </div>

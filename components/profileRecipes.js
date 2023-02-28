@@ -1,8 +1,10 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import Loader from './loader';
 
 export default function ProfileRecipes({ user }) {
   const [recipes, setRecipes] = useState();
+
   async function fetchRecipes() {
     const response = await fetch('/api/loggedInUserRecipes', {
       method: 'GET',
@@ -53,6 +55,6 @@ export default function ProfileRecipes({ user }) {
       </div>
     </div>
   ) : (
-    <div>Nothing Cooking in the Kitchen!</div>
+    <Loader />
   );
 }
