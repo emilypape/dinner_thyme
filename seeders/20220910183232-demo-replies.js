@@ -212,7 +212,7 @@ module.exports = {
       {
         id: 27,
         user_id: 4,
-        comment_id: 10,
+        comment_id: 17,
         reply_text: 'I could finish this myself!',
         created_at: new Date(),
         updated_at: new Date(),
@@ -236,7 +236,7 @@ module.exports = {
       {
         id: 30,
         user_id: 2,
-        comment_id: 11,
+        comment_id: 16,
         reply_text: 'Me too!',
         created_at: new Date(),
         updated_at: new Date(),
@@ -260,7 +260,7 @@ module.exports = {
       {
         id: 33,
         user_id: 5,
-        comment_id: 12,
+        comment_id: 15,
         reply_text: 'Same!',
         created_at: new Date(),
         updated_at: new Date(),
@@ -268,7 +268,7 @@ module.exports = {
       {
         id: 34,
         user_id: 6,
-        comment_id: 1,
+        comment_id: 14,
         reply_text: '!!!!!',
         created_at: new Date(),
         updated_at: new Date(),
