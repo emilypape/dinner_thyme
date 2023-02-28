@@ -101,11 +101,19 @@ export default function Comments({ recipeId, setCommentOpen }) {
                         <div className='flex-col ml-12 '>
                           <div className='flex'>
                             <div className='ml-2 text-xs text-gray-400'>___</div>
-                            <div
-                              onClick={() => openReplies(comment.id)}
-                              className={'ml-2 mb-2 mt-1 text-xs text-gray-400'}>
-                              View replies
-                            </div>
+                            {openedReplies[comment.id] ? (
+                              <div
+                                onClick={() => openReplies(comment.id)}
+                                className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
+                                Hide replies
+                              </div>
+                            ) : (
+                              <div
+                                onClick={() => openReplies(comment.id)}
+                                className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
+                                View replies
+                              </div>
+                            )}
                             <div className='ml-2 text-xs text-gray-400'>___</div>
                           </div>
                           {openedReplies[comment.id] && <Replies commentId={comment.id} />}
