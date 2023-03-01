@@ -10,7 +10,7 @@ import Comments from './comments';
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
-  const [dropdown, setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState({});
   const [commentOpen, setCommentOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
 
@@ -29,6 +29,17 @@ export default function Feed() {
     setSelectedRecipe(recipeId);
     setCommentOpen(true);
   }
+
+  const openDropdown = (recipeId) => {
+    const newState = { ...dropdown };
+
+    if (newState[recipeId]) {
+      newState[recipeId] = false;
+    } else {
+      newState[recipeId] = true;
+    }
+    setDropdown(newState);
+  };
 
   useEffect(() => {
     getFeedPosts();
@@ -58,9 +69,9 @@ export default function Feed() {
                     </div>
                   </div>
                 </Link>
-                <div onClick={() => setDropdown(!dropdown)}>
+                <div onClick={() => openDropdown(posts.id)}>
                   <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
-                  {dropdown ? <FeedPostDropdown feedPost={posts} /> : null}
+                  {dropdown[posts.id] && <FeedPostDropdown feedPost={posts} />}
                 </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
