@@ -84,13 +84,13 @@ export default function Feed() {
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
                 <Image src={posts.image_urls} width={600} height={450} alt={posts.title} />
-                <div className='flex'>
-                  <div className='flex'>
+                <div className='flex '>
+                  <div className='flex cursor-pointer'>
                     <Icon
                       onClick={() => newPostLike(posts.id)}
                       className='ml-6 mt-2'
-                      icon='mdi:cards-heart-outline'
-                      color='gray'
+                      icon={posts.likes.length > 0 ? 'mdi:heart' : 'mdi:cards-heart-outline'}
+                      color={posts.likes.length > 0 ? 'red' : 'grey'}
                       width={25}
                       height={25}
                     />

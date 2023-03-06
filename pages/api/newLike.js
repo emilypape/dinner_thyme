@@ -15,7 +15,8 @@ async function newLike(req, res) {
     });
 
     if (isLiked) {
-      res.status(200).json({ message: 'This user has already liked this post' });
+      const removeLike = await isLiked.destroy();
+      res.status(200).json(removeLike);
     }
 
     if (!isLiked) {
