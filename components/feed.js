@@ -31,6 +31,25 @@ export default function Feed() {
         recipe_id: recipeId,
       }),
     });
+
+    if (response.ok) {
+      const newState = feedPosts.map((post) => {
+        if (post.id === recipeId) {
+          if (post?.likes?.length > 0) {
+            const newPost = { ...post };
+            newPost.likes = [];
+            return newPost;
+          } else if (post?.likes?.length <= 0 || !post?.likes) {
+            const newPost = { ...post };
+            newPost.likes = [true];
+            return newPost;
+          }
+        }
+        return post;
+      });
+
+      setFeedPosts(newState);
+    }
   }
 
   function openComments(recipeId) {
