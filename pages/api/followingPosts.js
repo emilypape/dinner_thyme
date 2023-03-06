@@ -1,4 +1,4 @@
-const { User, Followers, Recipe, Comments } = require('../../database/models');
+const { User, Followers, Recipe, Comments, Likes } = require('../../database/models');
 
 import { withIronSession } from 'next-iron-session';
 
@@ -24,7 +24,15 @@ async function myFollwingPosts(req, res) {
           model: User,
         },
         {
+          model: Likes,
+          required: false,
+          where: {
+            user_id: userId,
+          },
+        },
+        {
           model: Comments,
+          required: false,
           attributes: ['comment_text'],
           include: {
             model: User,

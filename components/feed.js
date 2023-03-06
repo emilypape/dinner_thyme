@@ -13,7 +13,6 @@ export default function Feed() {
   const [dropdown, setDropdown] = useState({});
   const [commentOpen, setCommentOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
-
   const router = useRouter();
 
   async function getFeedPosts() {
@@ -23,6 +22,15 @@ export default function Feed() {
 
     const feedData = await response.json();
     setFeedPosts(feedData);
+  }
+
+  async function newPostLike(recipeId) {
+    const response = await fetch('/api/newLike', {
+      method: 'Post',
+      body: JSON.stringify({
+        recipe_id: recipeId,
+      }),
+    });
   }
 
   function openComments(recipeId) {
@@ -78,7 +86,14 @@ export default function Feed() {
                 <Image src={posts.image_urls} width={600} height={450} alt={posts.title} />
                 <div className='flex'>
                   <div className='flex'>
-                    <Icon className='ml-6 mt-2' icon='mdi:cards-heart-outline' color='gray' width={25} height={25} />
+                    <Icon
+                      onClick={() => newPostLike(posts.id)}
+                      className='ml-6 mt-2'
+                      icon='mdi:cards-heart-outline'
+                      color='gray'
+                      width={25}
+                      height={25}
+                    />
 
                     <Icon
                       onClick={() => openComments(posts.id)}

@@ -4,14 +4,13 @@ import { withIronSession } from 'next-iron-session';
 async function newLike(req, res) {
   const { user } = req.session.get();
   const userId = user.user_id;
-  let idString = req.url.split('/').pop();
-  const recipeId = parseInt(idString);
+  const { recipe_id } = JSON.parse(req.body);
 
-  if (userId && recipeId) {
+  if (userId && recipe_id) {
     const isLiked = await Likes.findOne({
       where: {
         user_id: userId,
-        recipe_id: recipeId,
+        recipe_id,
       },
     });
 
