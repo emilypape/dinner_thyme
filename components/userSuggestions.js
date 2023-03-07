@@ -23,7 +23,7 @@ export default function UserSuggestion() {
     <div>
       <div className='flex'>
         <div className='ml-10 mt-10 hidden lg:flex md:flex xl:flex items-center lg:items-end justify-evenly lg:justify-start md:justify-start '>
-          <Link href={`/profile/${user.id}`}>
+          <Link href={`/profile`}>
             <div className='flex'>
               <Image className='w-10 h-10 rounded-full ' src={user.profile_picture} height={60} width='60' alt='' />
               <div class='font-medium dark:text-black bg-white px-2 py-2 rounded-lg'>
