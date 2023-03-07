@@ -127,7 +127,9 @@ export default function Feed() {
                 <div className='px-6 py-4'>
                   <div className='flex'>
                     <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{posts.title}</div>
-                    <div className='py-1 px-2 text-gray-400 text-sm font-medium'>View</div>
+                    <Link href={`/recipe/${posts.id}`}>
+                      <div className='py-1 px-2 text-gray-400 text-sm font-medium'>View</div>
+                    </Link>
                   </div>
                   <div className='overflow-auto max-h-28'>
                     <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>
