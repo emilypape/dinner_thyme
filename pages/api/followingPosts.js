@@ -17,7 +17,7 @@ async function myFollwingPosts(req, res) {
     const followingIds = myFollowings.map((el) => el.following_id);
     const myFollowingPosts = await Recipe.findAll({
       where: {
-        id: followingIds,
+        user_id: followingIds,
       },
       order: [['createdAt', 'DESC']],
       include: [
