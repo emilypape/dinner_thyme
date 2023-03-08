@@ -19,6 +19,7 @@ async function myFollwingPosts(req, res) {
       where: {
         id: followingIds,
       },
+      order: [['createdAt', 'DESC']],
       include: [
         {
           model: User,

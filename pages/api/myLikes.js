@@ -10,6 +10,7 @@ async function myLikes(req, res) {
     where: {
       user_id: userId,
     },
+    order: [['createdAt', 'DESC']],
     include: {
       model: Recipe,
       include: {

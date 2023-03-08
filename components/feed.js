@@ -98,7 +98,7 @@ export default function Feed() {
                 </Link>
                 <div onClick={() => openDropdown(posts.id)}>
                   <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
-                  {dropdown[posts.id] && <FeedPostDropdown feedPost={posts} />}
+                  {dropdown[posts.id] && <FeedPostDropdown userId={posts.user.id} />}
                 </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
