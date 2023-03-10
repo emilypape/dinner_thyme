@@ -65,7 +65,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
             {/*header*/}
             <div className='flex justify-end  rounded-t'>
-              <div onClick={() => setCommentOpen(false)} className='text-black h-6 w-6 text-2xl'>
+              <div onClick={() => setCommentOpen(false)} className='text-black h-6 w-6 text-2xl cursor-pointer'>
                 ×
               </div>
             </div>
