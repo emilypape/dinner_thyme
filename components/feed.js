@@ -7,6 +7,8 @@ import UserSuggestion from './userSuggestions';
 import FollowerScroller from './followerScroller';
 import FeedPostDropdown from './feedPostDropdown';
 import Comments from './comments';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
+import noPhoto from '../public/assets/images/errorImage.jpg'
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
@@ -86,8 +88,9 @@ export default function Feed() {
                 <Link href={`/profile/${posts.user.id}`}>
                   <div className='flex'>
                     <Image
-                      className='w-10 h-10 rounded-full '
-                      src={posts.user.profile_picture}
+                      className='w-10 h-10 rounded-full'
+                      src={posts?.user?.profile_picture || profilePicPlaceholder}
+                      alt={'Profile Photo'}
                       height={50}
                       width='50'
                     />
@@ -102,7 +105,7 @@ export default function Feed() {
                 </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
-                <Image src={posts.image_urls} width={600} height={450} alt={posts.title} />
+                <Image src={posts?.image_urls || noPhoto} width={600} height={450} alt={posts?.title} />
                 <div className='flex '>
                   <div className='flex cursor-pointer'>
                     <Icon

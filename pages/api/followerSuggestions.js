@@ -1,6 +1,5 @@
 const { User, Followers } = require('../../database/models');
 
-import e from 'cors';
 import { withIronSession } from 'next-iron-session';
 
 async function FollowerSuggestions(req, res) {

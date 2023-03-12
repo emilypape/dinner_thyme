@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from './Link';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 
 export default function SuggestionList() {
   const [suggestionList, setSuggestionList] = useState([]);
@@ -27,10 +28,10 @@ export default function SuggestionList() {
                 <div className='flex'>
                   <Image
                     className='w-10 h-10 rounded-full '
-                    src={suggestion.user.profile_picture}
+                    src={suggestion?.user?.profile_picture || profilePicPlaceholder}
+                    alt={'Profile Photo'}
                     height={50}
                     width='50'
-                    alt=''
                   />
                   <div class='text-sm dark:text-black bg-white px-2 py-2 rounded-lg'>
                     <div>{suggestion.user.username}</div>

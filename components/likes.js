@@ -2,6 +2,9 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from './Link';
+import noPhoto from '../public/assets/images/errorImage.jpg';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
+
 
 export default function Likes({ user }) {
   const [likes, setLikes] = useState();
@@ -28,15 +31,15 @@ export default function Likes({ user }) {
           {likeArray?.map((like) => {
             return (
               <div class='lg:mr-4 max-w-xs rounded shadow-lg mb-5'>
-                <Image src={like.recipe.image_urls} width={400} height={300} alt={like.recipe.title} />
+                <Image src={like?.recipe?.image_urls || noPhoto} width={400} height={300} alt={like.recipe.title} />
                 <div className='px-6 py-4'>
                   <div class='flex items-center space-x-4 absolute -mt-20 -ml-4 rounded-t-lg bg-white px-2 py-2'>
                     <Image
                       className='w-10 h-10 rounded-full '
-                      src={like.recipe.user.profile_picture}
+                      src={like?.recipe?.user?.profile_picture || profilePicPlaceholder}
+                      alt={'Profile Picture'}
                       height={50}
-                      width='50'
-                      alt=''
+                      width='50'                  
                     />
                     <Link href={`/profile/${like.recipe.user.id}`}>
                       <div class='font-medium dark:text-black bg-white px-2 py-1 rounded-lg'>

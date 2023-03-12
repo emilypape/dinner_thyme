@@ -4,6 +4,8 @@ import { useRouter } from 'next/router';
 import Link from './Link';
 import { Icon } from '@iconify/react';
 import Replies from './replies';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
+import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function Comments({ recipeId, setCommentOpen }) {
   const [comments, setComments] = useState([]);
@@ -72,7 +74,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
             {/*body*/}
             <div className='flex'>
               <div className='hidden lg:block md:block xl:block '>
-                <Image src={comments.image_urls} width={550} height={500} />
+                <Image src={comments?.image_urls || noPhoto} alt={'Recipe Photo'} width={550} height={500} />
               </div>
               <div className='max-h-[25rem] overflow-y-scroll '>
                 {comments?.comments?.map((comment) => {
@@ -82,7 +84,8 @@ export default function Comments({ recipeId, setCommentOpen }) {
                         <Link href={`/profile/${comment.user.id}`}>
                           <div className='ml-2 mr-1'>
                             <Image
-                              src={comment.user.profile_picture}
+                              src={comment?.user?.profile_picture || profilePicPlaceholder}
+                              alt={'Profile Photo'}
                               className='rounded-full '
                               height={30}
                               width='30'
