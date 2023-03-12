@@ -24,7 +24,7 @@ export default function Recipe({ recipeId }) {
         <div className='flex'>
           <div className='flex lg:ml-48 p-10'>
             <div>
-              <div className='uppercase text-white bg-green-400 rounded-full p-1 text-xs max-w-[12em] mb-2'>
+              <div className='text-center uppercase text-white bg-green-400 rounded-full p-1 text-xs max-w-[12em] mb-2'>
                 {recipeData?.user?.first_name}'s Kitchen
               </div>
               <div className=' font-semibold text-4xl width-[10em] max-w-[10em] mr-2'>{recipeData?.title}</div>
@@ -59,8 +59,8 @@ export default function Recipe({ recipeId }) {
               />
             </div>
           </div>
-          <div>
-            <div>I am instructions</div>
+          <div className='py-10'>
+            <div>I am ingredients</div>
           </div>
         </div>
       </div>
