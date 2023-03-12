@@ -1,5 +1,6 @@
 import react, { useEffect, useState } from 'react';
 import Image from 'next/image';
+import Link from './Link';
 import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function SingleUserProfileRecipes({ user }) {
@@ -17,7 +18,9 @@ export default function SingleUserProfileRecipes({ user }) {
           {recipes.map((recipe) => {
             return (
               <div key={recipe.id} className='lg:mr-4 max-w-xs rounded shadow-lg mb-5'>
-                <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
+                <Link href={`/recipe/${recipe.id}`}>
+                  <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
+                </Link>
                 <div className='px-6 py-4'>
                   <div className='flex'>
                     <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{recipe.title}</div>

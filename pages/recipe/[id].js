@@ -1,16 +1,26 @@
+import { useState, useEffect } from 'react';
 import Nav from '../../components/nav';
 import { useRouter } from 'next/router';
 import Recipe from '../../components/recipe';
 
 function SpecificRecipeRoute() {
+  const [recipeId, setRecipeId] = useState('');
   const router = useRouter();
-  const recipeId = router.query.id;
+
+  useEffect(() => {
+    if (router.isReady) {
+      const { id } = router.query;
+      setRecipeId(id);
+    }
+  });
 
   return (
-    <>
-      <Nav />
-      <Recipe recipeId={recipeId} />
-    </>
+    recipeId && (
+      <>
+        <Nav />
+        <Recipe recipeId={recipeId} />
+      </>
+    )
   );
 }
 
