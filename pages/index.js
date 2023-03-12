@@ -13,7 +13,7 @@ export default function Home({ user }) {
         if (response.ok) {
           router.push('/profile');
         } else {
-          router.push('/login');
+          router.push('/home');
         }
       }
       fetchUser();
@@ -21,7 +21,7 @@ export default function Home({ user }) {
       if (user?.logged_in) {
         router.push('/profile');
       }
-      router.push('/login');
+      router.push('/home');
     }
   }, []);
 

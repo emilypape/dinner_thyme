@@ -2,15 +2,18 @@ import { withIronSession } from 'next-iron-session';
 const { User } = require('../../database/models');
 
 async function loggedInUser(req, res) {
+  let loggedInUser;
   const { user } = req.session.get();
+  const userId = user?.user_id;
 
-  const userId = user.user_id;
 
-  const loggedInUser = await User.findOne({
-    where: {
-      id: userId,
-    },
-  });
+  if (userId) {
+    loggedInUser = await User.findOne({
+      where: {
+        id: userId,
+      },
+    });
+  }
 
   if (!loggedInUser) {
     res.status(400).json({ message: 'There is no user with this ID!' });

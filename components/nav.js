@@ -3,10 +3,13 @@ import { Transition } from '@headlessui/react';
 import { Icon } from '@iconify/react';
 import Link from './Link';
 import { useRouter } from 'next/router';
+import useUser from '../utils/useUser';
 
-function Nav({ setIsLoggedIn }) {
+function Nav() {
   const [isOpen, setIsOpen] = useState(false);
   const router = useRouter();
+  const {user} = useUser({redirectTo: '/home'});
+
   async function logout() {
     const response = await fetch('/api/logout', {
       method: 'post',
@@ -27,7 +30,7 @@ function Nav({ setIsLoggedIn }) {
           <div className='flex items-center justify-between h-16'>
             <div className='flex items-center'>
               <div className='flex-shrink-0'>
-                <Link href={`/home`}>
+                <Link href={'/feed'}>
                   <div className='flex '>
                     <Icon icon='game-icons:cook' width='46' height='46' />
                     <div className=' font-bold text-3xl mt-3 ml-1 font-title  text-black'>Dinner Thyme</div>
