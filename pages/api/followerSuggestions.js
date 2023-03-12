@@ -14,12 +14,19 @@ async function FollowerSuggestions(req, res) {
     },
   });
 
+  let currentlyFollowing = await Followers.findAll({
+    where: {
+      follower_id: userId,
+    },
+  });
+
+  let currentFollowing = currentlyFollowing.map((el) => el.following_id);
+
   let suggestions = followSuggestions.filter((el) => el.follower_id !== userId).slice(0, 5);
 
   if (!suggestions) {
     res.status(400).json({ message: 'There are no suggested users!' });
   }
-
   res.status(200).json(suggestions);
 }
 

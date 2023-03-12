@@ -1,4 +1,4 @@
-const { User, Followers, Recipe, Comments } = require('../../database/models');
+const { User, Followers, Recipe, Comments, Likes } = require('../../database/models');
 
 import { withIronSession } from 'next-iron-session';
 
@@ -17,14 +17,23 @@ async function myFollwingPosts(req, res) {
     const followingIds = myFollowings.map((el) => el.following_id);
     const myFollowingPosts = await Recipe.findAll({
       where: {
-        id: followingIds,
+        user_id: followingIds,
       },
+      order: [['createdAt', 'DESC']],
       include: [
         {
           model: User,
         },
         {
+          model: Likes,
+          required: false,
+          where: {
+            user_id: userId,
+          },
+        },
+        {
           model: Comments,
+          required: false,
           attributes: ['comment_text'],
           include: {
             model: User,

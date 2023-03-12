@@ -12,10 +12,9 @@ import noPhoto from '../public/assets/images/errorImage.jpg'
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
-  const [dropdown, setDropdown] = useState(false);
+  const [dropdown, setDropdown] = useState({});
   const [commentOpen, setCommentOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
-
   const router = useRouter();
 
   async function getFeedPosts() {
@@ -27,10 +26,49 @@ export default function Feed() {
     setFeedPosts(feedData);
   }
 
+  async function newPostLike(recipeId) {
+    const response = await fetch('/api/newLike', {
+      method: 'Post',
+      body: JSON.stringify({
+        recipe_id: recipeId,
+      }),
+    });
+
+    if (response.ok) {
+      const newState = feedPosts.map((post) => {
+        if (post.id === recipeId) {
+          if (post?.likes?.length > 0) {
+            const newPost = { ...post };
+            newPost.likes = [];
+            return newPost;
+          } else if (post?.likes?.length <= 0 || !post?.likes) {
+            const newPost = { ...post };
+            newPost.likes = [true];
+            return newPost;
+          }
+        }
+        return post;
+      });
+
+      setFeedPosts(newState);
+    }
+  }
+
   function openComments(recipeId) {
     setSelectedRecipe(recipeId);
     setCommentOpen(true);
   }
+
+  const openDropdown = (recipeId) => {
+    const newState = { ...dropdown };
+
+    if (newState[recipeId]) {
+      newState[recipeId] = false;
+    } else {
+      newState[recipeId] = true;
+    }
+    setDropdown(newState);
+  };
 
   useEffect(() => {
     getFeedPosts();
@@ -61,16 +99,23 @@ export default function Feed() {
                     </div>
                   </div>
                 </Link>
-                <div onClick={() => setDropdown(!dropdown)}>
+                <div onClick={() => openDropdown(posts.id)}>
                   <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
-                  {dropdown ? <FeedPostDropdown feedPost={posts} /> : null}
+                  {dropdown[posts.id] && <FeedPostDropdown userId={posts.user.id} />}
                 </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
                 <Image src={posts?.image_urls || noPhoto} width={600} height={450} alt={posts?.title} />
-                <div className='flex'>
-                  <div className='flex'>
-                    <Icon className='ml-6 mt-2' icon='mdi:cards-heart-outline' color='gray' width={25} height={25} />
+                <div className='flex '>
+                  <div className='flex cursor-pointer'>
+                    <Icon
+                      onClick={() => newPostLike(posts.id)}
+                      className='ml-6 mt-2'
+                      icon={posts.likes.length > 0 ? 'mdi:heart' : 'mdi:cards-heart-outline'}
+                      color={posts.likes.length > 0 ? 'red' : 'grey'}
+                      width={25}
+                      height={25}
+                    />
 
                     <Icon
                       onClick={() => openComments(posts.id)}
@@ -85,7 +130,9 @@ export default function Feed() {
                 <div className='px-6 py-4'>
                   <div className='flex'>
                     <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{posts.title}</div>
-                    <div className='py-1 px-2 text-gray-400 text-sm font-medium'>View</div>
+                    <Link href={`/recipe/${posts.id}`}>
+                      <div className='py-1 px-2 text-gray-400 text-sm font-medium'>View</div>
+                    </Link>
                   </div>
                   <div className='overflow-auto max-h-28'>
                     <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>

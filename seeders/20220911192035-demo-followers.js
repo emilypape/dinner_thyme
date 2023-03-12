@@ -85,6 +85,13 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        id: 13,
+        follower_id: 3,
+        following_id: 1,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ]);
   },
   async down(queryInterface, Sequelize) {
