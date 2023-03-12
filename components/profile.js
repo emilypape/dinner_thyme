@@ -23,6 +23,7 @@ export default function Profile() {
     console.log(userData);
     setUser(userData);
   }
+
   useEffect(() => {
     loggedInUser();
   }, []);
@@ -32,21 +33,13 @@ export default function Profile() {
       <div>
         <div className='p-10 flex flex-col lg:flex-row md:flex-row items-center justify-center xl:justify-start lg:justify-start md:justify-start lg:ml-60 md:ml-0'>
           <div>
-            {user.profile_picture ? (
-              <Image
-                className='rounded-full border-2 border-black'
-                src={user.profile_picture}
-                width={150}
-                height={150}
-              />
-            ) : (
-              <Image
-                className='rounded-full border-2 border-black'
-                src={profilePicPlaceholder}
-                width={150}
-                height={150}
-              />
-            )}
+            <Image
+              className='rounded-full border-2 border-black'
+              src={user.profile_picture || profilePicPlaceholder}
+              width={150}
+              height={150}
+              alt=''
+            />
           </div>
           <div className='mt-8 lg:mt-0 xl:mt-0 md:mt-0'>
             <div className='ml-8 xl:text-3xl lg:text-3xl md:text-2xl font-bold lg:ml-10 lg:mt-6 md:ml-10 md:mt-8 font-title'>

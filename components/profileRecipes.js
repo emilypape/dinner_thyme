@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Loader from './loader';
 import Link from './Link';
+import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function ProfileRecipes({ user }) {
   const [recipes, setRecipes] = useState();
@@ -28,7 +29,7 @@ export default function ProfileRecipes({ user }) {
             return (
               <div key={recipe.id} className='lg:mr-4 max-w-xs rounded shadow-lg mb-5'>
                 <Link href={`/recipe/${recipe.id}`}>
-                  <Image src={recipe.image_urls} width={400} height={300} alt={recipe.title} />
+                  <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
                 </Link>
                 <div className='px-6 py-4'>
                   <div className='flex'>

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from './Link';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 
 export default function Replies({ commentId }) {
   const [replyList, setReplyList] = useState(false);
@@ -33,7 +34,7 @@ export default function Replies({ commentId }) {
               <div className='flex '>
                 <Link href={`/profile/${reply.user.id}`}>
                   <div className='ml-2 mr-1'>
-                    <Image src={reply.user.profile_picture} className='rounded-full ' height={25} width='25' />
+                    <Image src={reply?.user?.profile_picture || profilePicPlaceholder} className='rounded-full ' height={25} width='25' />
                   </div>
                 </Link>
                 <div className='text-xs mb-1'>
