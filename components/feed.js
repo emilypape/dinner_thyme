@@ -8,7 +8,7 @@ import FollowerScroller from './followerScroller';
 import FeedPostDropdown from './feedPostDropdown';
 import Comments from './comments';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
-import noPhoto from '../public/assets/images/errorImage.jpg'
+import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
@@ -105,7 +105,9 @@ export default function Feed() {
                 </div>
               </div>
               <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
-                <Image src={posts?.image_urls || noPhoto} width={600} height={450} alt={posts?.title} />
+                <Link href={`/recipe/${posts.id}`}>
+                  <Image src={posts?.image_urls || noPhoto} width={600} height={450} alt={posts?.title} />
+                </Link>
                 <div className='flex '>
                   <div className='flex cursor-pointer'>
                     <Icon
@@ -128,12 +130,11 @@ export default function Feed() {
                   </div>
                 </div>
                 <div className='px-6 py-4'>
-                  <div className='flex'>
-                    <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{posts.title}</div>
-                    <Link href={`/recipe/${posts.id}`}>
-                      <div className='py-1 px-2 text-gray-400 text-sm font-medium'>View</div>
-                    </Link>
-                  </div>
+                  <Link href={`/recipe/${posts.id}`}>
+                    <div className='flex'>
+                      <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{posts.title}</div>
+                    </div>
+                  </Link>
                   <div className='overflow-auto max-h-28'>
                     <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>
                       {posts.cook_instructions}

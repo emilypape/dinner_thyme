@@ -32,9 +32,11 @@ export default function ProfileRecipes({ user }) {
                   <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
                 </Link>
                 <div className='px-6 py-4'>
-                  <div className='flex'>
-                    <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{recipe.title}</div>
-                  </div>
+                  <Link href={`/recipe/${recipe.id}`}>
+                    <div className='flex'>
+                      <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{recipe.title}</div>
+                    </div>
+                  </Link>
                   <div className='overflow-auto max-h-28'>
                     <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>
                       {recipe.cook_instructions}
