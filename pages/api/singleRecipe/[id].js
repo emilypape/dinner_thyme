@@ -23,6 +23,11 @@ async function singleRecipe(req, res) {
             attributes: ['id', 'username', 'profile_picture'],
           },
         },
+        {
+          model: Likes,
+          required: false,
+          attributes: ['id'],
+        },
       ],
     });
     res.status(200).json(singleRecipe);

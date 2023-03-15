@@ -20,6 +20,7 @@ async function recipeComments(req, res) {
           },
           {
             model: Replies,
+            required: false,
             attributes: ['reply_text'],
             include: {
               model: User,

@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from './Link';
+import { Icon } from '@iconify/react';
 
 export default function Recipe({ recipeId }) {
   const [recipeData, setRecipeData] = useState(false);
@@ -18,6 +19,8 @@ export default function Recipe({ recipeId }) {
   useEffect(() => {
     getRecipeData();
   }, []);
+
+  const recipeComments = recipeData.comments;
 
   return (
     recipeData && (
@@ -55,6 +58,42 @@ export default function Recipe({ recipeId }) {
                 <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>
                   {recipeData.cook_instructions}
                 </p>
+              </div>
+              <div>
+                <div className='flex-col mt-10 bg-gray-200 p-3 rounded'>
+                  <div className='flex'>
+                    <Icon icon='mdi:heart' width={28} height={28} />
+                    <div className='text-xl ml-1'>{recipeData.likes.length}</div>
+                    <div className='underline ml-5 mt-[.1em]'>{recipeComments.length} comments</div>
+                  </div>
+                  <div className='mt-5'>
+                    {recipeComments?.map((comment) => {
+                      return (
+                        <div>
+                          <div className='flex'>
+                            <Link href={`/profile/${comment.user.id}`}>
+                              <div className='ml-2 mr-1'>
+                                <Image
+                                  src={comment?.user?.profile_picture || profilePicPlaceholder}
+                                  alt={'Profile Photo'}
+                                  className='rounded-full '
+                                  height={30}
+                                  width='30'
+                                />
+                              </div>
+                            </Link>
+                            <div className=''>
+                              <Link href={`/profile/${comment.user.id}`}>
+                                <span className='font-medium px-1'>{comment.user.username}</span>
+                              </Link>
+                              {comment.comment_text}
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </div>
             <div>
