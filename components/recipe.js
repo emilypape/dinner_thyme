@@ -2,6 +2,8 @@ import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from './Link';
 import { Icon } from '@iconify/react';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
+import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function Recipe({ recipeId }) {
   const [recipeData, setRecipeData] = useState(false);
@@ -39,7 +41,7 @@ export default function Recipe({ recipeId }) {
                 <Link href={`/profile/${recipeData?.user?.id}`}>
                   <Image
                     className='shadow rounded-full max-w-full h-auto align-middle border-none'
-                    src={recipeData?.user?.profile_picture}
+                    src={recipeData?.user?.profile_picture || profilePicPlaceholder}
                     width={40}
                     height={40}
                   />
@@ -99,7 +101,7 @@ export default function Recipe({ recipeId }) {
             <div>
               <Image
                 className='shadow rounded-full max-w-full h-auto align-middle border-none'
-                src={recipeData?.image_urls}
+                src={recipeData?.image_urls || noPhoto}
                 width={200}
                 height={200}
               />

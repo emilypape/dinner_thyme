@@ -1,4 +1,4 @@
-const { User, Recipe, Comments, Likes } = require('../../../database/models');
+const { User, Recipe, Comments, Likes, Ingredients } = require('../../../database/models');
 
 async function singleRecipe(req, res) {
   const idString = req.url.split('/').pop();
@@ -27,6 +27,11 @@ async function singleRecipe(req, res) {
           model: Likes,
           required: false,
           attributes: ['id'],
+        },
+        {
+          model: Ingredients,
+          required: false,
+          attributes: ['ingredient_list'],
         },
       ],
     });
