@@ -41,7 +41,7 @@ export default function Recipe({ recipeId }) {
               <div className='flex mt-8'>
                 <Link href={`/profile/${recipeData?.user?.id}`}>
                   <Image
-                    className='shadow rounded-full max-w-full h-auto align-middle border-none'
+                    className='shadow rounded-full max-w-full min-w-full h-auto align-middle border-none'
                     src={recipeData?.user?.profile_picture || profilePicPlaceholder}
                     width={40}
                     height={40}
@@ -57,12 +57,36 @@ export default function Recipe({ recipeId }) {
                   Prep: {recipeData.prep_time}
                 </div>
               </div>
-              <div className='overflow-auto max-h-[20em] max-w-[28em]'>
-                <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>
+              <div className='lg:overflow-auto lg:max-h-[20em] max-w-[28em]'>
+                <p className=' lg:block xl:block md:block text-gray-500 text-sm mb-10'>
                   {recipeData.cook_instructions}
                 </p>
               </div>
               <div>
+                <div className='lg:hidden md:hidden justify-center flex'>
+                  <Image
+                    className='shadow  rounded-full max-w-full min-w-full h-auto align-middle border-none'
+                    src={recipeData?.image_urls || noPhoto}
+                    width={'200%'}
+                    height={'200%'}
+                  />
+                </div>
+                <div className='p-10 bg-gray-200 mt-[-4em]  lg:hidden md:hidden  shadow  rounded-xl px-16  min-w-[20em] '>
+                  <div className='flex mt-10'>
+                    <Icon icon='material-symbols:timer-outline' width={20} height={20} />
+                    <div>{recipeData.cook_time}</div>
+                  </div>
+                  <div className='flex mt-1 mb-3'>
+                    <Icon icon='tabler:temperature' width={22} height={22} />
+                    <div>{recipeData.cook_temperature}</div>
+                  </div>
+                  <div>
+                    <div className='text-xl font-semibold mb-3'>Ingredients</div>
+                    {recipeIngredients?.ingredient_list?.map((ingredients) => {
+                      return <li className='mt-1'>{ingredients}</li>;
+                    })}
+                  </div>
+                </div>
                 <div className='flex-col mt-16 bg-gray-200 p-3 rounded'>
                   <div className='flex'>
                     <Icon icon='mdi:heart' width={28} height={28} />
@@ -99,16 +123,16 @@ export default function Recipe({ recipeId }) {
                 </div>
               </div>
             </div>
-            <div>
+            <div className='lg:block md:block hidden'>
               <Image
-                className='shadow rounded-full max-w-full h-auto align-middle border-none'
+                className='shadow  rounded-full max-w-full min-w-full h-auto align-middle border-none'
                 src={recipeData?.image_urls || noPhoto}
-                width={200}
-                height={200}
+                width={'200%'}
+                height={'200%'}
               />
             </div>
           </div>
-          <div className='bg-gray-200  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 max-h-[35em] min-w-[20em] overflow-scroll'>
+          <div className='bg-gray-200 lg:block md:block hidden  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 max-h-[35em] min-w-[20em] overflow-scroll'>
             <div className='flex'>
               <Icon icon='material-symbols:timer-outline' width={20} height={20} />
               <div>{recipeData.cook_time}</div>
