@@ -23,12 +23,13 @@ export default function Recipe({ recipeId }) {
   }, []);
 
   const recipeComments = recipeData.comments;
+  const recipeIngredients = recipeData.ingredient;
 
   return (
     recipeData && (
-      <div className='flex-col'>
+      <div className='flex-col flex-wrap'>
         <div className='flex'>
-          <div className='flex lg:ml-48 p-10'>
+          <div className='flex lg:ml-48  p-10'>
             <div>
               <Link href={`/profile/${recipeData?.user?.id}`}>
                 <div className='text-center uppercase text-white bg-green-400 rounded-full p-1 text-xs max-w-[12em] mb-2'>
@@ -62,7 +63,7 @@ export default function Recipe({ recipeId }) {
                 </p>
               </div>
               <div>
-                <div className='flex-col mt-10 bg-gray-200 p-3 rounded'>
+                <div className='flex-col mt-16 bg-gray-200 p-3 rounded'>
                   <div className='flex'>
                     <Icon icon='mdi:heart' width={28} height={28} />
                     <div className='text-xl ml-1'>{recipeData.likes.length}</div>
@@ -107,8 +108,21 @@ export default function Recipe({ recipeId }) {
               />
             </div>
           </div>
-          <div className='py-10'>
-            <div>I am ingredients</div>
+          <div className='bg-gray-200  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 max-h-[35em] min-w-[20em] overflow-scroll'>
+            <div className='flex'>
+              <Icon icon='material-symbols:timer-outline' width={20} height={20} />
+              <div>{recipeData.cook_time}</div>
+            </div>
+            <div className='flex mt-1 mb-3'>
+              <Icon icon='tabler:temperature' width={22} height={22} />
+              <div>{recipeData.cook_temperature}</div>
+            </div>
+            <div>
+              <div className='text-xl font-semibold mb-3'>Ingredients</div>
+              {recipeIngredients?.ingredient_list?.map((ingredients) => {
+                return <li className='mt-1'>{ingredients}</li>;
+              })}
+            </div>
           </div>
         </div>
       </div>
