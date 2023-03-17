@@ -4,6 +4,7 @@ import Link from './Link';
 import { Icon } from '@iconify/react';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 import noPhoto from '../public/assets/images/errorImage.jpg';
+import RecipeSuggestions from './recipeSuggestions';
 
 export default function Recipe({ recipeId }) {
   const [recipeData, setRecipeData] = useState(false);
@@ -152,6 +153,10 @@ export default function Recipe({ recipeId }) {
                     <Icon onClick={postComments} className='mr-2 mt-4 cursor-pointer' icon='ri:send-plane-fill' />
                   </div>
                 </div>
+                <div className='max-w-[18em] mt-10 ml-[-4em] lg:hidden md:hidden '>
+                  <div className='font-semibold text-xl ml-16  mb-5'>You may also enjoy...</div>
+                  <RecipeSuggestions />
+                </div>
               </div>
             </div>
             <div className='lg:block md:block hidden'>
@@ -163,20 +168,26 @@ export default function Recipe({ recipeId }) {
               />
             </div>
           </div>
-          <div className='bg-gray-200 lg:block md:block hidden  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 min-h-[24em] max-h-[35em] min-w-[20em] overflow-scroll'>
-            <div className='flex'>
-              <Icon icon='material-symbols:timer-outline' width={20} height={20} />
-              <div>{recipeData.cook_time}</div>
+          <div className='flex-col'>
+            <div className='bg-gray-200 lg:block md:block hidden  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 min-h-[24em] max-h-[35em] min-w-[20em] overflow-scroll'>
+              <div className='flex'>
+                <Icon icon='material-symbols:timer-outline' width={20} height={20} />
+                <div>{recipeData.cook_time}</div>
+              </div>
+              <div className='flex mt-1 mb-3'>
+                <Icon icon='tabler:temperature' width={22} height={22} />
+                <div>{recipeData.cook_temperature}</div>
+              </div>
+              <div>
+                <div className='text-xl font-semibold mb-3'>Ingredients</div>
+                {recipeIngredients?.ingredient_list?.map((ingredients) => {
+                  return <li className='mt-1'>{ingredients}</li>;
+                })}
+              </div>
             </div>
-            <div className='flex mt-1 mb-3'>
-              <Icon icon='tabler:temperature' width={22} height={22} />
-              <div>{recipeData.cook_temperature}</div>
-            </div>
-            <div>
-              <div className='text-xl font-semibold mb-3'>Ingredients</div>
-              {recipeIngredients?.ingredient_list?.map((ingredients) => {
-                return <li className='mt-1'>{ingredients}</li>;
-              })}
+            <div className='max-w-[20em] mt-10 lg:ml-[-8em] md:ml-[-9em] lg:block md:block hidden'>
+              <div className='font-semibold text-xl ml-16  mb-5'>You may also enjoy...</div>
+              <RecipeSuggestions />
             </div>
           </div>
         </div>
