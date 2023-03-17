@@ -1,9 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Image from 'next/image';
 import Link from './Link';
 
 export default function recipeSuggestions() {
   const [suggestions, setSuggestions] = useState([]);
+  const myRef = useRef(null);
 
   async function suggestedRecipes() {
     const response = await fetch('/api/recipeSuggestions', {
@@ -14,6 +15,8 @@ export default function recipeSuggestions() {
     setSuggestions(suggested);
     console.log(suggested);
   }
+
+  const executeScroll = () => myRef.current.scrollIntoView();
 
   useEffect(() => {
     suggestedRecipes();
