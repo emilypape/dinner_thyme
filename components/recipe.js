@@ -7,6 +7,7 @@ import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function Recipe({ recipeId }) {
   const [recipeData, setRecipeData] = useState(false);
+  const [commentText, setCommentText] = useState('');
 
   async function getRecipeData() {
     const response = await fetch(`/api/singleRecipe/${recipeId}`, {
@@ -17,6 +18,28 @@ export default function Recipe({ recipeId }) {
     console.log(myRecipeData);
     setRecipeData(myRecipeData);
   }
+
+  async function postComments() {
+    const response = await fetch(`/api/newComment/${recipeId}`, {
+      method: 'Post',
+      body: JSON.stringify({
+        comment_text: commentText,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response) {
+      alert(response.statusText);
+    } else {
+      getRecipeData();
+      setCommentText('');
+    }
+  }
+
+  const handleCommentText = (event) => {
+    setCommentText(event.target.value);
+    console.log(commentText);
+  };
 
   useEffect(() => {
     getRecipeData();
@@ -120,6 +143,14 @@ export default function Recipe({ recipeId }) {
                       );
                     })}
                   </div>
+                  <div className='flex'>
+                    <input
+                      className='appearance-none rounded min-w-[90%] mr-2 mt-2 p-1  lg:min-w-[90%] md:min-w-[38%]'
+                      value={commentText}
+                      onChange={handleCommentText}
+                      placeholder='Add to the conversation...'></input>
+                    <Icon onClick={postComments} className='mr-2 mt-4 cursor-pointer' icon='ri:send-plane-fill' />
+                  </div>
                 </div>
               </div>
             </div>
@@ -132,7 +163,7 @@ export default function Recipe({ recipeId }) {
               />
             </div>
           </div>
-          <div className='bg-gray-200 lg:block md:block hidden  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 max-h-[35em] min-w-[20em] overflow-scroll'>
+          <div className='bg-gray-200 lg:block md:block hidden  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 min-h-[24em] max-h-[35em] min-w-[20em] overflow-scroll'>
             <div className='flex'>
               <Icon icon='material-symbols:timer-outline' width={20} height={20} />
               <div>{recipeData.cook_time}</div>
