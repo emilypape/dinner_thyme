@@ -57,6 +57,14 @@ export default function Recipe({ recipeId }) {
         <div className='flex'>
           <div className='flex lg:ml-48  p-10'>
             <div>
+              <div className='mb-4 md:hidden lg:hidden xl:hidden'>
+                <Image
+                  className='shadow max-w-full  min-w-full h-auto align-middle border-none '
+                  src={recipeData?.image_urls || noPhoto}
+                  width={400}
+                  height={200}
+                />
+              </div>
               <Link href={`/profile/${recipeData?.user?.id}`}>
                 <div className='text-center uppercase text-white bg-green-400 rounded-full p-1 text-xs max-w-[12em] mb-2'>
                   {recipeData?.user?.first_name}'s Kitchen
