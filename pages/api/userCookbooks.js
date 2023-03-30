@@ -1,6 +1,6 @@
 import { withIronSession } from 'next-iron-session';
 
-const { CookBooks, User } = require('../../database/models');
+const { CookBooks, Recipe, RecipeCollections } = require('../../database/models');
 async function userCookbooks(req, res) {
   const { user } = req.session.get();
   const userId = user.user_id;
@@ -9,6 +9,11 @@ async function userCookbooks(req, res) {
     const cookbooks = await CookBooks.findAll({
       where: {
         user_id: userId,
+      },
+      include: {
+        model: Recipe,
+        through: RecipeCollections,
+        attributes: ['image_urls'],
       },
     });
 
