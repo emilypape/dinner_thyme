@@ -46,7 +46,7 @@ export default function Recipe({ recipeId }) {
 
   useEffect(() => {
     getRecipeData();
-  }, []);
+  }, [recipeId]);
 
   const recipeComments = recipeData.comments;
   const recipeIngredients = recipeData.ingredient;
