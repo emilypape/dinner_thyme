@@ -18,10 +18,10 @@ export default function SingleUserCookbooks({ userId }) {
   useEffect(() => {
     getUserCookbooks();
   }, []);
-  return (
+  return userCookbooks.length ? (
     <div>
       <div className='flex flex-col items-center mt-10'>
-        {userCookbooks.map((cookbook) => {
+        {userCookbooks?.map((cookbook) => {
           return (
             <div className='ml-30 mr-30'>
               <div>
@@ -46,5 +46,7 @@ export default function SingleUserCookbooks({ userId }) {
         })}
       </div>
     </div>
+  ) : (
+    <div className='text-black'>No cookbooks yet</div>
   );
 }

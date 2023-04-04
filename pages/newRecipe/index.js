@@ -1,12 +1,11 @@
 import Nav from '../../components/nav';
-import newRecipe from '../../components/newRecipe';
+import NewRecipe from '../../components/newRecipe';
 
 function newRecipeRoute() {
   return (
     <div>
       <Nav />
-      <newRecipe />
-      <div>This is our new recipe page for our logged in user</div>
+      <NewRecipe />
     </div>
   );
 }
