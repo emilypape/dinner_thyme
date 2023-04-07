@@ -1,6 +1,26 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { Icon } from '@iconify/react';
 
 export default function NewRecipe() {
+  const [ingredients, setIngredients] = useState([]);
+  const [currentIngredient, setCurrentIngredient] = useState('');
+
+  function newIngredient(event) {
+    let ingredient = event.target.value;
+    console.log(ingredient);
+    setCurrentIngredient(ingredient);
+  }
+
+  function addIngredient() {
+    const ingredientArray = [...ingredients];
+
+    ingredientArray.push(currentIngredient);
+
+    setIngredients(ingredientArray);
+    setCurrentIngredient('');
+  }
+
+  console.log(ingredients);
   return (
     <div className=''>
       <div className='flex flex-col items-center justify-center'>
@@ -68,6 +88,40 @@ export default function NewRecipe() {
             </div>
           </div>
         </form>
+      </div>
+      <div className='flex justify-center mt-5 '>
+        <div className='w-full container'>
+          <div class='relative'>
+            <div className=' border-b border-green-500 mt-8 py-2 lg:mr-[7em] md:mr-[7em] lg:ml-[7em] md:ml-[7em]'>
+              <input
+                onChange={newIngredient}
+                value={currentIngredient}
+                className='appearance-none bg-transparent border-none w-full text-gray-700  leading-tight focus:outline-none'
+                type='text'
+                placeholder='Ingredients'
+              />
+            </div>
+            <button
+              onClick={addIngredient}
+              class='text-white absolute lg:mr-28 md:mr-28  right-1.5 bottom-2.5 bg-green-500  font-medium rounded-lg text-sm px-4 py-2'>
+              Add
+            </button>
+          </div>
+          <div className=' min-h-[10em] bg-gray-200 py-5 rounded-lg lg:mr-[7em] md:mr-[7em] lg:ml-[7em] md:ml-[7em] mt-5'>
+            <div className='flex ml-3'>
+              {ingredients.map((ingredient) => {
+                return (
+                  <div className='flex mr-3 bg-green-500 px-2 py-2 text-white rounded-lg'>
+                    <div>{ingredient}</div>
+                    <div className='ml-1 mt-1 cursor-pointer'>
+                      <Icon icon='ph:x-bold' color='white' />
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );
