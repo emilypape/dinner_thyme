@@ -21,7 +21,14 @@ export default function NewRecipe() {
     setCurrentIngredient('');
   }
 
-  console.log(ingredients);
+  function removeIngredient(indexToRemove) {
+    let ingredientArray = [...ingredients];
+
+    ingredientArray.splice(indexToRemove, 1);
+
+    setIngredients(ingredientArray);
+  }
+
   return (
     <div className=''>
       <div className='flex flex-col items-center justify-center'>
@@ -110,11 +117,11 @@ export default function NewRecipe() {
           </div>
           <div className=' min-h-[10em] bg-gray-200  rounded-lg lg:mr-[7em] md:mr-[7em] lg:ml-[7em] md:ml-[7em] mt-5'>
             <div className='flex flex-wrap ml-3'>
-              {ingredients.map((ingredient) => {
+              {ingredients.map((ingredient, i) => {
                 return (
-                  <div className='flex max-w-[12em] mt-2 mr-3 bg-green-500 px-2 py-2 text-white rounded-lg'>
-                    <div>{ingredient}</div>
-                    <div className='ml-1 mt-1 cursor-pointer'>
+                  <div className='ingredientContainer flex max-w-[12em] mt-2 mr-3 bg-green-500 px-2 py-2 text-white rounded-lg'>
+                    <div className='ingredient'>{ingredient}</div>
+                    <div onClick={() => removeIngredient(i)} className='ml-1 mt-1 cursor-pointer'>
                       <Icon icon='ph:x-bold' color='white' />
                     </div>
                   </div>

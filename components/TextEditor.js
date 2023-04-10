@@ -23,7 +23,7 @@ export default function TextEditor() {
     ],
   };
 
-  const placeholder = 'Compose an epic...';
+  const placeholder = 'Lets Get Cooking!';
 
   const formats = [
     'bold',
@@ -51,11 +51,15 @@ export default function TextEditor() {
   }
 
   return (
-    <div>
+    <div className=''>
       <div className='' style={{ border: '1px solid lightgray' }}>
-        <div ref={quillRef} />
+        <div className='min-h-[10em]' ref={quillRef} />
       </div>
-      <button onClick={submitQuill}>Submit</button>
+      <div className='flex justify-center'>
+        <button className='text-xl  bg-green-500 text-white py-2  px-5 rounded-lg mt-5 mb-5 ' onClick={submitQuill}>
+          Submit
+        </button>
+      </div>
     </div>
   );
 }
