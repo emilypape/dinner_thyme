@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Icon } from '@iconify/react';
+import TextEditor from './TextEditor';
 
 export default function NewRecipe() {
   const [ingredients, setIngredients] = useState([]);
@@ -121,6 +122,12 @@ export default function NewRecipe() {
               })}
             </div>
           </div>
+        </div>
+      </div>
+      <div className='flex items-center justify-center'>
+        <div className='flex-col mt-10'>
+          <div className='mb-2 text-2xl text-green-500 font-semibold'>Cooking Instructions</div>
+          <TextEditor />
         </div>
       </div>
     </div>
