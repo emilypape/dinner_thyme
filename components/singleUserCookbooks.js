@@ -12,7 +12,7 @@ export default function SingleUserCookbooks({ userId }) {
     });
 
     const cookbookData = await response.json();
-    console.log(cookbookData);
+
     setUserCookbooks(cookbookData);
   }
 
@@ -31,21 +31,25 @@ export default function SingleUserCookbooks({ userId }) {
                     <div className='mb-[-5em] image-container'>
                       {cookbook?.recipes?.[0] && (
                         <Link href={`/cookbookRecipes/${cookbook.id}`}>
-                          <Image
-                            src={cookbook.recipes[0].image_urls}
-                            width={700}
-                            height={300}
-                            className='object-cover'
-                          />
+                          <div className='cursor-pointer'>
+                            <Image
+                              src={cookbook.recipes[0].image_urls}
+                              width={700}
+                              height={300}
+                              className='object-cover'
+                            />
+                          </div>
                         </Link>
                       )}
                     </div>
                   </div>
                 </div>
                 <div className='cookbookTitleContainer'>
-                  <div className='cookbookTitle max-w-[10em] min-w-[10em] lg:p-4 md:p-4 p-2 rounded-r-lg relative top-[-1em] text-white font-semibold lg:text-2xl md:text-2xl text-lg bg-green-500'>
-                    {cookbook.title}
-                  </div>
+                  <Link href={`/cookbookRecipes/${cookbook.id}`}>
+                    <div className='cursor-pointer cookbookTitle max-w-[10em] min-w-[10em] lg:p-4 md:p-4 p-2 rounded-r-lg relative top-[-1em] text-white font-semibold lg:text-2xl md:text-2xl text-lg bg-green-500'>
+                      {cookbook.title}
+                    </div>
+                  </Link>
                 </div>
               </div>
             </div>
