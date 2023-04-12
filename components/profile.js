@@ -45,14 +45,13 @@ export default function Profile() {
             <div className='ml-8 xl:text-3xl lg:text-3xl md:text-2xl font-bold lg:ml-10 lg:mt-6 md:ml-10 md:mt-8 font-title'>
               {user.first_name}'s Kitchen
             </div>
+
             <button
               onClick={() => setEditProfModal(true)}
               className=' py-2 px-10 text-white text-sm rounded-lg bg-green-500 xl:py-2 xl:px-6 md:py-2 md:px-6 lg:py-2 lg:px-6 mt-3 xl:text-lg lg:text-lg lg:ml-14 md:ml-10 b-2 b'>
               <div>Edit Profile</div>
             </button>
-            <button
-              onClick={() => router.push('/newRecipe')}
-              className='flex ml-4 text-sm lg:ml-0 md-ml-0 transition ease-in-out delay-150 hover:-translate-y-1 hover:scale-110'>
+            <button onClick={() => router.push('/newRecipe')} className='flex ml-4 text-sm lg:ml-0 md-ml-0 delay-150 '>
               <Icon className='mt-4 lg:ml-16 md:ml-6' icon='bi:plus-square' color='gray' width={23} height={23} />
               <div className='text-gray-500 mt-4 ml-1 font-semibold'>New Recipe</div>
             </button>
