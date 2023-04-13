@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import ProfileRecipes from './profileRecipes';
 import EditProfile from './editProfile';
 import Likes from './likes';
-import Following from './following';
+import Following from './Following';
 import { useRouter } from 'next/router';
 import Loader from './loader';
 
@@ -20,7 +20,7 @@ export default function Profile() {
   async function loggedInUser() {
     const response = await fetch('/api/loggedInUser');
     let userData = await response.json();
-    console.log(userData);
+
     setUser(userData);
   }
 
@@ -99,7 +99,7 @@ export default function Profile() {
           {editProfModal ? (
             <EditProfile setEditProfModal={setEditProfModal} setUser={setUser} editProfModal={editProfModal} />
           ) : null}
-          {followerModal ? <Following setFollowerModal={setFollowerModal} followerModal={followerModal} /> : null}
+          {followerModal && <Following setFollowerModal={setFollowerModal} followerModal={followerModal} />}
           {likeList ? <Likes /> : <ProfileRecipes />}
         </div>
       </div>

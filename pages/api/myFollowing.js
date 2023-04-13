@@ -1,7 +1,7 @@
 const { User, Followers } = require('../../database/models');
 import { withIronSession } from 'next-iron-session';
 
-async function myLikes(req, res) {
+async function myFollowing(req, res) {
   const { user } = req.session.get();
 
   const userId = user.user_id;
@@ -23,7 +23,7 @@ async function myLikes(req, res) {
   res.status(200).json(myFollowing);
 }
 
-export default withIronSession(myLikes, {
+export default withIronSession(myFollowing, {
   password: process.env.APPLICATION_SECRET,
   cookieName: 'oatmeal_cookie',
   // if your localhost is served on http:// then disable the secure flag

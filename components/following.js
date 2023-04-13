@@ -1,8 +1,8 @@
-import { useState, useEffect } from 'react';
-import { Image } from 'next/image';
-
+import { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from './Link';
 export default function Following({ setFollowerModal }) {
-  const [following, setFollowing] = useState();
+  const [following, setFollowing] = useState([]);
 
   async function fetchFollowing() {
     const response = await fetch('/api/myFollowing', {
@@ -10,6 +10,7 @@ export default function Following({ setFollowerModal }) {
     });
 
     let followingData = await response.json();
+    console.log(followingData);
     setFollowing(followingData);
   }
 
@@ -17,10 +18,9 @@ export default function Following({ setFollowerModal }) {
     fetchFollowing();
   }, []);
 
-  let myFollowing = following;
   return (
     <>
-      <div className=' justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  outline-none focus:outline-none'>
+      <div className=' justify-center  items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  outline-none focus:outline-none'>
         <div className='relative w-auto my-6 mx-auto max-w-sm lg:max-w-xl md:max-w-xl xl:max-w-xl'>
           {/*content*/}
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
@@ -34,18 +34,26 @@ export default function Following({ setFollowerModal }) {
               </button>
             </div>
             {/*body*/}
-            {myFollowing?.map((follows) => {
-              return (
-                <div className='flex items-center space-x-4'>
-                  {/* <Image src={} className='w-10 h-10 rounded-full' alt='' /> */}
-                  <div className='font-medium dark:text-black'>
-                    <div>{follows.user.username}</div>
-                  </div>
-                </div>
-              );
-            })}
-            <div className='relative p-6 flex-auto'></div>
-            {/*footer*/}
+            <div className='overflow-scroll overflow-x-scroll max-h-[15em] min-w-[15em] '>
+              {following?.map((follows) => {
+                return (
+                  <Link href={`/profile/${follows.user.id}`}>
+                    <div className='flex items-center space-x-4 ml-4 mb-2 mt-1'>
+                      <Image
+                        src={follows.user.profile_picture}
+                        width={40}
+                        height={40}
+                        className='w-10 h-10 rounded-full'
+                        alt=''
+                      />
+                      <div className='font-medium dark:text-black'>
+                        <div>{follows.user.username}</div>
+                      </div>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>
