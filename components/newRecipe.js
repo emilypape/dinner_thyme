@@ -70,15 +70,15 @@ export default function NewRecipe() {
             />
           </div>
           <div className='flex justify-between mt-10 lg:mr-[7em] md:mr-[7em] lg:ml-[7em] md:ml-[7em]'>
-            <div className=' border-b border-green-500 py-2  '>
+            <div className=' border-b border-green-500 py-2 mr-1 '>
               <input
                 className='appearance-none bg-transparent border-none w-full text-gray-700  leading-tight focus:outline-none'
                 type='text'
-                placeholder='Cook Temperature'
+                placeholder='Cook Temp'
                 aria-label='Full name'
               />
             </div>
-            <div className=' border-b border-green-500 py-2 '>
+            <div className=' border-b border-green-500 py-2 mr-1'>
               <input
                 className='appearance-none bg-transparent border-none w-full text-gray-700  leading-tight focus:outline-none'
                 type='text'
