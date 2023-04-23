@@ -100,7 +100,9 @@ export default function Comments({ recipeId, setCommentOpen }) {
                         </div>
                       </div>
                       <div>
-                        <div className='ml-12 mb-1 text-xs text-gray-400'>Reply</div>
+                        <div onClick={() => openReplies(comment.id)} className='ml-12 mb-1 text-xs text-gray-400'>
+                          Reply
+                        </div>
                         <div className='flex-col ml-12 '>
                           <div className='flex'>
                             <div className='ml-2 text-xs text-gray-400'>___</div>
@@ -119,7 +121,9 @@ export default function Comments({ recipeId, setCommentOpen }) {
                             )}
                             <div className='ml-2 text-xs text-gray-400'>___</div>
                           </div>
-                          {openedReplies[comment.id] && <Replies commentId={comment.id} />}
+                          {openedReplies[comment.id] && (
+                            <Replies username={comment.user.username} commentId={comment.id} />
+                          )}
                         </div>
                       </div>
                     </div>

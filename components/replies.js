@@ -1,10 +1,13 @@
 import { useState, useEffect } from 'react';
+import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from './Link';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 
-export default function Replies({ commentId }) {
+export default function Replies({ commentId, username }) {
   const [replyList, setReplyList] = useState(false);
+
+  let replyUsername = `@${username}`;
 
   async function getReplies() {
     const response = await fetch(`/api/commentReplies/${commentId}`, {
@@ -34,7 +37,12 @@ export default function Replies({ commentId }) {
               <div className='flex '>
                 <Link href={`/profile/${reply.user.id}`}>
                   <div className='ml-2 mr-1'>
-                    <Image src={reply?.user?.profile_picture || profilePicPlaceholder} className='rounded-full ' height={25} width='25' />
+                    <Image
+                      src={reply?.user?.profile_picture || profilePicPlaceholder}
+                      className='rounded-full '
+                      height={25}
+                      width='25'
+                    />
                   </div>
                 </Link>
                 <div className='text-xs mb-1'>
@@ -47,6 +55,12 @@ export default function Replies({ commentId }) {
             </div>
           );
         })}
+        <div className=' flex'>
+          <input
+            className='border p-[.1em] mb-1 mt-1 text-sm border-gray-300 rounded-lg '
+            placeholder={replyUsername}></input>
+          <Icon className='mr-2 ml-1 mt-2 cursor-pointer' icon='ri:send-plane-fill' />
+        </div>
       </div>
     ) : (
       <div className='flex ml-6 text-xs'>No replies</div>
