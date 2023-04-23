@@ -6,8 +6,30 @@ import profilePicPlaceholder from '../public/assets/images/profile_pic_placehold
 
 export default function Replies({ commentId, username }) {
   const [replyList, setReplyList] = useState(false);
+  const [replyText, setReplyText] = useState('');
 
-  let replyUsername = `@${username}`;
+  const handleReplyText = (event) => {
+    setReplyText(event.target.value);
+    console.log(replyText);
+  };
+
+  async function postReply() {
+    const response = await fetch(`/api/newReply`, {
+      method: 'Post',
+      body: JSON.stringify({
+        reply_text: replyText,
+        comment_id: commentId,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response) {
+      alert(response.statusText);
+    } else {
+      getReplies();
+      setReplyText('');
+    }
+  }
 
   async function getReplies() {
     const response = await fetch(`/api/commentReplies/${commentId}`, {
@@ -24,6 +46,7 @@ export default function Replies({ commentId, username }) {
   useEffect(() => {
     getReplies();
   }, []);
+  let replyUsername = `@${username}`;
   console.log(replyList);
 
   if (!replyList) {
@@ -57,13 +80,25 @@ export default function Replies({ commentId, username }) {
         })}
         <div className=' flex'>
           <input
+            value={replyText}
+            onChange={handleReplyText}
             className='border p-[.1em] mb-1 mt-1 text-sm border-gray-300 rounded-lg '
             placeholder={replyUsername}></input>
-          <Icon className='mr-2 ml-1 mt-2 cursor-pointer' icon='ri:send-plane-fill' />
+          <Icon onClick={postReply} className='mr-2 ml-1 mt-2 cursor-pointer' icon='ri:send-plane-fill' />
         </div>
       </div>
     ) : (
-      <div className='flex ml-6 text-xs'>No replies</div>
+      <div>
+        <div className='flex ml-6 text-xs'>No replies</div>
+        <div className=' flex'>
+          <input
+            value={replyText}
+            onChange={handleReplyText}
+            className='border p-[.1em] mb-1 mt-1 text-sm border-gray-300 rounded-lg '
+            placeholder={replyUsername}></input>
+          <Icon onClick={postReply} className='mr-2 ml-1 mt-2 cursor-pointer' icon='ri:send-plane-fill' />
+        </div>
+      </div>
     );
   }
 }
