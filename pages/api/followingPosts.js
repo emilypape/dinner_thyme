@@ -23,6 +23,15 @@ async function myFollwingPosts(req, res) {
       include: [
         {
           model: User,
+          include: [
+            {
+              model: Followers,
+              required: false,
+              where: {
+                follower_id: userId,
+              },
+            },
+          ],
         },
         {
           model: Likes,
