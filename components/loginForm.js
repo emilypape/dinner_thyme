@@ -23,6 +23,7 @@ export default function LoginForm({ setLogin, setIsLoggedIn }) {
       }),
       headers: { 'Content-Type': 'application/json' },
     });
+
     if (response.ok) {
       router.push('/profile');
     } else {
