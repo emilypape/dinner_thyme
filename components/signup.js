@@ -10,7 +10,6 @@ export default function SignupForm({ setLogin }) {
 
   // grab input for signup and assign it to a state value
   const handleChange = (e, setter) => {
-    console.log(e);
     setter(e.target.value);
   };
 
