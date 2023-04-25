@@ -76,10 +76,10 @@ export default function Comments({ recipeId, setCommentOpen }) {
               <div className='hidden lg:block md:block xl:block '>
                 <Image src={comments?.image_urls || noPhoto} alt={'Recipe Photo'} width={550} height={500} />
               </div>
-              <div className='max-h-[25rem] overflow-y-scroll '>
+              <div className='max-h-[25rem] overflow-y-scroll min-w-[20em]'>
                 {comments?.comments?.map((comment) => {
                   return (
-                    <div className='flex-col' id={comment.id}>
+                    <div key={comment.id} className='flex-col' id={comment.id}>
                       <div className='flex'>
                         <Link href={`/profile/${comment.user.id}`}>
                           <div className='ml-2 mr-1'>
@@ -136,6 +136,11 @@ export default function Comments({ recipeId, setCommentOpen }) {
               <input
                 className='appearance-none min-w-full lg:min-w-[38%] md:min-w-[38%]'
                 value={commentText}
+                onKeyPress={(e) => {
+                  if (e.key === 'Enter') {
+                    postComments();
+                  }
+                }}
                 onChange={handleCommentText}
                 placeholder='Add a comment...'></input>
               <Icon onClick={postComments} className='mr-2 cursor-pointer' icon='ri:send-plane-fill' />
