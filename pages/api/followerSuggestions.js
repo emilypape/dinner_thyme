@@ -1,3 +1,4 @@
+const { Op } = require('sequelize');
 const { User, Followers } = require('../../database/models');
 
 import { withIronSession } from 'next-iron-session';
@@ -7,22 +8,24 @@ async function FollowerSuggestions(req, res) {
 
   const userId = user.user_id;
 
-  const followSuggestions = await Followers.findAll({
-    include: {
-      model: User,
-      attributes: ['username', 'profile_picture', 'id', 'first_name'],
-    },
-  });
-
-  let currentlyFollowing = await Followers.findAll({
+  const followings = await Followers.findAll({
     where: {
       follower_id: userId,
     },
+    attributes: ['following_id'],
   });
 
-  let currentFollowing = currentlyFollowing.map((el) => el.following_id);
+  const notRecommendedIds = followings.map((following) => following.following_id);
 
-  let suggestions = followSuggestions.filter((el) => el.follower_id !== userId).slice(0, 5);
+  let suggestions = await User.findAll({
+    where: {
+      id: {
+        [Op.notIn]: [...notRecommendedIds, userId],
+      },
+    },
+  });
+
+  suggestions = suggestions.sort(() => Math.random() - 0.5).slice(0, 5);
 
   if (!suggestions) {
     res.status(400).json({ message: 'There are no suggested users!' });
