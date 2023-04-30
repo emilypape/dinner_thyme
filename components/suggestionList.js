@@ -24,7 +24,7 @@ export default function SuggestionList() {
       {suggestionList.map((suggestion) => {
         return (
           <div className='flex justify-between'>
-            <div className=' mt-5 hidden lg:flex md:flex xl:flex items-center lg:items-end lg:justify-start md:justify-start '>
+            <div className=' mt-5  lg:flex md:flex xl:flex items-center lg:items-end lg:justify-start md:justify-start '>
               <Link href={`/profile/${suggestion.id}`}>
                 <div className='flex'>
                   <Image
@@ -44,7 +44,7 @@ export default function SuggestionList() {
               </Link>
             </div>
             <Link href={`/profile/${suggestion.id}`}>
-              <div className='mt-10 ml-28 md:hidden hidden lg:flex md:flex xl:flex '>
+              <div className='mt-10 ml-28 md:hidden lg:flex md:flex xl:flex '>
                 <div className='text-sm text-blue-500 hover:text-blue-800'>visit</div>
               </div>
             </Link>

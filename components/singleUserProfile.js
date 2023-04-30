@@ -81,6 +81,6 @@ export default function SingleUserProfile({ userId }) {
       </div>
     </div>
   ) : (
-    <div />
+    <div></div>
   );
 }

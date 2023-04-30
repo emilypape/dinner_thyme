@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
+import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 import Link from './Link';
+
 export default function Following({ setFollowerModal }) {
   const [following, setFollowing] = useState([]);
 
@@ -40,7 +42,7 @@ export default function Following({ setFollowerModal }) {
                   <Link href={`/profile/${follows.user.id}`}>
                     <div className='flex items-center space-x-4 ml-4 mb-2 mt-1'>
                       <Image
-                        src={follows.user.profile_picture}
+                        src={follows.user.profile_picture || profilePicPlaceholder}
                         width={40}
                         height={40}
                         className='w-10 h-10 rounded-full'

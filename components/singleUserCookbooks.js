@@ -58,6 +58,13 @@ export default function SingleUserCookbooks({ userId }) {
       </div>
     </div>
   ) : (
-    <div className='text-black'>No cookbooks yet</div>
+    <div className='flex flex-col items-center mt-10'>
+      <div className='flex bg-green-500  lg:min-w-[43.75em] md:min-w-[43.75em] min-w-full lg:py-8 md:py-8 py-4 justify-center'>
+        <div className='text-white mt-3 ml-3 font-semibold lg:text-2xl md:text-2xl text-lg min-w-[10em] text-center mb-1'>
+          {' '}
+          No cookbooks
+        </div>
+      </div>
+    </div>
   );
 }
