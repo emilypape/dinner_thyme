@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Icon } from '@iconify/react';
 import Image from 'next/image';
 import Link from 'next/link';
+import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function SingleUserCookbooks({ userId }) {
   const [userCookbooks, setUserCookbooks] = useState([]);
@@ -29,15 +30,23 @@ export default function SingleUserCookbooks({ userId }) {
                 <div className='recipeImageContainer'>
                   <div>
                     <div className='mb-[-5em] image-container'>
-                      {cookbook?.recipes?.[0] && (
+                      {cookbook?.recipes?.length > 0 ? (
+                        cookbook?.recipes?.[0] && (
+                          <Link href={`/cookbookRecipes/${cookbook.id}`}>
+                            <div className='cursor-pointer'>
+                              <Image
+                                src={cookbook.recipes[0].image_urls || noPhoto}
+                                width={700}
+                                height={300}
+                                className='object-cover'
+                              />
+                            </div>
+                          </Link>
+                        )
+                      ) : (
                         <Link href={`/cookbookRecipes/${cookbook.id}`}>
                           <div className='cursor-pointer'>
-                            <Image
-                              src={cookbook.recipes[0].image_urls}
-                              width={700}
-                              height={300}
-                              className='object-cover'
-                            />
+                            <Image src={noPhoto} width={700} height={300} className='object-cover' />
                           </div>
                         </Link>
                       )}
