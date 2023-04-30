@@ -1,14 +1,15 @@
 import { useState, useEffect } from 'react';
 import { Transition } from '@headlessui/react';
 import { useRouter } from 'next/router';
+import useUser from '../utils/useUser';
 
 export default function EditProfile({ setEditProfModal, setUser }) {
   let [firstName, setFirstName] = useState('');
   let [lastName, setLastName] = useState('');
   let [username, setUsername] = useState('');
-  let [password, setPassword] = useState('');
 
   const router = useRouter();
+  const { user } = useUser();
 
   // grab input for signup and assign it to a state value
   const handleFirstName = (event) => {
@@ -23,9 +24,6 @@ export default function EditProfile({ setEditProfModal, setUser }) {
     setUsername(event.target.value);
   };
 
-  const handlePassword = (event) => {
-    setPassword(event.target.value);
-  };
   async function updateProfile() {
     const response = await fetch('/api/editProfile', {
       method: 'put',
@@ -33,7 +31,6 @@ export default function EditProfile({ setEditProfModal, setUser }) {
         first_name: firstName,
         last_name: lastName,
         username: username,
-        hashed_password: password,
       }),
       headers: { 'Content-Type': 'application/json' },
     });
@@ -50,6 +47,15 @@ export default function EditProfile({ setEditProfModal, setUser }) {
     updateProfile();
     setEditProfModal(false);
   }
+
+  useEffect(() => {
+    console.log(user);
+    const { first_name, last_name, username } = user;
+    setFirstName(first_name);
+    setLastName(last_name);
+    setUsername(username);
+  }, [user]);
+
   return (
     <>
       <div className=' justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  outline-none focus:outline-none'>
@@ -78,6 +84,7 @@ export default function EditProfile({ setEditProfModal, setUser }) {
                         onChange={handleFirstName}
                         className='border-2 rounded-lg py-1 px-1 '
                         placeholder='first name'
+                        value={firstName}
                       />
                     </div>
                     <div>
@@ -86,6 +93,7 @@ export default function EditProfile({ setEditProfModal, setUser }) {
                         onChange={handlelastName}
                         className='border-2 rounded-lg py-1 px-1'
                         placeholder='last name'
+                        value={lastName}
                       />
                     </div>
                   </div>
@@ -96,15 +104,7 @@ export default function EditProfile({ setEditProfModal, setUser }) {
                         onChange={handleUsername}
                         className='border-2 rounded-lg py-1 px-1'
                         placeholder='username'
-                      />
-                    </div>
-                    <div>
-                      <div className='text-black'>Password</div>
-                      <input
-                        onChange={handlePassword}
-                        className='border-2 rounded-lg py-1 px-1'
-                        placeholder='password'
-                        type='password'
+                        value={username}
                       />
                     </div>
                   </div>
