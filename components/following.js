@@ -37,24 +37,28 @@ export default function Following({ setFollowerModal }) {
             </div>
             {/*body*/}
             <div className='overflow-scroll overflow-x-scroll max-h-[15em] min-w-[15em] '>
-              {following?.map((follows) => {
-                return (
-                  <Link href={`/profile/${follows.user.id}`}>
-                    <div className='flex items-center space-x-4 ml-4 mb-2 mt-1'>
-                      <Image
-                        src={follows.user.profile_picture || profilePicPlaceholder}
-                        width={40}
-                        height={40}
-                        className='w-10 h-10 rounded-full'
-                        alt=''
-                      />
-                      <div className='font-medium dark:text-black'>
-                        <div>{follows.user.username}</div>
+              {following?.length > 0 ? (
+                following?.map((follows) => {
+                  return (
+                    <Link href={`/profile/${follows.user.id}`}>
+                      <div className='flex items-center space-x-4 ml-4 mb-2 mt-1'>
+                        <Image
+                          src={follows.user.profile_picture || profilePicPlaceholder}
+                          width={40}
+                          height={40}
+                          className='w-10 h-10 rounded-full'
+                          alt=''
+                        />
+                        <div className='font-medium dark:text-black'>
+                          <div>{follows.user.username}</div>
+                        </div>
                       </div>
-                    </div>
-                  </Link>
-                );
-              })}
+                    </Link>
+                  );
+                })
+              ) : (
+                <div className='text-black'>Not following any users</div>
+              )}
             </div>
           </div>
         </div>

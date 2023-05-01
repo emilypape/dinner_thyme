@@ -8,12 +8,14 @@ import Likes from './likes';
 import Following from './Following';
 import { useRouter } from 'next/router';
 import Loader from './loader';
+import ProfilePictureModal from './ProfilePictureModal';
 
 export default function Profile() {
   const [user, setUser] = useState(null);
   const [editProfModal, setEditProfModal] = useState(false);
   const [followerModal, setFollowerModal] = useState(false);
   const [likeList, setLikeList] = useState(false);
+  const [profilePictureModal, setProfilePictureModal] = useState(false);
 
   const router = useRouter();
 
@@ -56,7 +58,9 @@ export default function Profile() {
               <div className='text-gray-500 mt-4 ml-1 font-semibold'>New Recipe</div>
             </button>
           </div>
-          <button className='absolute mt-2 xl:mt-24 lg:mt-24 md:mt-24 rounded-full bg-white lg:-ml-2'>
+          <button
+            onClick={() => setProfilePictureModal(true)}
+            className='absolute mt-2 xl:mt-24 lg:mt-24 md:mt-24 rounded-full bg-white lg:-ml-2'>
             <Icon icon='akar-icons:circle-plus-fill' color='lime' width={50} height={50} />
           </button>
         </div>
@@ -99,6 +103,7 @@ export default function Profile() {
           {editProfModal ? (
             <EditProfile setEditProfModal={setEditProfModal} setUser={setUser} editProfModal={editProfModal} />
           ) : null}
+          {profilePictureModal ? <ProfilePictureModal setProfilePictureModal={setProfilePictureModal} /> : null}
           {followerModal && <Following setFollowerModal={setFollowerModal} followerModal={followerModal} />}
           {likeList ? <Likes /> : <ProfileRecipes />}
         </div>
