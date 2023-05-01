@@ -7,13 +7,46 @@ import profile_picture_four from '../public/assets/images/prof_pic_4.jpeg';
 import profile_picture_five from '../public/assets/images/prof_pic_5.jpeg';
 import profile_picture_six from '../public/assets/images/prof_pic_6.jpeg';
 
-export default function ProfilePictureModal({ setProfilePictureModal }) {
+export default function ProfilePictureModal({ setProfilePictureModal, setProfilePicture }) {
   const [isSelected, setIsSelected] = useState('');
+  const [selectedImage, setSelectedImage] = useState();
 
-  function handleImageSelection(value) {
-    setIsSelected(value);
-    console.log(value);
+  async function handleProfilePictureChange() {
+    const response = await fetch(`/api/updateProfilePicture`, {
+      method: 'put',
+      body: JSON.stringify({
+        profile_picture: selectedImage,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    if (!response.ok) {
+      alert(response.statusText);
+    } else {
+      setProfilePicture(selectedImage);
+      setProfilePictureModal(false);
+    }
   }
+
+  function handleImageSelection(value, e) {
+    setIsSelected(value);
+    setSelectedImage(`/${e.target.src.match(/_next.+/)[0]}`);
+    console.log(e);
+
+    // if (value === 'prof_pic_1') {
+    //   setSelectedImage('/public/assets/images/prof_pic_1.jpeg');
+    // } else if (value === 'prof_pic_2') {
+    //   setSelectedImage('/public/assets/images/prof_pic_2.webp');
+    // } else if (value === 'prof_pic_3') {
+    //   setSelectedImage('/public/assets/images/prof_pic_3.jpeg');
+    // } else if (value === 'prof_pic_4') {
+    //   setSelectedImage('/public/assets/images/prof_pic_4.jpeg');
+    // } else if (value === 'prof_pic_5') {
+    //   setSelectedImage('/public/assets/images/prof_pic_5.jpeg');
+    // } else if (value === 'prof_pic_6') {
+    //   setSelectedImage('/public/assets/images/prof_pic_6.jpeg');
+    // }
+  }
+  console.log(selectedImage);
   return (
     <>
       <div className=' justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  outline-none focus:outline-none'>
@@ -35,36 +68,36 @@ export default function ProfilePictureModal({ setProfilePictureModal }) {
             <div className='relative p-6 flex-auto'>
               <div className='flex-wrap flex justify-evenly'>
                 <div
-                  onClick={() => handleImageSelection('prof_pic_1')}
+                  onClick={(e) => handleImageSelection('prof_pic_1', e)}
                   className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_1' ? 'border-4 border-green-500' : ''}`}>
                   <Image src={profile_picture_one} height={150} width={150} />
                 </div>
                 <div
-                  onClick={() => handleImageSelection('prof_pic_2')}
+                  onClick={(e) => handleImageSelection('prof_pic_2', e)}
                   className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_2' ? 'border-4 border-green-500' : ''}`}
                   value='prof_pic_2'>
                   <Image src={profile_picture_two} height={150} width={150} />
                 </div>
                 <div
-                  onClick={() => handleImageSelection('prof_pic_3')}
+                  onClick={(e) => handleImageSelection('prof_pic_3', e)}
                   className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_3' ? 'border-4 border-green-500' : ''}`}
                   value='prof_pic_3'>
                   <Image src={profile_picture_three} height={150} width={150} />
                 </div>
                 <div
-                  onClick={() => handleImageSelection('prof_pic_4')}
+                  onClick={(e) => handleImageSelection('prof_pic_4', e)}
                   className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_4' ? 'border-4 border-green-500' : ''}`}
                   value='prof_pic_4'>
                   <Image src={profile_picture_four} height={150} width={150} />
                 </div>
                 <div
-                  onClick={() => handleImageSelection('prof_pic_5')}
+                  onClick={(e) => handleImageSelection('prof_pic_5', e)}
                   className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_5' ? 'border-4 border-green-500' : ''}`}
                   value='prof_pic_5'>
                   <Image src={profile_picture_five} height={150} width={150} />
                 </div>
                 <div
-                  onClick={() => handleImageSelection('prof_pic_6')}
+                  onClick={(e) => handleImageSelection('prof_pic_6', e)}
                   className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_6' ? 'border-4 border-green-500' : ''}`}
                   value='prof_pic_6'>
                   <Image src={profile_picture_six} height={150} width={150} />
@@ -82,8 +115,7 @@ export default function ProfilePictureModal({ setProfilePictureModal }) {
               <button
                 className='bg-green-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                 type='button'
-                // onClick={() => setEditProfModal(false)}
-              >
+                onClick={handleProfilePictureChange}>
                 Save Changes
               </button>
             </div>

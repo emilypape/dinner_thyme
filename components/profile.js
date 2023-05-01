@@ -16,7 +16,7 @@ export default function Profile() {
   const [followerModal, setFollowerModal] = useState(false);
   const [likeList, setLikeList] = useState(false);
   const [profilePictureModal, setProfilePictureModal] = useState(false);
-
+  const [profilePicture, setProfilePicture] = useState('');
   const router = useRouter();
 
   async function loggedInUser() {
@@ -24,6 +24,7 @@ export default function Profile() {
     let userData = await response.json();
 
     setUser(userData);
+    setProfilePicture(userData.profile_picture);
   }
 
   useEffect(() => {
@@ -37,7 +38,7 @@ export default function Profile() {
           <div>
             <Image
               className='rounded-full border-2 border-black'
-              src={user.profile_picture || profilePicPlaceholder}
+              src={profilePicture || profilePicPlaceholder}
               width={150}
               height={150}
               alt=''
@@ -103,7 +104,12 @@ export default function Profile() {
           {editProfModal ? (
             <EditProfile setEditProfModal={setEditProfModal} setUser={setUser} editProfModal={editProfModal} />
           ) : null}
-          {profilePictureModal ? <ProfilePictureModal setProfilePictureModal={setProfilePictureModal} /> : null}
+          {profilePictureModal ? (
+            <ProfilePictureModal
+              setProfilePictureModal={setProfilePictureModal}
+              setProfilePicture={setProfilePicture}
+            />
+          ) : null}
           {followerModal && <Following setFollowerModal={setFollowerModal} followerModal={followerModal} />}
           {likeList ? <Likes /> : <ProfileRecipes />}
         </div>
