@@ -6,6 +6,15 @@ import profile_picture_three from '../public/assets/images/prof_pic_3.jpeg';
 import profile_picture_four from '../public/assets/images/prof_pic_4.jpeg';
 import profile_picture_five from '../public/assets/images/prof_pic_5.jpeg';
 import profile_picture_six from '../public/assets/images/prof_pic_6.jpeg';
+import profile_picture_seven from '../public/assets/images/prof_pic_7.jpeg';
+import profile_picture_eight from '../public/assets/images/prof_pic_8.jpeg';
+import profile_picture_nine from '../public/assets/images/prof_pic_9.jpeg';
+import profile_picture_ten from '../public/assets/images/prof_pic_10.jpeg';
+import profile_picture_eleven from '../public/assets/images/prof_pic_11.webp';
+import profile_picture_twelve from '../public/assets/images/prof_pic_12.jpeg';
+import profile_picture_thirteen from '../public/assets/images/prof_pic_13.jpeg';
+import profile_picture_fourteen from '../public/assets/images/prof_pic_14.jpeg';
+import profile_picture_fifteen from '../public/assets/images/prof_pic_15.webp';
 
 export default function ProfilePictureModal({ setProfilePictureModal, setProfilePicture }) {
   const [isSelected, setIsSelected] = useState('');
@@ -31,20 +40,6 @@ export default function ProfilePictureModal({ setProfilePictureModal, setProfile
     setIsSelected(value);
     setSelectedImage(`/${e.target.src.match(/_next.+/)[0]}`);
     console.log(e);
-
-    // if (value === 'prof_pic_1') {
-    //   setSelectedImage('/public/assets/images/prof_pic_1.jpeg');
-    // } else if (value === 'prof_pic_2') {
-    //   setSelectedImage('/public/assets/images/prof_pic_2.webp');
-    // } else if (value === 'prof_pic_3') {
-    //   setSelectedImage('/public/assets/images/prof_pic_3.jpeg');
-    // } else if (value === 'prof_pic_4') {
-    //   setSelectedImage('/public/assets/images/prof_pic_4.jpeg');
-    // } else if (value === 'prof_pic_5') {
-    //   setSelectedImage('/public/assets/images/prof_pic_5.jpeg');
-    // } else if (value === 'prof_pic_6') {
-    //   setSelectedImage('/public/assets/images/prof_pic_6.jpeg');
-    // }
   }
   console.log(selectedImage);
   return (
@@ -65,7 +60,7 @@ export default function ProfilePictureModal({ setProfilePictureModal, setProfile
               </button>
             </div>
             {/*body*/}
-            <div className='relative p-6 flex-auto'>
+            <div className='relative p-6 flex-auto overflow-y-scroll max-h-[25em]'>
               <div className='flex-wrap flex justify-evenly'>
                 <div
                   onClick={(e) => handleImageSelection('prof_pic_1', e)}
@@ -74,34 +69,74 @@ export default function ProfilePictureModal({ setProfilePictureModal, setProfile
                 </div>
                 <div
                   onClick={(e) => handleImageSelection('prof_pic_2', e)}
-                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_2' ? 'border-4 border-green-500' : ''}`}
-                  value='prof_pic_2'>
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_2' ? 'border-4 border-green-500' : ''}`}>
                   <Image src={profile_picture_two} height={150} width={150} />
                 </div>
                 <div
                   onClick={(e) => handleImageSelection('prof_pic_3', e)}
-                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_3' ? 'border-4 border-green-500' : ''}`}
-                  value='prof_pic_3'>
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_3' ? 'border-4 border-green-500' : ''}`}>
                   <Image src={profile_picture_three} height={150} width={150} />
                 </div>
                 <div
                   onClick={(e) => handleImageSelection('prof_pic_4', e)}
-                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_4' ? 'border-4 border-green-500' : ''}`}
-                  value='prof_pic_4'>
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_4' ? 'border-4 border-green-500' : ''}`}>
                   <Image src={profile_picture_four} height={150} width={150} />
                 </div>
                 <div
                   onClick={(e) => handleImageSelection('prof_pic_5', e)}
-                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_5' ? 'border-4 border-green-500' : ''}`}
-                  value='prof_pic_5'>
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_5' ? 'border-4 border-green-500' : ''}`}>
                   <Image src={profile_picture_five} height={150} width={150} />
                 </div>
                 <div
                   onClick={(e) => handleImageSelection('prof_pic_6', e)}
-                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_6' ? 'border-4 border-green-500' : ''}`}
-                  value='prof_pic_6'>
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_6' ? 'border-4 border-green-500' : ''}`}>
                   <Image src={profile_picture_six} height={150} width={150} />
                 </div>{' '}
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_7', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_7' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_seven} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_8', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_8' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_eight} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_9', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_9' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_nine} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_10', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_10' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_ten} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_11', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_11' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_eleven} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_12', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_12' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_twelve} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_13', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_13' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_thirteen} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_14', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_14' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_fourteen} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('prof_pic_15', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'prof_pic_15' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={profile_picture_fifteen} height={150} width={150} />
+                </div>
               </div>
             </div>
             {/*footer*/}
