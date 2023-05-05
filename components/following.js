@@ -36,12 +36,12 @@ export default function Following({ setFollowerModal }) {
               </button>
             </div>
             {/*body*/}
-            <div className='overflow-scroll overflow-x-scroll max-h-[15em] min-w-[15em] '>
+            <div className='overflow-scroll overflow-x-scroll max-h-[15em] min-w-[15em]  '>
               {following?.length > 0 ? (
                 following?.map((follows) => {
                   return (
                     <Link href={`/profile/${follows.user.id}`}>
-                      <div className='flex items-center space-x-4 ml-4 mb-2 mt-1'>
+                      <div className='flex items-center space-x-4 ml-4 mb-2 mt-1 '>
                         <Image
                           src={follows.user.profile_picture || profilePicPlaceholder}
                           width={40}
@@ -57,7 +57,7 @@ export default function Following({ setFollowerModal }) {
                   );
                 })
               ) : (
-                <div className='text-black'>Not following any users</div>
+                <div className='text-black p-5'>Not following any users</div>
               )}
             </div>
           </div>

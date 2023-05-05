@@ -1,11 +1,26 @@
-import { defaultConfig } from 'next/dist/server/config-shared';
-import React from 'react';
+import { useState, useEffect } from 'react';
 import Image from 'next/image';
 import Link from './Link';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 
-export default function FollowerScroller({ following }) {
+export default function FollowerScroller() {
   // useEffect with query to request all followers where following_id === userId
+  const [following, setFollowing] = useState([]);
+
+  async function fetchFollowing() {
+    const response = await fetch('/api/myFollowing', {
+      method: 'GET',
+    });
+
+    let followingData = await response.json();
+    console.log(followingData);
+    setFollowing(followingData);
+  }
+
+  useEffect(() => {
+    fetchFollowing();
+  }, []);
+
   return (
     <div className='overflow-x-scroll flex max-w-xs lg:max-w-lg md:max-w-lg'>
       {following.map((followers) => {
