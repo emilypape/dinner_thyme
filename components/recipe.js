@@ -10,17 +10,19 @@ export default function Recipe({ recipeId }) {
   const [recipeData, setRecipeData] = useState(false);
   const [commentText, setCommentText] = useState('');
   const myRef = useRef(null);
+
   async function getRecipeData() {
     const response = await fetch(`/api/singleRecipe/${recipeId}`, {
       method: 'GET',
     });
 
     const myRecipeData = await response.json();
-    console.log(myRecipeData);
     setRecipeData(myRecipeData);
   }
 
-  async function postComments() {
+  async function postComments(e) {
+    e.preventDefault();
+
     const response = await fetch(`/api/newComment/${recipeId}`, {
       method: 'Post',
       body: JSON.stringify({
@@ -32,14 +34,13 @@ export default function Recipe({ recipeId }) {
     if (!response) {
       alert(response.statusText);
     } else {
-      getRecipeData();
+      await getRecipeData();
       setCommentText('');
     }
   }
 
   const handleCommentText = (event) => {
     setCommentText(event.target.value);
-    console.log(commentText);
   };
 
   const executeScroll = () => myRef.current.scrollIntoView();
@@ -47,9 +48,6 @@ export default function Recipe({ recipeId }) {
   useEffect(() => {
     getRecipeData();
   }, [recipeId]);
-
-  const recipeComments = recipeData.comments;
-  const recipeIngredients = recipeData.ingredient;
 
   return (
     recipeData && (
@@ -118,7 +116,7 @@ export default function Recipe({ recipeId }) {
                   </div>
                   <div>
                     <div className='text-xl font-semibold mb-3'>Ingredients</div>
-                    {recipeIngredients?.ingredient_list?.map((ingredients) => {
+                    {recipeData?.ingredient?.ingredient_list?.map((ingredients) => {
                       return <li className='mt-1'>{ingredients}</li>;
                     })}
                   </div>
@@ -127,10 +125,10 @@ export default function Recipe({ recipeId }) {
                   <div className='flex'>
                     <Icon icon='mdi:heart' width={28} height={28} />
                     <div className='text-xl ml-1'>{recipeData.likes.length}</div>
-                    <div className='underline ml-5 mt-[.1em]'>{recipeComments.length} comments</div>
+                    <div className='underline ml-5 mt-[.1em]'>{recipeData?.comments?.length} comments</div>
                   </div>
                   <div ref={myRef} className='mt-5'>
-                    {recipeComments?.map((comment) => {
+                    {recipeData?.comments?.map((comment) => {
                       return (
                         <div>
                           <div className='flex'>
@@ -156,14 +154,16 @@ export default function Recipe({ recipeId }) {
                       );
                     })}
                   </div>
-                  <div className='flex'>
+                  <form onSubmit={postComments} className='flex'>
                     <input
                       className='appearance-none rounded min-w-[90%] mr-2 mt-2 p-1  lg:min-w-[90%] md:min-w-[38%]'
                       value={commentText}
                       onChange={handleCommentText}
                       placeholder='Add to the conversation...'></input>
-                    <Icon onClick={postComments} className='mr-2 mt-4 cursor-pointer' icon='ri:send-plane-fill' />
-                  </div>
+                    <button type='submit'>
+                      <Icon className='mr-2 mt-4 cursor-pointer' icon='ri:send-plane-fill' />
+                    </button>
+                  </form>
                 </div>
                 <div className='max-w-[18em] mt-10 ml-[-4em] lg:hidden md:hidden '>
                   <div className='font-semibold text-xl ml-16  mb-5'>You may also enjoy...</div>
@@ -192,7 +192,7 @@ export default function Recipe({ recipeId }) {
               </div>
               <div>
                 <div className='text-xl font-semibold mb-3'>Ingredients</div>
-                {recipeIngredients?.ingredient_list?.map((ingredients) => {
+                {recipeData?.ingredient?.ingredient_list?.map((ingredients) => {
                   return <li className='mt-1'>{ingredients}</li>;
                 })}
               </div>

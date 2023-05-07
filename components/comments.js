@@ -3,6 +3,7 @@ import Image from 'next/image';
 import { useRouter } from 'next/router';
 import Link from './Link';
 import { Icon } from '@iconify/react';
+import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 import Replies from './replies';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 import noPhoto from '../public/assets/images/errorImage.jpg';
@@ -10,10 +11,7 @@ import noPhoto from '../public/assets/images/errorImage.jpg';
 export default function Comments({ recipeId, setCommentOpen }) {
   const [comments, setComments] = useState([]);
   const [commentText, setCommentText] = useState('');
-  const [repliesOpen, setRepliesOpen] = useState(false);
   const [openedReplies, setOpenedReplies] = useState({});
-  const [selectedComment, setSelectedComment] = useState('');
-  const router = useRouter();
 
   async function getComments() {
     const response = await fetch(`/api/recipeComments/${recipeId}`);
@@ -34,14 +32,13 @@ export default function Comments({ recipeId, setCommentOpen }) {
     if (!response) {
       alert(response.statusText);
     } else {
-      getComments();
+      await getComments();
       setCommentText('');
     }
   }
 
   const handleCommentText = (event) => {
     setCommentText(event.target.value);
-    console.log(commentText);
   };
 
   const openReplies = (commentId) => {
@@ -55,8 +52,16 @@ export default function Comments({ recipeId, setCommentOpen }) {
     setOpenedReplies(newState);
   };
 
+  const closeComment = () => {
+    clearAllBodyScrollLocks();
+    setCommentOpen(false);
+  };
+
   useEffect(() => {
     getComments();
+    return () => {
+      clearAllBodyScrollLocks();
+    };
   }, []);
 
   return (
@@ -64,10 +69,10 @@ export default function Comments({ recipeId, setCommentOpen }) {
       <div className='lg:justify-center md:justify-center lg:items-center md:items-center absolute inset-x-0 bottom-0  flex overflow-x-hidden overflow-y-auto fixed lg:inset-0 z-50 outline-none focus:outline-none'>
         <div className='relative lg:w-auto lg:my-6 mx-auto lg:max-w-3xl'>
           {/*content*/}
-          <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
+          <div className='z-60 border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
             {/*header*/}
             <div className='flex justify-end  rounded-t'>
-              <div onClick={() => setCommentOpen(false)} className='text-black h-6 w-6 text-2xl cursor-pointer'>
+              <div onClick={closeComment} className='text-black h-6 w-6 text-2xl cursor-pointer'>
                 ×
               </div>
             </div>
@@ -100,9 +105,6 @@ export default function Comments({ recipeId, setCommentOpen }) {
                         </div>
                       </div>
                       <div>
-                        <div onClick={() => openReplies(comment.id)} className='ml-12 mb-1 text-xs text-gray-400'>
-                          Reply
-                        </div>
                         <div className='flex-col ml-12 '>
                           <div className='flex'>
                             <div className='ml-2 text-xs text-gray-400'>___</div>

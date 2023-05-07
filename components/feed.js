@@ -3,19 +3,24 @@ import { useRouter } from 'next/router';
 import Link from './Link';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
+import { disableBodyScroll } from 'body-scroll-lock';
 import UserSuggestion from './userSuggestions';
 import FollowerScroller from './followerScroller';
 import FeedPostDropdown from './feedPostDropdown';
 import Comments from './comments';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 import noPhoto from '../public/assets/images/errorImage.jpg';
+import AddToCookbook from './AddToCookbookModel';
 
 export default function Feed() {
   const [feedPosts, setFeedPosts] = useState([]);
   const [dropdown, setDropdown] = useState({});
   const [commentOpen, setCommentOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
+  const [cookbookModal, setCookbookModal] = useState(false);
   const router = useRouter();
+
+  console.log(cookbookModal);
 
   async function getFeedPosts() {
     const response = await fetch('/api/followingPosts', {
@@ -56,8 +61,10 @@ export default function Feed() {
   }
 
   function openComments(recipeId) {
+    const body = document.querySelector('body');
     setSelectedRecipe(recipeId);
     setCommentOpen(true);
+    disableBodyScroll(body);
   }
 
   const openDropdown = (recipeId) => {
@@ -80,8 +87,10 @@ export default function Feed() {
   return (
     <div className='flex'>
       <div className='p-10 lg:ml-48 flex flex-col items-center lg:items-start justify-center xl:justify-start lg:justify-start md:justify-start '>
+        {cookbookModal ? <AddToCookbook setCookbookModal={setCookbookModal} /> : null}
         <FollowerScroller following={feedPosts} />
         {commentOpen && <Comments recipeId={selectedRecipe} setCommentOpen={setCommentOpen} />}
+
         {feedPosts.length > 0 ? (
           feedPosts.map((posts) => {
             return (
@@ -103,7 +112,9 @@ export default function Feed() {
                   </Link>
                   <div onClick={() => openDropdown(posts.id)}>
                     <Icon className='mr-4 mt-3' icon='ph:dots-three-bold' width={30} height={30} />
-                    {dropdown[posts.id] && <FeedPostDropdown userId={posts.user.id} />}
+                    {dropdown[posts.id] && (
+                      <FeedPostDropdown setCookbookModal={setCookbookModal} userId={posts.user.id} />
+                    )}
                   </div>
                 </div>
                 <div key={posts.id} className=' lg:mr-4 max-w-xs lg:max-w-lg md:max-w-lg xl:max-w-lg shadow-lg mb-5'>
