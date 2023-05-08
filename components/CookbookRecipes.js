@@ -1,7 +1,8 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Icon } from '@iconify/react';
+
+import noPhoto from '../public/assets/images/errorImage.jpg';
 
 export default function CookbookRecipes({ cookbookId }) {
   const [cookbookRecipes, setCookbookRecipes] = useState([]);

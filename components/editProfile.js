@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { Transition } from '@headlessui/react';
 import { useRouter } from 'next/router';
 import useUser from '../utils/useUser';
 
