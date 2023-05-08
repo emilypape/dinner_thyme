@@ -97,7 +97,7 @@ export default function Recipe({ recipeId }) {
                 </p>
               </div>
               <div>
-                <div className='lg:hidden md:hidden justify-center flex'>
+                <div className='xl:hidden lg:hidden md:hidden justify-center flex'>
                   <Image
                     className='shadow  rounded-full max-w-full min-w-full h-auto align-middle border-none'
                     src={recipeData?.image_urls || noPhoto}

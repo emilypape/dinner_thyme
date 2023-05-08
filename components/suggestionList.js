@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
-import { useRouter } from 'next/router';
+
 import Link from './Link';
 import profilePicPlaceholder from '../public/assets/images/profile_pic_placeholder.jpeg';
 
