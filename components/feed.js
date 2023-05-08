@@ -76,18 +76,17 @@ export default function Feed() {
       newState[recipeId] = true;
     }
     setDropdown(newState);
+    setSelectedRecipe(recipeId);
   };
 
   useEffect(() => {
     getFeedPosts();
   }, []);
 
-  console.log(feedPosts);
-
   return (
     <div className='flex'>
       <div className='p-10 lg:ml-48 flex flex-col items-center lg:items-start justify-center xl:justify-start lg:justify-start md:justify-start '>
-        {cookbookModal ? <AddToCookbook setCookbookModal={setCookbookModal} /> : null}
+        {cookbookModal ? <AddToCookbook setCookbookModal={setCookbookModal} selectedRecipe={selectedRecipe} /> : null}
         <FollowerScroller following={feedPosts} />
         {commentOpen && <Comments recipeId={selectedRecipe} setCommentOpen={setCommentOpen} />}
 

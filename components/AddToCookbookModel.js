@@ -1,13 +1,14 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useRouter } from 'next/router';
 import { Icon } from '@iconify/react';
 import Link from 'next/link';
 import noPhoto from '../public/assets/images/errorImage.jpg';
 import { clearAllBodyScrollLocks } from 'body-scroll-lock';
 
-export default function AddToCookbook({ setCookbookModal }) {
+export default function AddToCookbook({ setCookbookModal, selectedRecipe }) {
   const [cookbooks, setCookbooks] = useState([]);
-
+  const router = useRouter();
   async function getCookbooks() {
     const response = await fetch('/api/userCookbooks', {
       method: 'get',
@@ -16,6 +17,23 @@ export default function AddToCookbook({ setCookbookModal }) {
     const cookbookData = await response.json();
 
     setCookbooks(cookbookData);
+  }
+
+  async function addToCookbook(cookbookId) {
+    const response = await fetch(`/api/addRecipeToCookbook`, {
+      method: 'Post',
+      body: JSON.stringify({
+        cookbook_id: cookbookId,
+        recipe_id: selectedRecipe,
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (!response) {
+      alert(response.statusText);
+    } else {
+      router.push(`/cookbookRecipes/${cookbookId}`);
+    }
   }
 
   function closeCookbooks() {
@@ -29,6 +47,8 @@ export default function AddToCookbook({ setCookbookModal }) {
       clearAllBodyScrollLocks();
     };
   }, []);
+
+  console.log(selectedRecipe);
   return (
     <div className=' fixed inset-0 z-40 animate-fade-in-up'>
       <div className='lg:justify-center md:justify-center lg:items-center md:items-center absolute inset-x-0 bottom-0  flex overflow-x-hidden overflow-y-auto fixed lg:inset-0 z-50 outline-none focus:outline-none'>
@@ -61,23 +81,19 @@ export default function AddToCookbook({ setCookbookModal }) {
                           <div className='mb-[-5em] image-container'>
                             {cookbook?.recipes?.length > 0 ? (
                               cookbook?.recipes?.[0] && (
-                                <Link href={`/cookbookRecipes/${cookbook.id}`}>
-                                  <div className='cursor-pointer'>
-                                    <Image
-                                      src={cookbook.recipes[0].image_urls || noPhoto}
-                                      width={700}
-                                      height={300}
-                                      className='object-cover'
-                                    />
-                                  </div>
-                                </Link>
+                                <div onClick={() => addToCookbook(cookbook.id)} className='cursor-pointer'>
+                                  <Image
+                                    src={cookbook.recipes[0].image_urls || noPhoto}
+                                    width={700}
+                                    height={300}
+                                    className='object-cover'
+                                  />
+                                </div>
                               )
                             ) : (
-                              <Link href={`/cookbookRecipes/${cookbook.id}`}>
-                                <div className='cursor-pointer'>
-                                  <Image src={noPhoto} width={700} height={300} className='object-cover' />
-                                </div>
-                              </Link>
+                              <div onClick={() => addToCookbook(cookbook.id)} className='cursor-pointer'>
+                                <Image src={noPhoto} width={700} height={300} className='object-cover' />
+                              </div>
                             )}
                           </div>
                         </div>
