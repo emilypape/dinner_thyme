@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme
 // import 'quill/dist/quill.bubble.css'; // Add css for bubble theme
 
-export default function TextEditor() {
+export default function TextEditor({ cookTime, cookTemperature, prepTime, title, ingredients, selectedImage }) {
+  const [cookInstructions, setCookInstructions] = useState('');
   const theme = 'snow';
   // const theme = 'bubble';
 
@@ -45,10 +47,13 @@ export default function TextEditor() {
 
   const { quill, quillRef } = useQuill({ theme, modules, formats, placeholder });
 
-  function submitQuill() {
+  async function submitQuill() {
     //ON SUBMIT SAVE HTML AS A STRING TO DB
-    console.log(quill.root.innerHTML); // Get innerHTML using quill
+    // console.log(quill.root.innerHTML); // Get innerHTML using quill
+    setCookInstructions(quill.root.innerHTML);
   }
+
+  console.log(cookInstructions);
 
   return (
     <div className=''>

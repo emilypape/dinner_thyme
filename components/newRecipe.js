@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Icon } from '@iconify/react';
 import TextEditor from './TextEditor';
+import RecipePictureModal from './RecipePictureModal';
 
 export default function NewRecipe() {
   const [ingredients, setIngredients] = useState([]);
@@ -9,10 +10,18 @@ export default function NewRecipe() {
   const [cookTemperature, setCookTemperature] = useState('');
   const [cookTime, setCookTime] = useState('');
   const [prepTime, setPrepTime] = useState('');
+  const [recipePictureModal, setRecipePictureModal] = useState(false);
+  const [isSelected, setIsSelected] = useState('');
+  const [selectedImage, setSelectedImage] = useState();
+
+  function handleImageSelection(value, e) {
+    setIsSelected(value);
+    setSelectedImage(`/${e.target.src.match(/_next.+/)[0]}`);
+    console.log(e);
+  }
 
   function newIngredient(event) {
     let ingredient = event.target.value;
-    console.log(ingredient);
     setCurrentIngredient(ingredient);
   }
 
@@ -39,7 +48,7 @@ export default function NewRecipe() {
 
   return (
     <div className=''>
-      <div className='flex flex-col items-center justify-center'>
+      <div onClick={() => setRecipePictureModal(true)} className='flex flex-col items-center justify-center'>
         <div class=' w-full max-w-[50em] mt-10'>
           <label
             for='dropzone-file'
@@ -59,11 +68,9 @@ export default function NewRecipe() {
                   d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'></path>
               </svg>
               <p class='mb-2 text-sm text-gray-500 dark:text-gray-400'>
-                <span class='font-semibold'>Click to upload</span> or drag and drop
+                <span class='font-semibold'>Click to upload</span>
               </p>
-              <p class='text-xs text-gray-500 dark:text-gray-400'>SVG, PNG, JPG or GIF (MAX. 800x400px)</p>
             </div>
-            <input id='dropzone-file' type='file' class='hidden' />
           </label>
         </div>
       </div>
@@ -146,7 +153,22 @@ export default function NewRecipe() {
       <div className='flex items-center justify-center'>
         <div className='flex-col mt-10'>
           <div className='mb-2 text-2xl text-green-500 font-semibold'>Cooking Instructions</div>
-          <TextEditor />
+          <TextEditor
+            ingredients={ingredients}
+            cookTime={cookTime}
+            cookTemperature={cookTemperature}
+            prepTime={prepTime}
+            title={title}
+            selectedImage={selectedImage}
+          />
+          {recipePictureModal ? (
+            <RecipePictureModal
+              setRecipePictureModal={setRecipePictureModal}
+              handleImageSelection={handleImageSelection}
+              isSelected={isSelected}
+              selectedImage={selectedImage}
+            />
+          ) : null}
         </div>
       </div>
     </div>
