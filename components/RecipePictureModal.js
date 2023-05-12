@@ -34,8 +34,23 @@ import pasta from '../public/assets/images/pasta.jpeg';
 import pastry from '../public/assets/images/pastry.jpeg';
 import pie from '../public/assets/images/pie.jpeg';
 import pizza from '../public/assets/images/pizza.jpeg';
-import potRoast from '../public/assets/images/potRoast.jpeg';
 import potatoes from '../public/assets/images/potatoes.jpeg';
+import ramen from '../public/assets/images/ramen.png';
+import potRoast from '../public/assets/images/potRoast.jpeg';
+import roast from '../public/assets/images/roast.jpeg';
+import salad from '../public/assets/images/salad.jpeg';
+import salmon from '../public/assets/images/salmon.png';
+import salsa from '../public/assets/images/salsa.jpeg';
+import sandwich from '../public/assets/images/sandwich.png';
+import smoothie from '../public/assets/images/smoothie.jpeg';
+import snacks from '../public/assets/images/snacks.jpeg';
+import soup from '../public/assets/images/soup.jpeg';
+import strawberryCake from '../public/assets/images/StrawberryCake.jpeg';
+import stuffedChicken from '../public/assets/images/stuffedChicken.jpeg';
+import sushi from '../public/assets/images/sushi.jpeg';
+import taco from '../public/assets/images/taco.jpeg';
+import thanksgiving from '../public/assets/images/thanksgiving.jpeg';
+import toast from '../public/assets/images/toast.jpeg';
 
 export default function RecipePictureModal({ setRecipePictureModal, isSelected, selectedImage, handleImageSelection }) {
   console.log(selectedImage);
@@ -47,7 +62,7 @@ export default function RecipePictureModal({ setRecipePictureModal, isSelected, 
           <div className='border-0 rounded-lg shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none'>
             {/*header*/}
             <div className='flex items-start justify-between p-5 border-b border-solid border-slate-200 rounded-t'>
-              <h3 className='text-xl font-semibold'>Select a similar recipe photo</h3>
+              <h3 className='text-xl font-semibold'>Select a recipe photo</h3>
               <button
                 className='p-1 ml-auto bg-transparent border-0 text-black opacity-5 float-right text-3xl leading-none font-semibold outline-none focus:outline-none'
                 onClick={() => setRecipePictureModal(false)}>
@@ -241,17 +256,91 @@ export default function RecipePictureModal({ setRecipePictureModal, isSelected, 
                   className={`max-h-[9.9em] mb-2 ${isSelected === 'potatoes' ? 'border-4 border-green-500' : ''}`}>
                   <Image src={potatoes} height={150} width={150} />
                 </div>
+                <div
+                  onClick={(e) => handleImageSelection('ramen', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'ramen' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={ramen} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('roast', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'roast' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={roast} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('salad', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'salad' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={salad} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('salmon', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'salmon' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={salmon} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('salsa', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'salsa' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={salsa} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('sandwich', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'sandwich' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={sandwich} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('smoothie', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'smoothie' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={smoothie} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('snacks', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'snacks' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={snacks} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('soup', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'soup' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={soup} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('strawberryCake', e)}
+                  className={`max-h-[9.9em] mb-2 ${
+                    isSelected === 'strawberryCake' ? 'border-4 border-green-500' : ''
+                  }`}>
+                  <Image src={strawberryCake} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('stuffedChicken', e)}
+                  className={`max-h-[9.9em] mb-2 ${
+                    isSelected === 'stuffedChicken' ? 'border-4 border-green-500' : ''
+                  }`}>
+                  <Image src={stuffedChicken} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('tacos', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'tacos' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={taco} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('sushi', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'sushi' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={sushi} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('thanksgiving', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'thanksgiving' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={thanksgiving} height={150} width={150} />
+                </div>
+                <div
+                  onClick={(e) => handleImageSelection('toast', e)}
+                  className={`max-h-[9.9em] mb-2 ${isSelected === 'toast' ? 'border-4 border-green-500' : ''}`}>
+                  <Image src={toast} height={150} width={150} />
+                </div>
               </div>
             </div>
             {/*footer*/}
             <div className='flex items-center justify-end p-6 border-t border-solid border-slate-200 rounded-b'>
               <button
-                className='text-black background-transparent font-bold uppercase px-6 py-2 text-sm outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
-                type='button'
-                onClick={() => setRecipePictureModal(false)}>
-                exit
-              </button>
-              <button
+                onClick={() => setRecipePictureModal(false)}
                 className='bg-green-500 text-white active:bg-emerald-600 font-bold uppercase text-sm px-6 py-3 rounded shadow hover:shadow-lg outline-none focus:outline-none mr-1 mb-1 ease-linear transition-all duration-150'
                 type='button'>
                 Save Changes

@@ -45,6 +45,7 @@ export default function NewRecipe() {
   function handleChange(e, setter) {
     setter(e.target.value);
   }
+  console.log(selectedImage);
 
   return (
     <div className=''>
