@@ -33,7 +33,7 @@ export default function ProfileRecipes({ user }) {
 
   useEffect(() => {
     fetchRecipes();
-  }, []);
+  }, [dropdown]);
 
   let recipeArray = recipes;
   return recipeArray ? (
