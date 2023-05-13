@@ -44,23 +44,22 @@ export default function ProfileRecipes({ user }) {
             recipeArray?.map((recipe) => {
               return (
                 <div key={recipe.id} className='lg:mr-4 max-w-xs rounded shadow-lg mb-5 '>
-                  {/* <Link href={`/recipe/${recipe.id}`}> */}
-                  <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
-                  <div
-                    className='absolute lg:mt-[-16em] xl:mt-[-16em] md:mt-[-16em] mt-[-15em]'
-                    onClick={() => openDropdown(recipe.id)}>
-                    <Icon className='mr-4 mt-3' color={'lime'} icon='ph:dots-three-bold' width={30} height={30} />
-                    {dropdown[recipe.id] && (
-                      <DeletePostDropdown selectedRecipe={selectedRecipe} setDropdown={setDropdown} />
-                    )}
-                  </div>
-                  {/* </Link> */}
+                  <Link href={`/recipe/${recipe.id}`}>
+                    <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
+                  </Link>
                   <div className='px-6 py-4'>
-                    <Link href={`/recipe/${recipe.id}`}>
-                      <div className='flex'>
+                    <div className='flex justify-between'>
+                      <Link href={`/recipe/${recipe.id}`}>
                         <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{recipe.title}</div>
+                      </Link>
+                      <div className='mt-[-1em]' onClick={() => openDropdown(recipe.id)}>
+                        <Icon className='mr-4 mt-3' color={'grey'} icon='ph:dots-three-bold' width={30} height={30} />
+                        {dropdown[recipe.id] && (
+                          <DeletePostDropdown selectedRecipe={selectedRecipe} setDropdown={setDropdown} />
+                        )}
                       </div>
-                    </Link>
+                    </div>
+
                     <div className='overflow-auto max-h-28'>
                       <p
                         dangerouslySetInnerHTML={{ __html: recipe.cook_instructions }}
