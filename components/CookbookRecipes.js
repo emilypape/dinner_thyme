@@ -43,9 +43,9 @@ export default function CookbookRecipes({ cookbookId }) {
                       </div>
                     </Link>
                     <div className='overflow-auto max-h-28'>
-                      <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>
-                        {recipe.cook_instructions}
-                      </p>
+                      <p
+                        dangerouslySetInnerHTML={{ __html: recipe.cook_instructions }}
+                        className='hidden lg:block xl:block md:block text-gray-500 text-sm '></p>
                     </div>
                   </div>
                   <div className='px-6 pt-4 pb-2'>

@@ -148,9 +148,9 @@ export default function Feed() {
                       </div>
                     </Link>
                     <div className='overflow-auto max-h-28'>
-                      <p className='hidden lg:block xl:block md:block text-gray-500 text-sm '>
-                        {posts.cook_instructions}
-                      </p>
+                      <p
+                        dangerouslySetInnerHTML={{ __html: posts.cook_instructions }}
+                        className='hidden lg:block xl:block md:block text-gray-500 text-sm '></p>
                     </div>
                   </div>
                   <div className='px-6 pt-4 pb-2'>

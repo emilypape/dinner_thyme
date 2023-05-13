@@ -92,9 +92,9 @@ export default function Recipe({ recipeId }) {
                 </div>
               </div>
               <div className='lg:overflow-auto lg:max-h-[20em] max-w-[28em]'>
-                <p className=' lg:block xl:block md:block text-gray-500 text-sm mb-10'>
-                  {recipeData.cook_instructions}
-                </p>
+                <p
+                  dangerouslySetInnerHTML={{ __html: recipeData.cook_instructions }}
+                  className=' lg:block xl:block md:block text-gray-500 text-sm mb-10'></p>
               </div>
               <div>
                 <div className='xl:hidden lg:hidden md:hidden justify-center flex'>
