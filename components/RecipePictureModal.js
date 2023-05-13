@@ -53,7 +53,6 @@ import thanksgiving from '../public/assets/images/thanksgiving.jpeg';
 import toast from '../public/assets/images/toast.jpeg';
 
 export default function RecipePictureModal({ setRecipePictureModal, isSelected, selectedImage, handleImageSelection }) {
-  console.log(selectedImage);
   return (
     <>
       <div className=' justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0 z-50  outline-none focus:outline-none'>

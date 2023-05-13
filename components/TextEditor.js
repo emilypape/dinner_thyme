@@ -51,10 +51,10 @@ export default function TextEditor({ cookTime, cookTemperature, prepTime, title,
 
   const { quill, quillRef } = useQuill({ theme, modules, formats, placeholder });
 
-  async function setTextEditorValue() {
-    await setCookInstructions(quill.root.innerHTML);
-
-    submitQuill();
+  async function setTextEditorValue(e) {
+    // await setCookInstructions(quill.root.innerHTML);
+    console.log(quill.root.innerHTML);
+    // setCookInstructions(e.target.innerHTML);
   }
 
   async function submitQuill() {
@@ -86,7 +86,7 @@ export default function TextEditor({ cookTime, cookTemperature, prepTime, title,
   return (
     <div className=''>
       <div className='' style={{ border: '1px solid lightgray' }}>
-        <div className='min-h-[10em]' ref={quillRef} />
+        <div className='min-h-[10em] quill-contents ql-container' ref={quillRef} />
       </div>
       <div className='flex justify-center'>
         <button

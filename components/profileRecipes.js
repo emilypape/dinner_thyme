@@ -3,9 +3,13 @@ import Image from 'next/image';
 import Loader from './loader';
 import Link from './Link';
 import noPhoto from '../public/assets/images/errorImage.jpg';
+import { Icon } from '@iconify/react';
+import DeletePostDropdown from './DeletePostDropdown';
 
 export default function ProfileRecipes({ user }) {
   const [recipes, setRecipes] = useState();
+  const [dropdown, setDropdown] = useState({});
+  const [selectedRecipe, setSelectedRecipe] = useState();
 
   async function fetchRecipes() {
     const response = await fetch('/api/loggedInUserRecipes', {
@@ -15,6 +19,17 @@ export default function ProfileRecipes({ user }) {
     let recipeData = await response.json();
     setRecipes(recipeData);
   }
+  const openDropdown = (recipeId) => {
+    const newState = { ...dropdown };
+
+    if (newState[recipeId]) {
+      newState[recipeId] = false;
+    } else {
+      newState[recipeId] = true;
+    }
+    setDropdown(newState);
+    setSelectedRecipe(recipeId);
+  };
 
   useEffect(() => {
     fetchRecipes();
@@ -28,10 +43,18 @@ export default function ProfileRecipes({ user }) {
           {recipeArray?.length > 0 ? (
             recipeArray?.map((recipe) => {
               return (
-                <div key={recipe.id} className='lg:mr-4 max-w-xs rounded shadow-lg mb-5'>
-                  <Link href={`/recipe/${recipe.id}`}>
-                    <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
-                  </Link>
+                <div key={recipe.id} className='lg:mr-4 max-w-xs rounded shadow-lg mb-5 '>
+                  {/* <Link href={`/recipe/${recipe.id}`}> */}
+                  <Image src={recipe?.image_urls || noPhoto} width={400} height={300} alt={recipe.title} />
+                  <div
+                    className='absolute lg:mt-[-16em] xl:mt-[-16em] md:mt-[-16em] mt-[-15em]'
+                    onClick={() => openDropdown(recipe.id)}>
+                    <Icon className='mr-4 mt-3' color={'lime'} icon='ph:dots-three-bold' width={30} height={30} />
+                    {dropdown[recipe.id] && (
+                      <DeletePostDropdown selectedRecipe={selectedRecipe} setDropdown={setDropdown} />
+                    )}
+                  </div>
+                  {/* </Link> */}
                   <div className='px-6 py-4'>
                     <Link href={`/recipe/${recipe.id}`}>
                       <div className='flex'>
