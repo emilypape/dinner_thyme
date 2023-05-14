@@ -82,55 +82,59 @@ export default function Comments({ recipeId, setCommentOpen }) {
                 <Image src={comments?.image_urls || noPhoto} alt={'Recipe Photo'} width={550} height={500} />
               </div>
               <div className='max-h-[25rem] overflow-y-scroll min-w-[20em]'>
-                {comments?.comments?.map((comment) => {
-                  return (
-                    <div key={comment.id} className='flex-col' id={comment.id}>
-                      <div className='flex'>
-                        <Link href={`/profile/${comment.user.id}`}>
-                          <div className='ml-2 mr-1'>
-                            <Image
-                              src={comment?.user?.profile_picture || profilePicPlaceholder}
-                              alt={'Profile Photo'}
-                              className='rounded-full '
-                              height={30}
-                              width='30'
-                            />
-                          </div>
-                        </Link>
-                        <div className=''>
+                {comments?.comments?.length > 0 ? (
+                  comments?.comments?.map((comment) => {
+                    return (
+                      <div key={comment.id} className='flex-col' id={comment.id}>
+                        <div className='flex'>
                           <Link href={`/profile/${comment.user.id}`}>
-                            <span className='font-medium px-1'>{comment.user.username}</span>
+                            <div className='ml-2 mr-1'>
+                              <Image
+                                src={comment?.user?.profile_picture || profilePicPlaceholder}
+                                alt={'Profile Photo'}
+                                className='rounded-full '
+                                height={30}
+                                width='30'
+                              />
+                            </div>
                           </Link>
-                          {comment.comment_text}
-                        </div>
-                      </div>
-                      <div>
-                        <div className='flex-col ml-12 '>
-                          <div className='flex'>
-                            <div className='ml-2 text-xs text-gray-400'>___</div>
-                            {openedReplies[comment.id] ? (
-                              <div
-                                onClick={() => openReplies(comment.id)}
-                                className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
-                                Hide replies
-                              </div>
-                            ) : (
-                              <div
-                                onClick={() => openReplies(comment.id)}
-                                className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
-                                View replies
-                              </div>
-                            )}
-                            <div className='ml-2 text-xs text-gray-400'>___</div>
+                          <div className=''>
+                            <Link href={`/profile/${comment.user.id}`}>
+                              <span className='font-medium px-1'>{comment.user.username}</span>
+                            </Link>
+                            {comment.comment_text}
                           </div>
-                          {openedReplies[comment.id] && (
-                            <Replies username={comment.user.username} commentId={comment.id} />
-                          )}
+                        </div>
+                        <div>
+                          <div className='flex-col ml-12 '>
+                            <div className='flex'>
+                              <div className='ml-2 text-xs text-gray-400'>___</div>
+                              {openedReplies[comment.id] ? (
+                                <div
+                                  onClick={() => openReplies(comment.id)}
+                                  className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
+                                  Hide replies
+                                </div>
+                              ) : (
+                                <div
+                                  onClick={() => openReplies(comment.id)}
+                                  className={'hover:cursor-pointer ml-2 mb-2 mt-1 text-xs text-gray-400'}>
+                                  View replies
+                                </div>
+                              )}
+                              <div className='ml-2 text-xs text-gray-400'>___</div>
+                            </div>
+                            {openedReplies[comment.id] && (
+                              <Replies username={comment.user.username} commentId={comment.id} />
+                            )}
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  );
-                })}
+                    );
+                  })
+                ) : (
+                  <div className='text-gray-300 text-center mt-4'>Get the conversation started</div>
+                )}
               </div>
             </div>{' '}
             {/*footer*/}
