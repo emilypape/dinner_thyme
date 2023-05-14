@@ -128,31 +128,35 @@ export default function Recipe({ recipeId }) {
                     <div className='underline ml-5 mt-[.1em]'>{recipeData?.comments?.length} comments</div>
                   </div>
                   <div ref={myRef} className='mt-5'>
-                    {recipeData?.comments?.map((comment) => {
-                      return (
-                        <div>
-                          <div className='flex'>
-                            <Link href={`/profile/${comment.user.id}`}>
-                              <div className='ml-2 mr-1'>
-                                <Image
-                                  src={comment?.user?.profile_picture || profilePicPlaceholder}
-                                  alt={'Profile Photo'}
-                                  className='rounded-full '
-                                  height={30}
-                                  width='30'
-                                />
-                              </div>
-                            </Link>
-                            <div className=''>
+                    {recipeData?.comments?.length > 0 ? (
+                      recipeData?.comments?.map((comment) => {
+                        return (
+                          <div>
+                            <div className='flex'>
                               <Link href={`/profile/${comment.user.id}`}>
-                                <span className='font-medium px-1'>{comment.user.username}</span>
+                                <div className='ml-2 mr-1'>
+                                  <Image
+                                    src={comment?.user?.profile_picture || profilePicPlaceholder}
+                                    alt={'Profile Photo'}
+                                    className='rounded-full '
+                                    height={30}
+                                    width='30'
+                                  />
+                                </div>
                               </Link>
-                              {comment.comment_text}
+                              <div className=''>
+                                <Link href={`/profile/${comment.user.id}`}>
+                                  <span className='font-medium px-1'>{comment.user.username}</span>
+                                </Link>
+                                {comment.comment_text}
+                              </div>
                             </div>
                           </div>
-                        </div>
-                      );
-                    })}
+                        );
+                      })
+                    ) : (
+                      <div className='text-gray-300 text-center mt-4'>Get the conversation started</div>
+                    )}
                   </div>
                   <form onSubmit={postComments} className='flex'>
                     <input
