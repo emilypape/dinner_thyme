@@ -85,13 +85,13 @@ export default function Recipe({ recipeId }) {
                   <div className='mt-1 ml-1'>{recipeData?.user?.username}</div>
                 </Link>
               </div>
-              <div className='mt-3 mb-2 flex'>
+              <div className='mt-3 mb-2 flex '>
                 <div className='font-semibold text-md'>Cooking Instructions</div>
                 <div className='ml-3 text-white bg-green-400 rounded-full p-1 text-xs'>
                   Prep: {recipeData.prep_time}
                 </div>
               </div>
-              <div className='lg:overflow-auto lg:max-h-[20em] max-w-[28em]'>
+              <div className='lg:overflow-auto lg:max-h-[20em] max-w-[28em] min-w-[28em]'>
                 <p
                   dangerouslySetInnerHTML={{ __html: recipeData.cook_instructions }}
                   className=' lg:block xl:block md:block text-gray-500 text-sm mb-10'></p>
