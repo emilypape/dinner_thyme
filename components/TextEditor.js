@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useQuill } from 'react-quilljs';
 import { useRouter } from 'next/router';
 import 'quill/dist/quill.snow.css'; // Add css for snow theme
@@ -8,10 +8,8 @@ export default function TextEditor({ cookTime, cookTemperature, prepTime, title,
   const [cookInstructions, setCookInstructions] = useState('');
 
   const router = useRouter();
+
   const theme = 'snow';
-
-  // const theme = 'bubble';
-
   const modules = {
     toolbar: [
       ['bold', 'italic', 'underline', 'strike'],
@@ -28,9 +26,7 @@ export default function TextEditor({ cookTime, cookTemperature, prepTime, title,
       ['clean'],
     ],
   };
-
   const placeholder = 'Lets Get Cooking!';
-
   const formats = [
     'bold',
     'italic',
@@ -51,16 +47,7 @@ export default function TextEditor({ cookTime, cookTemperature, prepTime, title,
 
   const { quill, quillRef } = useQuill({ theme, modules, formats, placeholder });
 
-  async function setTextEditorValue(e) {
-    // await setCookInstructions(quill.root.innerHTML);
-    console.log(quill.root.innerHTML);
-    // setCookInstructions(e.target.innerHTML);
-  }
-
   async function submitQuill() {
-    //ON SUBMIT SAVE HTML AS A STRING TO DB
-    // console.log(quill.root.innerHTML); // Get innerHTML using quill
-
     const response = await fetch('/api/postRecipe', {
       method: 'Post',
       body: JSON.stringify({
@@ -81,7 +68,13 @@ export default function TextEditor({ cookTime, cookTemperature, prepTime, title,
     }
   }
 
-  console.log(cookInstructions);
+  useEffect(() => {
+    if (quill) {
+      quill.on('text-change', (delta, oldDelta, source) => {
+        setCookInstructions(quill.root.innerHTML);
+      });
+    }
+  }, [quill]);
 
   return (
     <div className=''>
@@ -89,9 +82,7 @@ export default function TextEditor({ cookTime, cookTemperature, prepTime, title,
         <div className='min-h-[10em] quill-contents ql-container' ref={quillRef} />
       </div>
       <div className='flex justify-center'>
-        <button
-          className='text-xl  bg-green-500 text-white py-2  px-5 rounded-lg mt-5 mb-5 '
-          onClick={setTextEditorValue}>
+        <button className='text-xl  bg-green-500 text-white py-2  px-5 rounded-lg mt-5 mb-5 ' onClick={submitQuill}>
           Submit
         </button>
       </div>
