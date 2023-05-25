@@ -29,7 +29,7 @@ export default function LandingPage() {
               <div className='font-semibold text-sm py-1 text-blue-600'>Login </div>
             </Link>
             <span className='px-2 font-bold'>&#183;</span>
-            <Link href='/signup'>
+            <Link href='/login'>
               <div className='font-semibold text-sm py-1 text-blue-600'>Signup</div>
             </Link>
           </div>
