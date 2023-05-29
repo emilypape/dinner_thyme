@@ -5,7 +5,7 @@ import { Icon } from '@iconify/react';
 import ProfileRecipes from './profileRecipes';
 import EditProfile from './editProfile';
 import Likes from './likes';
-import Following from './Following';
+import Following from './following';
 import { useRouter } from 'next/router';
 import Loader from './loader';
 import ProfilePictureModal from './ProfilePictureModal';
