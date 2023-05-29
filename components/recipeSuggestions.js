@@ -3,7 +3,7 @@ import Image from 'next/image';
 import Link from './Link';
 import noPhoto from '../public/assets/images/errorImage.jpg';
 
-export default function recipeSuggestions() {
+export default function RecipeSuggestions() {
   const [suggestions, setSuggestions] = useState([]);
 
   async function suggestedRecipes() {
@@ -24,7 +24,7 @@ export default function recipeSuggestions() {
     <div className='flex min-w-[27em] flex-wrap px-10 '>
       {suggestions?.map((recipe) => {
         return (
-          <div className='flex justify-evenly '>
+          <div key={recipe.id} className='flex justify-evenly '>
             <Link href={`/recipe/${recipe.id}`}>
               <div className='ml-5 mb-5'>
                 <Image

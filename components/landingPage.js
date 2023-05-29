@@ -18,8 +18,8 @@ export default function LandingPage() {
           </div>
           <div className='lg:max-w-md lg:text-lg'>
             <p className='mt-5 ml-8 mr-8 lg:mt-8 lg:ml-20'>
-              It's time to sit down at the table together. Whether you're 5 minutes or 5,000 miles away you can share a
-              meal. Find recipes, friends, and cuisines from all over the world while sharing your favorite eats for
+              It is time to sit down at the table together. Whether you are 5 minutes or 5,000 miles away you can share
+              a meal. Find recipes, friends, and cuisines from all over the world while sharing your favorite eats for
               others to try! Save all of your favorite foods and share your recipes and cookbooks with your new
               community! Remember no matter where you are somewhere in the world its Dinner Thyme.{' '}
             </p>
@@ -34,13 +34,17 @@ export default function LandingPage() {
             </Link>
           </div>
           <div className='flex mb-4 border-t-2 lg:ml-36 lg:border-gray-300 md:mb-10'>
-            <a href='https://www.linkedin.com/in/emily-pape-01776622a/' target='_blank' className='p-2'>
+            <a
+              href='https://www.linkedin.com/in/emily-pape-01776622a/'
+              rel='noreferrer'
+              target='_blank'
+              className='p-2'>
               <Icon icon='mdi:linkedin' height={30} />
             </a>
             <a href='mailto:eap6787@gmail.com' className='p-2'>
               <Icon icon='simple-icons:gmail' height={30} />
             </a>
-            <a href='https://github.com/emilypape' target='_blank' className='p-2'>
+            <a href='https://github.com/emilypape' rel='noreferrer' target='_blank' className='p-2'>
               <Icon icon='jam:github' height={30} />
             </a>
           </div>

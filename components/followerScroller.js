@@ -25,7 +25,7 @@ export default function FollowerScroller() {
     <div className='overflow-x-scroll flex max-w-xs lg:max-w-lg md:max-w-lg'>
       {following.map((followers) => {
         return (
-          <Link href={`/profile/${followers.user.id}`}>
+          <Link key={followers.id} href={`/profile/${followers.user.id}`}>
             <div key={followers.user.id}>
               <div className='flex flex-col p-2 mb-5 items-center'>
                 <Image

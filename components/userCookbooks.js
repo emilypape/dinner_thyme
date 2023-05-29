@@ -35,7 +35,7 @@ export default function UserCookbooks() {
         </Link>
         {cookbooks.map((cookbook) => {
           return (
-            <div className='ml-30 mr-30'>
+            <div key={cookbook.id} className='ml-30 mr-30'>
               <div>
                 <div className='recipeImageContainer'>
                   <div>

@@ -104,7 +104,7 @@ export default function Feed() {
                         height={50}
                         width='50'
                       />
-                      <div class='hover:text-gray-400 font-medium dark:text-black bg-white px-2 py-3 rounded-lg'>
+                      <div className='hover:text-gray-400 font-medium dark:text-black bg-white px-2 py-3 rounded-lg'>
                         <div className=''>{posts.user.username} </div>
                       </div>
                     </div>

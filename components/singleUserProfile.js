@@ -52,7 +52,7 @@ export default function SingleUserProfile({ userId }) {
         </div>
         <div className='mt-8 lg:mt-0 xl:mt-0 md:mt-0'>
           <div className='ml-8 xl:text-3xl lg:text-3xl md:text-2xl font-bold lg:ml-10 lg:mt-6 md:ml-10 md:mt-8 font-title'>
-            {userData.first_name}'s Kitchen
+            {userData.first_name}s Kitchen
           </div>
           <button
             onClick={() => followUser()}

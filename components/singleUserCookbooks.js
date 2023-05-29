@@ -25,7 +25,7 @@ export default function SingleUserCookbooks({ userId }) {
       <div className='flex flex-col items-center mt-10'>
         {userCookbooks.map((cookbook) => {
           return (
-            <div className='ml-30 mr-30'>
+            <div key={cookbook.id} className='ml-30 mr-30'>
               <div>
                 <div className='recipeImageContainer'>
                   <div>
