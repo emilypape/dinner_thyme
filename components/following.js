@@ -40,7 +40,7 @@ export default function Following({ setFollowerModal }) {
               {following?.length > 0 ? (
                 following?.map((follows) => {
                   return (
-                    <Link href={`/profile/${follows.user.id}`}>
+                    <Link key={follows.id} href={`/profile/${follows.user.id}`}>
                       <div className='flex items-center space-x-4 ml-4 mb-2 mt-1 '>
                         <Image
                           src={follows.user.profile_picture || profilePicPlaceholder}

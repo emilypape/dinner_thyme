@@ -33,9 +33,9 @@ export default function UserSuggestion() {
                 width='60'
                 alt=''
               />
-              <div class='font-medium dark:text-black bg-white px-2 py-2 rounded-lg'>
+              <div className='font-medium dark:text-black bg-white px-2 py-2 rounded-lg'>
                 <div>{user.username}</div>
-                <div className='lg:flex xl:flex md:hidden  text-xs text-gray-400'>{user.first_name}'s kitchen</div>
+                <div className='lg:flex xl:flex md:hidden  text-xs text-gray-400'>{user.first_name}s kitchen</div>
               </div>
             </div>
           </Link>

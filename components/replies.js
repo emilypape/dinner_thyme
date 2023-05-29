@@ -56,7 +56,7 @@ export default function Replies({ commentId, username }) {
       <div>
         {replyList?.map((reply) => {
           return (
-            <div className='flex'>
+            <div key={reply.id} className='flex'>
               <div className='flex '>
                 <Link href={`/profile/${reply.user.id}`}>
                   <div className='ml-2 mr-1'>

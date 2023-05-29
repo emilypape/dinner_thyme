@@ -51,29 +51,23 @@ export default function NewRecipe() {
   return (
     <div className=''>
       <div onClick={() => setRecipePictureModal(true)} className='flex flex-col items-center justify-center'>
-        <div class=' w-full max-w-[50em] mt-10'>
+        <div className=' w-full max-w-[50em] mt-10'>
           {selectedImage ? (
             <Image src={selectedImage} width={1000} height={400} objectFit className='object-cover' />
           ) : (
-            <label
-              for='dropzone-file'
-              class='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer '>
-              <div class='flex flex-col items-center justify-center pt-5 pb-6'>
+            <label className='flex flex-col items-center justify-center w-full h-64 border-2 border-gray-300 border-dashed rounded-lg cursor-pointer '>
+              <div className='flex flex-col items-center justify-center pt-5 pb-6'>
                 <svg
                   aria-hidden='true'
-                  class='w-10 h-10 mb-3 text-gray-400'
+                  className='w-10 h-10 mb-3 text-gray-400'
                   fill='none'
                   stroke='currentColor'
                   viewBox='0 0 24 24'
                   xmlns='http://www.w3.org/2000/svg'>
-                  <path
-                    stroke-linecap='round'
-                    stroke-linejoin='round'
-                    stroke-width='2'
-                    d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'></path>
+                  <path d='M7 16a4 4 0 01-.88-7.903A5 5 0 1115.9 6L16 6a5 5 0 011 9.9M15 13l-3-3m0 0l-3 3m3-3v12'></path>
                 </svg>
-                <p class='mb-2 text-sm text-gray-500 dark:text-gray-400'>
-                  <span class='font-semibold'>Click to upload</span>
+                <p className='mb-2 text-sm text-gray-500 dark:text-gray-400'>
+                  <span className='font-semibold'>Click to upload</span>
                 </p>
               </div>
             </label>
@@ -124,7 +118,7 @@ export default function NewRecipe() {
       </div>
       <div className='flex justify-center mt-5 '>
         <div className='w-full container'>
-          <div class='relative'>
+          <div className='relative'>
             <div className=' border-b border-green-500 mt-8 py-2 lg:mr-[7em] md:mr-[7em] lg:ml-[7em] md:ml-[7em]'>
               <input
                 onChange={newIngredient}
@@ -136,7 +130,7 @@ export default function NewRecipe() {
             </div>
             <button
               onClick={addIngredient}
-              class='text-white absolute lg:mr-28 md:mr-28  right-1.5 bottom-2.5 bg-green-500  font-medium rounded-lg text-sm px-4 py-2'>
+              className='text-white absolute lg:mr-28 md:mr-28  right-1.5 bottom-2.5 bg-green-500  font-medium rounded-lg text-sm px-4 py-2'>
               Add
             </button>
           </div>
@@ -144,7 +138,9 @@ export default function NewRecipe() {
             <div className='flex flex-wrap ml-3'>
               {ingredients.map((ingredient, i) => {
                 return (
-                  <div className='ingredientContainer flex max-w-[12em] mt-2 mr-3 bg-green-500 px-2 py-2 text-white rounded-lg'>
+                  <div
+                    key={ingredient.id}
+                    className='ingredientContainer flex max-w-[12em] mt-2 mr-3 bg-green-500 px-2 py-2 text-white rounded-lg'>
                     <div className='ingredient'>{ingredient}</div>
                     <div onClick={() => removeIngredient(i)} className='ml-1 mt-1 cursor-pointer'>
                       <Icon icon='ph:x-bold' color='white' />
