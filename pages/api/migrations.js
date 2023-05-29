@@ -4,7 +4,7 @@ const sequelize = require('../../database/connection');
 
 export default function handler(req, res) {
   // turn on connection to db and server
-  sequelize.sync({ force: false }).then(() => {
+  sequelize.sync({ force: true }).then(() => {
     // server();
     console.log('Sequelize is starting');
   });
