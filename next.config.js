@@ -37,6 +37,12 @@ module.exports = {
       'thenovicechefblog.com',
       'bakeitwithlove.com',
       'www.olivetomato.com',
+      'www.howtocook.recipes',
+      'assets.epicurious.com',
+      'www.eatingwell.com',
+      'cdn.loveandlemons.com',
+      'cdn.broadsheet.com.au',
+      'www.campbells.com',
     ],
   },
 };

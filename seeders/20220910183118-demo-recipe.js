@@ -205,6 +205,86 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        id: 16,
+        user_id: 13,
+        title: 'Ratatouille',
+        image_urls: 'https://www.howtocook.recipes/wp-content/uploads/2021/05/Ratatouille-recipe-500x500.jpg',
+        cook_temperature: 'High',
+        cook_time: '1 hour 10 minutes ',
+        prep_time: '20 minutes',
+        cook_instructions:
+          'Preheat the oven to 375F. In a large nonstick pan, heat 2 tablespoons of olive oil over medium high heat. Add in the onion, garlic, and carrot and cook until tender, about 5 minutes. Next, add in the crushed tomatoes and seasonings and simmer for 15 minutes. Taste and adjust the seasoning with salt and pepper. Once the sauce has thickened, pour into a 2 quart baking dish. Arrange the sliced vegetables in a circular pattern standing upright in the dish over the sauce. Brush with the remaining olive oil. Cover and bake for 30 minutes, then uncover and bake until vegetables are tender. Serve immediately.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 17,
+        user_id: 13,
+        title: 'Seared Scallops with Brown Butter',
+        image_urls:
+          'https://assets.epicurious.com/photos/5a3002b504847a34b821cb4a/1:1/w_2560%2Cc_limit/seared-scallops-with-brown-butter-and-lemon-pan-sauce-recipe-BA-121217.jpg',
+        cook_temperature: 'High',
+        cook_time: '50 minutes',
+        prep_time: '20 minutes',
+        cook_instructions:
+          'Cut 2 lemons in half and squeeze juice into a measuring glass or small bowl; you should have 1/4 cup juice. Set aside. Using a paring knife, cut ends off remaining lemon to expose flesh. Upend lemon on a cut end and remove peel and white pith from lemons; discard. Cut between membranes to release segments into bowl with juice; squeeze membranes to get any last drops of juice. Fish out any seeds; set aside. Thinly slice chives and place in a small bowl; set aside. Pull side muscle off scallops, if needed; pat dry. Season lightly on both sides with salt and pepper. Heat a large skillet, preferably stainless steel, over medium-high. Pour in oil to lightly coat surface (2–3 Tbsp.); heat until it shimmers and you see first wisps of smoke. Swiftly place scallops into skillet, flat side down, and cook without touching, tossing, or fussing until underside is deep golden brown, 3–4 minutes. Use a thin spatula or tongs to gently turn over; if they resist, cook another 30 seconds and try again. Cook on second side until flesh at top and bottom looks opaque but there is still a faintly translucent strip in the middle, 1–2 minutes, depending on size. Transfer scallops to a plate. Pour off any oil in skillet and set over medium heat. Add butter and cook, swirling, until butter foams, then browns, about 2 minutes. Add reserved lemon juice and segments; energetically stir and swirl pan to emulsify sauce. Mix in capers and reserved chives and spoon pan sauce around and over scallops.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 18,
+        user_id: 13,
+        title: 'Cucumber Sandwich',
+        image_urls:
+          'https://www.eatingwell.com/thmb/vFO43UyAy2NBfjOG6wADLLCE-Kc=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc()/cucumber-sandwich-eddcc95811f5426094ea5dbea6a6b026.jpg',
+        cook_temperature: 'Cold',
+        cook_time: '12 minutes',
+        prep_time: '10 minutes',
+        cook_instructions:
+          'Stir cream cheese, yogurt, chives, dill and pepper together in a small bowl until well blended. Spread the mixture evenly on one side of each bread slice. Top 1 slice with cucumber slices, then top with the other bread slice, cream cheese-side down. Cut the crusts from the sandwich and cut it in half diagonally.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 19,
+        user_id: 13,
+        title: 'Buddah Bowl',
+        image_urls: 'https://cdn.loveandlemons.com/wp-content/uploads/2020/12/plant-based-recipes.jpg',
+        cook_temperature: 'High',
+        cook_time: '20 minutes',
+        prep_time: '15 minutes',
+        cook_instructions:
+          'Preheat the oven to 400°F and line a large baking sheet with parchment paper. Toss the sweet potatoes with olive oil, salt, and pepper, and spread onto the baking sheet. Roast for 20 minutes, or until golden brown. Thinly slice the radish into rounds (this is best done on a mandoline), and use a vegetable peeler to peel the carrots into ribbons. Toss the radish slices, carrots, and shredded cabbage with a squeeze of lemon. Set aside. Place the kale leaves into a large bowl and toss with a squeeze of lemon and a few pinches of salt. Use your hands to massage the leaves until they become soft and wilted and reduce in the bowl by about half. Assemble individual bowls with the brown rice, chickpeas, kale, carrots, radishes, cabbage, sweet potatoes, sauerkraut, sesame seeds, and microgreens, if using. Season with salt and pepper and serve with the Turmeric Tahini Sauce.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 20,
+        user_id: 13,
+        title: 'Barbequed Corn With Tangy Sour-Cream Dressing',
+        image_urls: 'https://cdn.broadsheet.com.au/cache/10/30/1030bc60f9023eddcaf9e4686ada3ff5.jpg',
+        cook_temperature: 'Medium',
+        cook_time: '15 minutes',
+        prep_time: '25 minutes',
+        cook_instructions:
+          'Preheat a barbeque grill to medium–hot. If you don’t have a grill plate, a flat barbeque plate will also work, or you can use the overhead grill on your oven. Shuck the corn, leaving 5cm or so of the stem to use as a handle. Pour a good glug of olive oil onto a baking tray and roll the corn around in the oil until evenly coated. Lay the corn on the grill and cook for about 15 minutes, turning frequently. While the corn is cooking, combine the dressing ingredients in a small bowl and whisk with a fork to bring them all together. The corn is ready when the kernels are tender and have started to char a little. Once cooked, transfer corn to a serving platter. Spoon the dressing over the corn, scatter the coriander leaves over the top and finish with a little salt and pepper and extra paprika. Serve with lime wedges for squeezing over.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 21,
+        user_id: 13,
+        title: '15-Minute Chicken & Rice Dinner',
+        image_urls: 'https://www.campbells.com/wp-content/uploads/2021/07/15-Minute-Chicken-Rice_card-1106x830.jpg',
+        cook_temperature: 'High',
+        cook_time: '15 minutes',
+        prep_time: '25 minutes',
+        cook_instructions:
+          'Season the chicken with salt and pepper.  Heat the oil in a 12-inch skillet over medium-high heat.  Add the chicken and cook for 6 minutes or until browned on both sides (to prevent sticking- make sure the skillet and oil are hot before adding the chicken).  Remove the chicken from the skillet. Stir the soup, water and paprika in the skillet and heat to a boil.  Stir in the rice and broccoli.  Reduce the heat to low.  Return the chicken to the skillet.  Sprinkle the chicken with additional paprika.  Cover and cook for 5 minutes or until the chicken is done and the rice is tender.  Season to taste before serving.',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ]);
   },
   async down(queryInterface, Sequelize) {

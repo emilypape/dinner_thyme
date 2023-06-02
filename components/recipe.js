@@ -190,7 +190,7 @@ export default function Recipe({ recipeId }) {
             </div>
           </div>
           <div className='flex-col'>
-            <div className='bg-gray-200 lg:block md:block hidden  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 min-h-[24em] max-h-[35em] min-w-[20em] overflow-scroll'>
+            <div className='max-w-[25em] bg-gray-200 lg:block md:block hidden  shadow lg:ml-[-5em] md:ml-[-5em]  lg:mr-10 md:mr-6 md:mt-10 py-10  lg:mt-10   rounded-xl px-16 min-h-[24em] max-h-[35em] min-w-[20em] overflow-scroll'>
               <div className='flex'>
                 <Icon icon='material-symbols:timer-outline' width={20} height={20} />
                 <div>{recipeData.cook_time}</div>
