@@ -145,6 +145,18 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        id: 13,
+        first_name: 'Demo',
+        last_name: 'User',
+        profile_picture:
+          'https://www.gannett-cdn.com/media/2021/06/03/USATODAY/usatsports/imageForEntry18-8on.jpg?width=2560',
+        username: 'demoUser',
+        email: 'demo@gmail.com',
+        hashed_password: bcrypt.hashSync('demo', 10),
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ]);
   },
   async down(queryInterface, Sequelize) {
