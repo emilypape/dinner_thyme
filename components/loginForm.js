@@ -30,6 +30,23 @@ export default function LoginForm({ setLogin, setIsLoggedIn }) {
       alert(response.statusText);
     }
   }
+
+  async function demoLogin() {
+    const response = await fetch('/api/login', {
+      method: 'post',
+      body: JSON.stringify({
+        username: 'demoUser',
+        hashed_password: 'demo',
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      router.push('/profile');
+    } else {
+      alert(response.statusText);
+    }
+  }
   return (
     <div className='flex flex-col items-center '>
       <div className='lg:-mt-10 md:-mt-10 mb-3 text-lg opacity-70 md:text-2xl'>Have an account?</div>
@@ -58,8 +75,15 @@ export default function LoginForm({ setLogin, setIsLoggedIn }) {
         <div className='flex items-center my-4 before:flex-1 before:border-t before:border-black before:mt-0.5 after:flex-1 after:border-t after:border-black after:mt-0.5'>
           <p className='text-center text-lg font-bold mx-2 mb-0'>OR</p>
         </div>
-        <div className='px-12 underline text-blue-600 cursor-pointer' onClick={() => setLogin(false)}>
-          Sign up
+        <div className='flex'>
+          <div className='px-4 underline text-blue-600 cursor-pointer' onClick={() => setLogin(false)}>
+            Sign up
+          </div>
+          <span className='font-bold'>&#183;</span>
+          <div onClick={demoLogin} className='px-4 underline text-blue-600 cursor-pointer'>
+            {' '}
+            Demo
+          </div>
         </div>
       </div>
     </div>

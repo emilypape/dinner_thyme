@@ -85,6 +85,48 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        id: 13,
+        recipe_id: 12,
+        user_id: 13,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 14,
+        recipe_id: 11,
+        user_id: 13,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 15,
+        recipe_id: 10,
+        user_id: 13,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 16,
+        recipe_id: 9,
+        user_id: 13,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 17,
+        recipe_id: 8,
+        user_id: 13,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 18,
+        recipe_id: 7,
+        user_id: 13,
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ]);
   },
   async down(queryInterface, Sequelize) {

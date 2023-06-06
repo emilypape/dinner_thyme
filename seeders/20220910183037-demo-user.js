@@ -150,7 +150,7 @@ module.exports = {
         first_name: 'Demo',
         last_name: 'User',
         profile_picture:
-          'https://www.gannett-cdn.com/media/2021/06/03/USATODAY/usatsports/imageForEntry18-8on.jpg?width=2560',
+          'https://static.vecteezy.com/system/resources/previews/010/967/635/original/avatar-male-with-glasses-free-vector.jpg',
         username: 'demoUser',
         email: 'demo@gmail.com',
         hashed_password: bcrypt.hashSync('demo', 10),

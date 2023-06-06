@@ -43,6 +43,7 @@ module.exports = {
       'cdn.loveandlemons.com',
       'cdn.broadsheet.com.au',
       'www.campbells.com',
+      'static.vecteezy.com',
     ],
   },
 };

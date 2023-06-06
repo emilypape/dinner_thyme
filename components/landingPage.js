@@ -1,10 +1,28 @@
 import React from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import backgroundImage from '../public/assets/images/plateDinner.webp';
 import { Icon } from '@iconify/react';
 import Link from './Link';
 
 export default function LandingPage() {
+  const router = useRouter();
+  async function demoLogin() {
+    const response = await fetch('/api/login', {
+      method: 'post',
+      body: JSON.stringify({
+        username: 'demoUser',
+        hashed_password: 'demo',
+      }),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      router.push('/profile');
+    } else {
+      alert(response.statusText);
+    }
+  }
   return (
     <div className=''>
       <div className='image-container '>
@@ -29,9 +47,11 @@ export default function LandingPage() {
               <div className='font-semibold text-sm py-1 text-blue-600'>Login </div>
             </Link>
             <span className='px-2 font-bold'>&#183;</span>
-            <Link href='/login'>
-              <div className='font-semibold text-sm py-1 text-blue-600'>Signup</div>
-            </Link>
+
+            <div onClick={demoLogin} className='font-semibold text-sm py-1 text-blue-600 cursor-pointer'>
+              {' '}
+              Demo
+            </div>
           </div>
           <div className='flex mb-4 border-t-2 lg:ml-36 lg:border-gray-300 md:mb-10'>
             <a

@@ -85,6 +85,27 @@ module.exports = {
         created_at: new Date(),
         updated_at: new Date(),
       },
+      {
+        id: 13,
+        user_id: 13,
+        title: 'Grandmas Cooking',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 14,
+        user_id: 13,
+        title: 'Homestyle Meals',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
+      {
+        id: 15,
+        user_id: 13,
+        title: 'Party Ideas',
+        created_at: new Date(),
+        updated_at: new Date(),
+      },
     ]);
   },
   async down(queryInterface, Sequelize) {
