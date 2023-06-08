@@ -81,7 +81,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
               <div className='hidden lg:block md:block xl:block '>
                 <Image src={comments?.image_urls || noPhoto} alt={'Recipe Photo'} width={550} height={500} />
               </div>
-              <div className='max-h-[25rem] overflow-y-scroll min-w-[20em]'>
+              <div className='max-h-[25rem] overflow-y-scroll min-w-[20em] '>
                 {comments?.comments?.length > 0 ? (
                   comments?.comments?.map((comment) => {
                     return (
@@ -140,7 +140,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
             {/*footer*/}
             <div className=' appearance-none flex items-center justify-end border-t border-solid border-slate-200 rounded-b'>
               <input
-                className='appearance-none min-w-full lg:min-w-[38%] md:min-w-[38%]'
+                className='appearance-none min-w-[20em] lg:min-w-[38%] md:min-w-[38%]'
                 value={commentText}
                 onKeyPress={(e) => {
                   if (e.key === 'Enter') {
