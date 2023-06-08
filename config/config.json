@@ -1,23 +1,20 @@
 {
   "development": {
     "username": "root",
-    "password": "Atlas-2021",
+    "password": "password",
     "database": "dinner_thyme",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "test": {
     "username": "root",
-    "password": "Atlas-2021",
+    "password": "password",
     "database": "dinner_thyme",
     "host": "127.0.0.1",
     "dialect": "mysql"
   },
   "production": {
-    "username": "root",
-    "password": "Atlas-2021",
-    "database": "dinner_thyme",
-    "host": "127.0.0.1",
+    "use_env_variable": "JAWSDB_URL",
     "dialect": "mysql"
   }
 }
