@@ -138,7 +138,7 @@ export default function Comments({ recipeId, setCommentOpen }) {
               </div>
             </div>{' '}
             {/*footer*/}
-            <div className=' appearance-none flex items-center justify-end border-t border-solid border-slate-200 rounded-b'>
+            <div className='appearance-none flex items-center justify-end border-t border-solid border-slate-200 rounded-b'>
               <input
                 className='appearance-none min-w-[20em] lg:min-w-[38%] md:min-w-[38%]'
                 value={commentText}
