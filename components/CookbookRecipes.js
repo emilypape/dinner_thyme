@@ -1,11 +1,14 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-
+import DeleteCookbookItemDropdown from './DeleteCookbookItemDropdown';
 import noPhoto from '../public/assets/images/errorImage.jpg';
+import { Icon } from '@iconify/react';
 
 export default function CookbookRecipes({ cookbookId }) {
   const [cookbookRecipes, setCookbookRecipes] = useState([]);
+  const [dropdown, setDropdown] = useState({});
+  const [selectedRecipe, setSelectedRecipe] = useState();
 
   async function getCookbookRecipes() {
     const response = await fetch(`/api/cookbookRecipes/${cookbookId}`, {
@@ -16,9 +19,21 @@ export default function CookbookRecipes({ cookbookId }) {
     setCookbookRecipes(cookbookRecipeData);
   }
 
+  const openDropdown = (recipeId) => {
+    const newState = { ...dropdown };
+
+    if (newState[recipeId]) {
+      newState[recipeId] = false;
+    } else {
+      newState[recipeId] = true;
+    }
+    setDropdown(newState);
+    setSelectedRecipe(recipeId);
+  };
+
   useEffect(() => {
     getCookbookRecipes();
-  }, []);
+  }, [dropdown]);
   return (
     <div>
       <div className='flex flex-wrap justify-evenly lg:justify-start mt-10'>
@@ -37,11 +52,23 @@ export default function CookbookRecipes({ cookbookId }) {
                     />
                   </Link>
                   <div className='px-6 py-4'>
-                    <Link href={`/recipe/${recipe.id}`}>
-                      <div className='flex cursor-pointer'>
-                        <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{recipe.title}</div>
+                    <div className='flex justify-between'>
+                      <Link href={`/recipe/${recipe.id}`}>
+                        <div className='flex cursor-pointer'>
+                          <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{recipe.title}</div>
+                        </div>
+                      </Link>
+                      <div className='mt-[-1em]' onClick={() => openDropdown(recipe.id)}>
+                        <Icon className='mr-4 mt-3' color={'grey'} icon='ph:dots-three-bold' width={30} height={30} />
+                        {dropdown[recipe.id] && (
+                          <DeleteCookbookItemDropdown
+                            cookbookId={cookbookId}
+                            selectedRecipe={selectedRecipe}
+                            setDropdown={setDropdown}
+                          />
+                        )}
                       </div>
-                    </Link>
+                    </div>
                     <div className='overflow-auto max-h-28'>
                       <p
                         dangerouslySetInnerHTML={{ __html: recipe.cook_instructions }}
