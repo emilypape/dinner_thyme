@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { Icon } from '@iconify/react';
 import { useRouter } from 'next/router';
 import Link from './Link';
 import noPhoto from '../public/assets/images/errorImage.jpg';
@@ -20,7 +21,7 @@ export default function Likes({ user }) {
 
   useEffect(() => {
     fetchLikes();
-  }, []);
+  }, [likes]);
 
   let likeArray = likes;
   return likeArray ? (
@@ -47,8 +48,11 @@ export default function Likes({ user }) {
                         </div>
                       </Link>
                     </div>
-                    <div className='flex'>
+                    <div className='flex justify-between'>
                       <div className='font-bold text-xl xl:mb-2 lg:mb-2 md:mb-2'>{like.recipe.title}</div>
+                      <div className='mt-1'>
+                        <Icon icon='mdi:heart' color='red' height={25} width={25} />
+                      </div>
                     </div>
 
                     <div className='overflow-auto max-h-28'>
