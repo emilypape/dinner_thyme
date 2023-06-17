@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import { useRouter } from 'next/router';
 import Link from './Link';
 import Image from 'next/image';
 import { Icon } from '@iconify/react';
@@ -18,7 +17,6 @@ export default function Feed() {
   const [commentOpen, setCommentOpen] = useState(false);
   const [selectedRecipe, setSelectedRecipe] = useState();
   const [cookbookModal, setCookbookModal] = useState(false);
-  const router = useRouter();
 
   console.log(cookbookModal);
 
